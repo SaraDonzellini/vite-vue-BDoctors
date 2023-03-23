@@ -29,7 +29,7 @@ export default {
                   <li class="nav-item">
                     <router-link :to="{ name: 'doctors' }"
                     :class="this.$route.name == 'doctors' ? 'active' : ''">
-                    Doctrors 
+                    Doctors 
                     </router-link>  
                   </li>
                 </ul>
