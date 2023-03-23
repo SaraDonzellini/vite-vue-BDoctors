@@ -17,7 +17,8 @@ export default {
 <template>
   <div class="container">
     <div v-for="element in store.doctorsList" class="text-danger">
-      <h1>{{ element.name }}</h1>
+      <h1>{{ element.user.name }}</h1>
+      <h1>{{ element.user.surname }}</h1>
     </div>
   </div>
 </template>
