@@ -3,7 +3,7 @@
 export default {
   name: 'PageHome',
   components: {
-    
+
   }
 }
 
@@ -27,14 +27,13 @@ export default {
 
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
-@use '../styles/partials/variables' as * ;
+@use '../styles/partials/variables' as *;
 
-.jumbotron{
+.jumbotron {
   height: 600px;
-  background-image: url('../../public/imgs/jumbo-home.jpg');
+  background-image: url('./imgs/jumbo-home.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: 25%;
 }
-
 </style>
