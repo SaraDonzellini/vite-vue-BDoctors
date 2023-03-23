@@ -3,7 +3,7 @@
 export default {
   name: 'PageHome',
   components: {
-    
+
   }
 }
 
@@ -19,20 +19,19 @@ export default {
         Cerca tra i nostri dottori per trovare il tuo specialista
       </h5>
       <a href="" class="btn btn-info">Tutti i nostri dottori</a>
-    </div>  
+    </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
-@use '../styles/partials/variables' as * ;
+@use '../styles/partials/variables' as *;
 
-.jumbotron{
+.jumbotron {
   height: 600px;
-  background-image: url('../../public/imgs/jumbo-home.jpg');
+  background-image: url('./imgs/jumbo-home.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: 25%;
 }
-
 </style>
