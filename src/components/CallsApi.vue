@@ -1,20 +1,43 @@
 <script>
+import { store } from '../store';
+import axios from 'axios';
 
 export default {
-  name: 'AppApi',
+  name: 'CallsApi',
   components: {
     
   },
 
   data() {
-    return {
-      
+      return {
+      store,
+      urlAddress: 'http://127.0.0.1:8000/api/doctors',
+      }
+    },
+
+    methods: {
+
+      getDoctors() {
+        axios.get(this.urlAddress , {
+          params:{
+
+        }
+      })
+
+      .then( (response) => {
+        console.log(response.data.response.data);
+        this.store.doctorsList = response.data.response.data;
+      })
+
+      .catch(function (error) {
+        console.log(error);
+      })
+                
     }
   },
-
-  methods:{
-    // qui faremo la chiamata api e la passiamo allo store   
-  }
+  created() {
+    this.getDoctors();
+  },
 
 }
 </script>

@@ -2,12 +2,14 @@
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 import AppFooter from './components/AppFooter.vue';
+import CallsApi from './components/CallsApi.vue';
 
 export default {
     components:{
     AppHeader,
     AppMain,
-    AppFooter
+    AppFooter,
+    CallsApi
   },
     data(){
     return {   
@@ -30,6 +32,7 @@ created(){
   </header>
   <main>
      <AppMain/>
+     <CallsApi/>
   </main>
   <footer>
      <AppFooter/>

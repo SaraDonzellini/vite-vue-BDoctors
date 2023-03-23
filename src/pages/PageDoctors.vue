@@ -1,17 +1,23 @@
 <script>
+import { store } from '../store';
 
 export default {
   name: 'PageDoctors',
   components: {
     
-  }
+  },
+  data() {
+    return {
+      store,
+    }
+  },
 }
 </script>
 
 <template>
   <div class="container">
-    <div class="text-dark">
-      <h1>DOCTORS</h1>
+    <div v-for="element in store.doctorsList" class="text-danger">
+      <h1>{{ element.name }}</h1>
     </div>
   </div>
 </template>

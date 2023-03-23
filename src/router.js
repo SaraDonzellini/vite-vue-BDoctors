@@ -19,7 +19,6 @@ const router = createRouter({
       name: 'doctors',
       component: Doctors
     },
-
   ]
 
 });
