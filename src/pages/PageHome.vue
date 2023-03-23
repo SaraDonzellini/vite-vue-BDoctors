@@ -18,7 +18,9 @@ export default {
       <h5 class="mb-4">
         Cerca tra i nostri dottori per trovare il tuo specialista
       </h5>
-      <a href="" class="btn btn-info">Tutti i nostri dottori</a>
+      <router-link class="btn btn-primary" :to="{ name: 'doctors' }">
+        Tutti i nostri dottori
+      </router-link>  
     </div>  
   </section>
 </template>
