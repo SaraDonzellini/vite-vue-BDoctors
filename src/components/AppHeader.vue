@@ -1,10 +1,7 @@
 <script>
-import CompNav from './CompNav.vue';
-
 export default {
   name: 'AppHeader',
   components: {
-    CompNav,
   }
 }
 </script>
@@ -16,8 +13,6 @@ export default {
         <div class="logo">
           <h3>Logo</h3>
         </div>
-
-        <CompNav />
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
