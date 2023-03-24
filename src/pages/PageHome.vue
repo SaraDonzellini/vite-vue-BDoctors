@@ -3,7 +3,6 @@
 export default {
   name: 'PageHome',
   components: {
-
   }
 }
 

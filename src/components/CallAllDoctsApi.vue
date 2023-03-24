@@ -26,7 +26,7 @@ export default {
 
       .then((response) => {
         console.log(response.data);
-        this.store.doctorsList = response.data.data;
+        this.store.doctorsList = response.data.results;
       })
 
       .catch(function (error) {

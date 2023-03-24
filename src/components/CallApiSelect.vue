@@ -15,21 +15,21 @@ export default {
     data() {
         return {
             store,
-            url: 'http://127.0.0.1:8000/api/doctors',
+            url: 'http://127.0.0.1:8000/api/specializations',
         }
     },
     methods:{
-        getSpec(typeSpecialization) {
+        getSpec() {
         axios.get(this.url, {
             params:{
-              specializations: typeSpecialization
             }
         })
         // params: (selectOutput == "" ) ? {} : {specialization : selectOutput}
         
         .then((response) => {
-          console.log(response.data.results.data);
-          this.store.doctorsSelect = response.data.results.data;
+          console.log(response.data.response);
+          this.store.specializations = response.data.response;
+          console.log(this.store.specializations)
         })
     
         .catch(function (error) {
@@ -48,14 +48,7 @@ export default {
 </script>
 
 <template>
-    <div class="container mt-4">
-        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
-          <SelectNav @change="getSpec"/>
-        </div>
-        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
-          <SelectCards/>
-        </div>
-    </div>
+  <SelectNav @change="getSpec"/>
 </template>
 
 <style lang="scss" scoped>
