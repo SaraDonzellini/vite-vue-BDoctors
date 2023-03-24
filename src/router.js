@@ -6,6 +6,7 @@ import SinglePageDoctor from './pages/SinglePageDoctor.vue';
 
 
 
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -20,11 +21,12 @@ const router = createRouter({
       name: 'doctors',
       component: Doctors
     },
+
     {
       path: '/doctors/:id',
       name: 'doctor',
       component: SinglePageDoctor
-  },
+    },
   ]
 
 });

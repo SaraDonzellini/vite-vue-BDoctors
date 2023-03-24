@@ -55,6 +55,10 @@ li {
   color: $primary-text-color;
 }
 
+select {
+  width: 300px;
+}
+
 .bg-nav {
   background-color: $primary-bg-color ;
   height: 10vh;
