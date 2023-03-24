@@ -16,27 +16,29 @@ export default {
   },
   methods: {
     getDoctors() {
-        axios.get('http://127.0.0.1:8000/api/doctors', {
-            params: {
+      axios.get('http://127.0.0.1:8000/api/doctors', {
+        params: {
 
-            }
-        })
-            .then((response) => {
-            this.doctors = (response.data.response.data);
-            })
-            .catch(function (error) {
-            console.warn(error);
-            });
         }
+      })
+        .then((response) => {
+          this.doctors = (response.data.response.data);
+        })
+        .catch(function (error) {
+          console.warn(error);
+        });
+    }
   },
   created() {
-        this.getDoctors();
-    },
+    this.getDoctors();
+  },
 }
 </script>
 
 <template>
-  <DoctorCard v-for="doctor in doctors" :doctor="doctor" />
+  <section class="container d-flex justify-content-center flex-wrap">
+    <DoctorCard v-for="doctor in doctors" :doctor="doctor" />
+  </section>
 </template>
 
 <style lang="scss" scoped>
