@@ -58,7 +58,7 @@ export default {
 <template>
   <div class="wallpaper w-100 h-100 pt-5">
     <div class="container card-doctor">
-      <SinglePageInfo :doctor="doctor" />
+      <SinglePageInfo :doctor="doctor" :review="review"/>
       <SinglePageDash :doctor="doctor" :review="review" />
     </div>
   </div>
