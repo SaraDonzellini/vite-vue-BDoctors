@@ -1,11 +1,12 @@
 <script>
 import { store } from '../store';
+import DoctorCard from '../components/DoctorCard.vue';
 import axios from 'axios';
 
 export default {
   name: 'SinglePageDoctor',
   components: {
-    
+    DoctorCard,
   },
   data() {
     return {
@@ -22,6 +23,7 @@ export default {
             })
                 .then((response) => {
                     this.doctor = (response.data.results);
+                    // console.log(response.data.results)
                 })
                 .catch(function (error) {
                     console.warn(error);
@@ -36,12 +38,8 @@ export default {
 
 <template>
   <div class="container">
-    <div v-for="element in doctor" class="text-danger">
-      <h1>{{ element.user.name }}</h1>
-      <!-- <h1>{{ element.user.surname }}</h1> -->
-    </div>
     <div class="row">
-
+      <DoctorCard :doctor="doctor" :isShow="true" />
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <script>
 import DoctorCard from '../components/DoctorCard.vue';
-
-import { store } from '../store';
+import axios from 'axios';
+// import { store } from '../store';
 
 export default {
   name: 'PageDoctors',
@@ -10,14 +10,33 @@ export default {
   },
   data() {
     return {
-      store,
+      doctors: [],
+      // store,
     }
   },
+  methods: {
+    getDoctors() {
+        axios.get('http://127.0.0.1:8000/api/doctors', {
+            params: {
+
+            }
+        })
+            .then((response) => {
+            this.doctors = (response.data.response.data);
+            })
+            .catch(function (error) {
+            console.warn(error);
+            });
+        }
+  },
+  created() {
+        this.getDoctors();
+    },
 }
 </script>
 
 <template>
-  <DoctorCard />
+  <DoctorCard v-for="doctor in doctors" :doctor="doctor" />
 </template>
 
 <style lang="scss" scoped>

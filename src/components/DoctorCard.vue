@@ -1,45 +1,56 @@
 <script>
-import { store } from '../store';
+// import { store } from '../store';
 
 export default {
     name: 'PageDoctors',
-    components: {
-
-    },
     data() {
         return {
-            store,
+            // store,
+            doctors: [],
         }
     },
+    props: {
+        'doctor': {
+            type: Object,
+            required: true,
+        },
+        'isShow':{
+            type: Boolean,
+            required: false,
+            default: false,
+        }
+    }
 }
 </script>
 
 <template>
     <section id="doctor-profile" class="d-flex justify-content-center flex-wrap">
 
-        <div v-for="element in store.doctorsList"
-            class="card col-12 col-md-6 col-lg-7 mb-5 bg-white shadow rounded-lg my-card">
+        <div class="card col-12 col-md-6 col-lg-7 mb-5 bg-white shadow rounded-lg my-card">
 
             <!-- {{-- Doctor's photo --}} -->
             <div class="d-flex justify-content-center">
-                <img :src="element.photo" :alt="element.user.name">
+                <img :src="doctor.photo" :alt="doctor.user.name">
             </div>
 
             <!-- {{-- Doctor's infos --}} -->
             <div class="p-4">
                 <h5>
-                    {{ element.user.name }} {{ element.user.surname }}
+                    {{ doctor.user.name }} {{ doctor.user.surname }}
                 </h5>
 
-                <p v-for="(specialization, index) in specializations" :key="index">
+                <p v-for="(specialization, index) in doctor.specializations" :key="index">
                     {{ specialization.title }}
                 </p>
                 <p>
-                    {{ element.performance }}
+                    {{ doctor.performance }}
                 </p>
                 <div class="dash-bio">
-                    Biografia: {{ element.bio }}
+                    Biografia: {{ doctor.bio }}
                 </div>
+                <router-link v-if="!isShow" class="btn btn-primary" :to="{ name: 'doctor', params: { id: doctor.id } }">
+                    Vai al profilo
+                </router-link>
             </div>
 
 
