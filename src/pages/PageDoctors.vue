@@ -23,35 +23,23 @@ export default {
   methods: {
     getDoctors() {
       axios.get('http://127.0.0.1:8000/api/doctors', {
-        params: {
-          axios.get('http://127.0.0.1:8000/api/doctors', {
-            params: {
-
-            }
-          })
-            .then((response) => {
-              this.doctors = (response.data.response.data);
-            })
-            .catch(function (error) {
-              console.warn(error);
-            });
-        }
-      }
+        params: {}
       })
         .then((response) => {
-        this.doctors = (response.data.response.data);
-      })
-      .catch(function (error) {
-        console.warn(error);
-      });
-  }
-},
-created() {
-  this.getDoctors();
-},
-this.getDoctors();
+          this.doctors = (response.data.response.data);
+        })
+        .catch(function (error) {
+          console.warn(error);
+        });
+    }
+  },
+
+  created() {
+    this.getDoctors();
+
   },
 }
+
 </script>
 
 <template>
