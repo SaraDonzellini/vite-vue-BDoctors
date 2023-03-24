@@ -15,17 +15,17 @@ export default {
 </script>
 
 <template>
-    <section id="doctor-profile" class="d-flex justify-content-center flex-wrap">
+    <section id="doctor-profiles" class="d-flex justify-content-center flex-wrap">
 
         <div v-for="element in store.doctorsList"
             class="card col-12 col-md-6 col-lg-7 mb-5 bg-white shadow rounded-lg my-card">
 
-            <!-- {{-- Doctor's photo --}} -->
+            <!-- Doctor's photo -->
             <div class="d-flex justify-content-center">
                 <img :src="element.photo" :alt="element.user.name">
             </div>
 
-            <!-- {{-- Doctor's infos --}} -->
+            <!-- Doctor's infos -->
             <div class="p-4">
                 <h5>
                     {{ element.user.name }} {{ element.user.surname }}
@@ -41,9 +41,6 @@ export default {
                     Biografia: {{ element.bio }}
                 </div>
             </div>
-
-
-
         </div>
 
     </section>
