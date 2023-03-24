@@ -76,7 +76,6 @@ export default {
   .card-doctor {
     border-radius: 20px;
     background-color: white;
-    height: 800px;
     width: 100%;
   }
 }
