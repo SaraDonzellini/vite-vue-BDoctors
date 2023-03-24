@@ -1,15 +1,17 @@
 <script>
-import { store } from '../store';
+// import { store } from '../store';
 import axios from 'axios';
+
+import SinglePageDash from './pages/single-page-partials/SinglePageDash.vue';
 
 export default {
   name: 'SinglePageDoctor',
   components: {
-    
+    SinglePageDash,
   },
   data() {
     return {
-      store,
+      // store,
       doctor: null,
     }
   },
@@ -42,11 +44,12 @@ export default {
     </div>
     <div class="row">
 
+      <SinglePageDash />
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use '../styles/general.scss' as *;
 @use '../styles/partials/variables' as * ;
 </style>
