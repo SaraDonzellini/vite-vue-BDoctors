@@ -14,11 +14,11 @@ export default {
             type: Object,
             required: true,
         },
-        'isShow':{
-            type: Boolean,
-            required: false,
-            default: false,
-        }
+        // 'isShow':{
+        //     type: Boolean,
+        //     required: false,
+        //     default: false,
+        // }
     }
 }
 </script>

@@ -39,7 +39,8 @@ export default {
 <template>
   <div class="container">
     <div class="row">
-      <DoctorCard :doctor="doctor" :isShow="true" />
+      <!-- <DoctorCard :doctor="doctor" :isShow="true" /> -->
+      Ciao pupi
     </div>
   </div>
 </template>
