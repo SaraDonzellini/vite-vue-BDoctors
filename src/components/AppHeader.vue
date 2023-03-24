@@ -1,10 +1,19 @@
 <script>
+import { store } from '../store.js'
 
 export default {
   name: 'AppHeader',
   components: {
 
-  }
+  },
+  data() {
+    return {
+      store,
+      selectOutput:""
+    }
+  },
+  methods: {},
+  created() {},
 }
 </script>
 
@@ -15,6 +24,14 @@ export default {
         <div class="logo">
           <h3>Logo</h3>
         </div>
+
+        <select class="form-select" aria-label="Default select example" v-model="selectOutput" @change="$emit('changeType', selectOutput)">
+            <option selected>seleziona la specializzazione</option>
+            <option value="dermatologo">dermatologo</option>
+            <option value="gincecologo">ginecologo</option>
+            <option value="dentista">dentista</option>
+        </select>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -54,6 +71,10 @@ li {
 
 .active {
   color: $primary-text-color;
+}
+
+select{
+  width: 300px;
 }
 
 .bg-nav {
