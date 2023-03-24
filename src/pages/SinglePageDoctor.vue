@@ -15,7 +15,7 @@ export default {
     return {
       // store,
       doctor: null,
-      review: null,
+      review: [],
     }
   },
   methods: {
@@ -34,13 +34,13 @@ export default {
         });
     },
     getReviews() {
-      axios.get(`http://127.0.0.1:8000/api/reviews`, {
+      axios.get(`http://127.0.0.1:8000/api/reviews/`, {
         params: {
 
         }
       })
         .then((response) => {
-          this.review = (response.data.results);
+          this.review = (response.data.response);
           console.log(response.data.response)
         })
         .catch(function (error) {
@@ -59,7 +59,7 @@ export default {
   <div class="wallpaper w-100 h-100 pt-5">
     <div class="container card-doctor">
       <SinglePageInfo :doctor="doctor" />
-      <SinglePageDash :doctor="doctor" />
+      <SinglePageDash :doctor="doctor" :review="review" />
     </div>
   </div>
 </template>
