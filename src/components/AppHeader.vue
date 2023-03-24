@@ -1,7 +1,7 @@
 <script>
 import { store } from '../store.js'
-import selectNav from './SelectNav.vue'
-import CallApiSelect from './CallApiSelect.vue'
+import selectNav from './SelectSpecializations.vue'
+import CallApiSelect from './SelectSpecializations.vue'
 
 
 export default {
@@ -13,11 +13,10 @@ export default {
   data() {
     return {
       store,
-      selectOutput:""
     }
   },
   methods: {},
-  created() {},
+  created() { },
 }
 </script>
 
@@ -28,10 +27,6 @@ export default {
         <div class="logo">
           <h3>Logo</h3>
         </div>
-        <div class="select">
-          <CallApiSelect/>
-        </div>
-
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +69,7 @@ li {
   color: $primary-text-color;
 }
 
-select{
+select {
   width: 300px;
 }
 
