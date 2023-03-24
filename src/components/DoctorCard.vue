@@ -24,16 +24,16 @@ export default {
 </script>
 
 <template>
-    <section id="doctor-profile" class="d-flex justify-content-center flex-wrap">
+    <section id="doctor-profiles" class="d-flex justify-content-center flex-wrap">
 
         <div class="card col-12 col-md-6 col-lg-7 mb-5 bg-white shadow rounded-lg my-card">
 
-            <!-- {{-- Doctor's photo --}} -->
+            <!-- Doctor's photo -->
             <div class="d-flex justify-content-center">
                 <img :src="doctor.photo" :alt="doctor.user.name">
             </div>
 
-            <!-- {{-- Doctor's infos --}} -->
+            <!-- Doctor's infos -->
             <div class="p-4">
                 <h5>
                     {{ doctor.user.name }} {{ doctor.user.surname }}
@@ -52,9 +52,6 @@ export default {
                     Vai al profilo
                 </router-link>
             </div>
-
-
-
         </div>
 
     </section>
