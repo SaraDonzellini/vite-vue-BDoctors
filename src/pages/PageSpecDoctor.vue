@@ -1,8 +1,11 @@
 <script>
-
+import SelectCard from '../components/SelectCards.vue';
 import { store } from '../store.js'
 export default{
     name:'cardComp',
+    components: {
+    SelectCard,
+  },
     data(){
         return {
             store,
@@ -13,14 +16,7 @@ export default{
 </script>
 
 <template>
-    <div class="col" v-for="element in store.doctorsList">
-        <div class="card ">
-            <div class="card-body">
-                <h5 class="card-title"> {{ element.specialization.title }}</h5>
-                <p class="card-text">{{ element.specialization.color }}</p>
-            </div>
-        </div>
-    </div>
+    <SelectCard/>
 </template>
 
 

@@ -2,14 +2,16 @@
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 import AppFooter from './components/AppFooter.vue';
-import CallsApi from './components/CallsApi.vue';
+import CallAllDoctsApi from './components/CallAllDoctsApi.vue';
+import CallApiSelect from './components/CallApiSelect.vue'
 
 export default {
     components:{
     AppHeader,
     AppMain,
     AppFooter,
-    CallsApi
+    CallAllDoctsApi,
+    CallApiSelect
   },
     data(){
     return {   
@@ -32,7 +34,6 @@ created(){
   </header>
   <main>
      <AppMain/>
-     <CallsApi/>
   </main>
   <footer>
      <AppFooter/>

@@ -1,11 +1,11 @@
 <script>
 import { store } from '../store.js'
-import CompNav from './CompNav.vue';
+import selectNav from './SelectNav.vue'
 
 export default {
   name: 'AppHeader',
   components: {
-    CompNav,
+    selectNav,
   },
   data() {
     return {
@@ -26,15 +26,7 @@ export default {
           <h3>Logo</h3>
         </div>
 
-        <select class="form-select" aria-label="Default select example" v-model="selectOutput" @change="$emit('changeType', selectOutput)">
-            <option selected>seleziona la specializzazione</option>
-            <option value="dermatologo">dermatologo</option>
-            <option value="gincecologo">ginecologo</option>
-            <option value="dentista">dentista</option>
-        </select>
-
-
-        <CompNav />
+        <selectNav />
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

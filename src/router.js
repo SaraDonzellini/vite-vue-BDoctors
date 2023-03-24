@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Doctors from './pages/PageDoctors.vue';
 import Home from './pages/PageHome.vue';
 import SinglePageDoctor from './pages/SinglePageDoctor.vue';
+import PageSpec from './pages/PageSpecDoctor.vue';
 
 
 
@@ -20,6 +21,13 @@ const router = createRouter({
       name: 'doctors',
       component: Doctors
     },
+
+    {
+      path: '/PageSpec',
+      name: 'spec',
+      component: PageSpec
+    },
+
     {
       path: '/doctors/:id',
       name: 'doctor',
