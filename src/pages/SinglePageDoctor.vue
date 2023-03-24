@@ -3,11 +3,13 @@
 import axios from 'axios';
 
 import SinglePageDash from './pages/single-page-partials/SinglePageDash.vue';
+import SinglePageInfo from './single-page-partials/SinglePageInfo.vue';
 
 export default {
   name: 'SinglePageDoctor',
   components: {
     SinglePageDash,
+    SinglePageInfo,
   },
   data() {
     return {
@@ -24,6 +26,7 @@ export default {
             })
                 .then((response) => {
                     this.doctor = (response.data.results);
+                    // console.log(response.data.results)
                 })
                 .catch(function (error) {
                     console.warn(error);
@@ -37,21 +40,30 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <div v-for="element in doctor" class="text-danger">
-      <h1>{{ element.user.name }}</h1>
-      <!-- <h1>{{ element.user.surname }}</h1> -->
-    </div>
-    <div class="row">
-
+  <div class="wallpaper w-100 h-100 pt-5">
+    <div class="container card-doctor">
+      <SinglePageInfo :doctor="doctor" />
       <SinglePageDash />
     </div>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use '../styles/general.scss' as *;
 @use '../styles/partials/variables' as * ;
+
+.wallpaper{  
+  background-image: url('../../public/imgs/Bg-image.jpg');
+  background-size: cover;
+  background-position: center;
+  .card-doctor{
+    border-radius: 20px;
+    background-color: white;
+    height: 800px;
+    width: 100%;
+  }
+}
+
 </style>
 
 

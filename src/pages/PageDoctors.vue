@@ -1,31 +1,47 @@
 <script>
-import { store } from '../store';
+import DoctorCard from '../components/DoctorCard.vue';
+import axios from 'axios';
+// import { store } from '../store';
 
 export default {
   name: 'PageDoctors',
   components: {
-    
+    DoctorCard,
   },
   data() {
     return {
-      store,
+      doctors: [],
+      // store,
     }
   },
+  methods: {
+    getDoctors() {
+        axios.get('http://127.0.0.1:8000/api/doctors', {
+            params: {
+
+            }
+        })
+            .then((response) => {
+            this.doctors = (response.data.response.data);
+            })
+            .catch(function (error) {
+            console.warn(error);
+            });
+        }
+  },
+  created() {
+        this.getDoctors();
+    },
 }
 </script>
 
 <template>
-  <div class="container">
-    <div v-for="element in store.doctorsList" class="text-danger">
-      <h1>{{ element.user.name }}</h1>
-      <h1>{{ element.user.surname }}</h1>
-    </div>
-  </div>
+  <DoctorCard v-for="doctor in doctors" :doctor="doctor" />
 </template>
 
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
-@use '../styles/partials/variables' as * ;
+@use '../styles/partials/variables' as *;
 </style>
 
 
