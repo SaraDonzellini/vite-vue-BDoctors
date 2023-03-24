@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template>
-    <article id="doctor-profile" class="card col-12 col-md-6 col-lg-4 mb-5 shadow rounded-lg my-card">
+    <article id="doctor-profile" class="card col-12 col-md-6 col-lg-3 mb-5 shadow rounded-lg my-card">
 
         <!-- Doctor's photo -->
         <div class="d-flex justify-content-center">
