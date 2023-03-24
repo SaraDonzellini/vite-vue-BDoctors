@@ -39,7 +39,7 @@ export default {
 <template>
   <div class="wallpaper w-100 h-100 pt-5">
     <div class="container card-doctor">
-      <SinglePageInfo :doctor="doctor" />
+      <SinglePageInfo :doctor="doctor" :vote="" :counterRev=""/>
     </div>
   </div>
 </template>
