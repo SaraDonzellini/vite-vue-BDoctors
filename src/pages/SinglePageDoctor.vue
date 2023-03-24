@@ -27,7 +27,7 @@ export default {
       })
         .then((response) => {
           this.doctor = (response.data.results);
-          console.log(response.data.results)
+          // console.log(response.data.results)
         })
         .catch(function (error) {
           console.warn(error);
@@ -40,7 +40,7 @@ export default {
         }
       })
         .then((response) => {
-          this.review = (response.data.results);
+          this.review = (response.data.response);
           console.log(response.data.response)
         })
         .catch(function (error) {
@@ -58,7 +58,7 @@ export default {
 <template>
   <div class="wallpaper w-100 h-100 pt-5">
     <div class="container card-doctor">
-      <SinglePageInfo :doctor="doctor" :vote="" :counterRev=""/>
+      <SinglePageInfo :doctor="doctor" :review="review"/>
       <SinglePageDash :doctor="doctor" />
     </div>
   </div>
