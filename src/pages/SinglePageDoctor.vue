@@ -37,10 +37,9 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <div class="row">
-      <!-- <DoctorCard :doctor="doctor" :isShow="true" /> -->
-      Ciao pupi
+  <div class="wallpaper w-100 h-100 pt-5">
+    <div class="container card-doctor">
+      
     </div>
   </div>
 </template>
@@ -48,6 +47,19 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
 @use '../styles/partials/variables' as * ;
+
+.wallpaper{  
+  background-image: url('../../public/imgs/Bg-image.jpg');
+  background-size: cover;
+  background-position: center;
+  .card-doctor{
+    border-radius: 20px;
+    background-color: white;
+    height: 800px;
+    width: 100%;
+  }
+}
+
 </style>
 
 
