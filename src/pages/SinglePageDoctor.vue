@@ -1,12 +1,12 @@
 <script>
 import { store } from '../store';
-import DoctorCard from '../components/DoctorCard.vue';
 import axios from 'axios';
+import SinglePageInfo from './single-page-partials/SinglePageInfo.vue';
 
 export default {
   name: 'SinglePageDoctor',
   components: {
-    DoctorCard,
+    SinglePageInfo,
   },
   data() {
     return {
@@ -39,12 +39,12 @@ export default {
 <template>
   <div class="wallpaper w-100 h-100 pt-5">
     <div class="container card-doctor">
-      
+      <SinglePageInfo :doctor="doctor" />
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use '../styles/general.scss' as *;
 @use '../styles/partials/variables' as * ;
 
