@@ -2,41 +2,38 @@
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 import AppFooter from './components/AppFooter.vue';
-import CallAllDoctsApi from './components/CallAllDoctsApi.vue';
-import CallApiSelect from './components/CallApiSelect.vue'
+
 
 export default {
-    components:{
+  components: {
     AppHeader,
     AppMain,
     AppFooter,
-    CallAllDoctsApi,
-    CallApiSelect
   },
-    data(){
-    return {   
+  data() {
+    return {
     }
   },
 
-  methods:{
-},
+  methods: {
+  },
 
-created(){
-  
-}
-  
+  created() {
+
+  }
+
 }
 </script>
 
 <template>
   <header>
-    <AppHeader/>
+    <AppHeader />
   </header>
   <main>
-     <AppMain/>
+    <AppMain />
   </main>
   <footer>
-     <AppFooter/>
+    <AppFooter />
   </footer>
 </template>
 
