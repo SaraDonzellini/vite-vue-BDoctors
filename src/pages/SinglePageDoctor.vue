@@ -26,31 +26,17 @@ export default {
         }
       })
         .then((response) => {
-          this.doctor = (response.data.results);
+          this.doctor = (response.data.doctor);
+          this.review = response.data.reviews
           // console.log(response.data.results)
         })
         .catch(function (error) {
           console.warn(error);
         });
     },
-    getReviews() {
-      axios.get(`http://127.0.0.1:8000/api/reviews/`, {
-        params: {
-
-        }
-      })
-        .then((response) => {
-          this.review = (response.data.response);
-          console.log(response.data.response)
-        })
-        .catch(function (error) {
-          console.warn(error);
-        });
-    }
   },
   created() {
     this.getDoctor();
-    this.getReviews();
   }
 }
 </script>
@@ -58,7 +44,7 @@ export default {
 <template>
   <div class="wallpaper w-100 h-100 pt-5">
     <div class="container card-doctor">
-      <SinglePageInfo :doctor="doctor" :review="review"/>
+      <SinglePageInfo :doctor="doctor" :review="review" />
       <SinglePageDash :doctor="doctor" :review="review" />
     </div>
   </div>
