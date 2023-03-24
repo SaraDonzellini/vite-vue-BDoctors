@@ -11,14 +11,15 @@ export default {
   data() {
     return {
       store,
-      urlAddress: 'http://127.0.0.1:8000/',
+      urlDocts: 'http://127.0.0.1:8000/',
+      urlSpec: 'http://127.0.0.1:8000/api/doctors',
     }
   },
  
   //chiamata per tutti i dottori
   methods: {
     getDoctor() {
-      axios.get(this.urlAddress + 'api/doctors', {
+      axios.get(this.urlDocts + 'api/doctors', {
         params: {
            
         }
@@ -37,8 +38,8 @@ export default {
   },
 
   //chiamata per i dottori selezionati
-  getDoctorSelect(specialization) {
-    axios.get(this.urlAddress, {
+  getSpec(specialization) {
+    axios.get(this.urlSpec, {
       params: {
         specialization: specialization
       }
@@ -58,7 +59,7 @@ export default {
   
   created() {
     this.getDoctor();
-    this.getDoctorSelect()
+    this.getSpec();
   }
 
 }
