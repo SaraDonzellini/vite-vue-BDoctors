@@ -1,10 +1,11 @@
 <script>
 import { store } from '../store.js'
+import CompNav from './CompNav.vue';
 
 export default {
   name: 'AppHeader',
   components: {
-
+    CompNav,
   },
   data() {
     return {
@@ -31,6 +32,9 @@ export default {
             <option value="gincecologo">ginecologo</option>
             <option value="dentista">dentista</option>
         </select>
+
+
+        <CompNav />
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
