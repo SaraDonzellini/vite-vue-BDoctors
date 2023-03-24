@@ -23,7 +23,7 @@ export default {
             })
                 .then((response) => {
                     this.doctor = (response.data.results);
-                    // console.log(response.data.results)
+                    console.log(response.data.results)
                 })
                 .catch(function (error) {
                     console.warn(error);

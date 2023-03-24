@@ -48,7 +48,7 @@ export default {
                 <div class="dash-bio">
                     Biografia: {{ doctor.bio }}
                 </div>
-                <router-link v-if="!isShow" class="btn btn-primary" :to="{ name: 'doctor', params: { id: doctor.id } }">
+                <router-link class="btn btn-primary" :to="{ name: 'doctor', params: { id: doctor.id } }">
                     Vai al profilo
                 </router-link>
             </div>
