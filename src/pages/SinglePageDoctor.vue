@@ -2,7 +2,7 @@
 // import { store } from '../store';
 import axios from 'axios';
 
-import SinglePageDash from './pages/single-page-partials/SinglePageDash.vue';
+import SinglePageDash from './single-page-partials/SinglePageDash.vue';
 import SinglePageInfo from './single-page-partials/SinglePageInfo.vue';
 
 export default {
@@ -43,12 +43,12 @@ export default {
   <div class="wallpaper w-100 h-100 pt-5">
     <div class="container card-doctor">
       <SinglePageInfo :doctor="doctor" />
-      <SinglePageDash />
+      <SinglePageDash :doctor="doctor" />
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @use '../styles/general.scss' as *;
 @use '../styles/partials/variables' as * ;
 

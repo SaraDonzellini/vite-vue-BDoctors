@@ -3,6 +3,17 @@
 
 export default {
   name: SinglePageDash,
+  data() {
+    return {
+      
+    }
+  },
+  props: {
+        'doctor': {
+            type: Object,
+            required: true,
+        },
+    }
 }
 </script>
 
@@ -26,7 +37,5 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@use '../styles/general.scss' as *;
-@use '../styles/partials/variables' as * ;
 
 </style>
