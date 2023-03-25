@@ -52,7 +52,7 @@ export default {
 
 <template>
   <nav>
-    <select class="form-select" aria-label="Default select example" v-model="selectedSpecialization">
+    <select class="form-select" aria-label="Default select example" v-model="selectedSpecialization" @change="$emit('changeType', selectedSpecialization)">
       <option v-for="element in store.specializations" :value="element.id">
         {{ element.title }}</option>
     </select>

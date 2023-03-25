@@ -12,7 +12,7 @@ export default {
     props: {
         'doctor': {
             type: Object,
-            required: true,
+            required: false,
         },
         // 'isShow':{
         //     type: Boolean,
