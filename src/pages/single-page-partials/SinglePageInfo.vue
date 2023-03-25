@@ -6,6 +6,7 @@ export default {
         return {
             fullStars: [],
             emptyStars: [],
+            averageVote: null,
         }
     },
     props: {
@@ -19,25 +20,37 @@ export default {
         },
     },
     methods: {
-        // getStarsVote(num){
-        //     let fullStarElement = Math.ceil(num / 2)
-        //     console.log(num)
-        //     console.log(fullStarElement)
+        averageByKey(array, key) {
+            if (!array || array.length === 0 || !key) {
+                return 0;
+            }
+            const sum = array.reduce((acc, obj) => {
+                return acc + obj[key];
+            }, 0);
+            this.averageVote = sum / array.length;
+            console.log(this.averageVote)
+            return this.averageVote
+        },
 
-        //     for(let i = 0; i < fullStarElement ; i++){
-        //         this.fullStars.push(fullStarElement);
-        //     }
-        //     console.log(this.fullStars.length)
+        getStarsVote(num) {
+            let fullStarElement = num / num
+            console.log(fullStarElement)
 
-        //     let emptyStarElement = 1
-        //     for(let i = 0; i < (5 - this.fullStars.length) ; i++){
-        //         this.emptyStars.push(emptyStarElement)
-        //     }
-        //     console.log(this.emptyStars.length)
-        // },
+            for (let i = 0; i < num; i++) {
+                this.fullStars.push(fullStarElement);
+            }
+            console.log(`Lunghezza stelle piene${this.fullStars.length}`)
+
+            let emptyStarElement = 1
+            for (let i = 0; i < (5 - num); i++) {
+                this.emptyStars.push(emptyStarElement)
+            }
+            console.log(`Lunghezza stelle vuote${this.emptyStars.length}`)
+        },
     },
     created() {
-        // this.getStarsVote(this.vote);
+        this.averageByKey(this.review, "vote")
+        this.getStarsVote(this.averageVote);
     }
 }
 </script>
@@ -57,14 +70,11 @@ export default {
                     {{ specialization.title }} |
                 </span>
                 <div class="review-info">
-                    <h6>Voto: </h6>
-                    <span v-for="(reviewEl, index) in review" :key="index">
-                        {{ reviewEl.vote }} |
-                    </span>
-                    <!-- <div class="stars">
-                            <i v-for="starEL in fullStars" class="fa-solid fa-star"></i>
-                            <i v-for="star in emptyStars" class="fa-regular fa-star"></i>
-                        </div> -->
+                    <div class="vote-stars">
+                        <h6 class="mt-3">Voto: </h6>
+                        <i v-for="starEL in fullStars" class="fa-solid fa-star">piena</i>
+                        <i v-for="star in emptyStars" class="fa-regular fa-star">vuota</i>
+                    </div>
                 </div>
             </div>
             <div class="buttons d-flex">
@@ -87,10 +97,8 @@ export default {
         border: 1px solid black;
     }
 
-    ;
-
-    p {
-        line-height: 0.5rem;
+    .fa-star{
+        color: rgba(255, 208, 0, 0.815);
     }
 }
 </style>

@@ -26,7 +26,7 @@ export default {
         }
       })
         .then((response) => {
-          console.log(response.data.response);
+          // console.log(response.data.response);
           this.doctor = (response.data.doctor);
           this.review = response.data.reviews
           // console.log(response.data.results)
