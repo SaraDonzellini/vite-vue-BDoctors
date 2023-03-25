@@ -20,12 +20,13 @@ export default {
   },
   methods: {
     getDoctor() {
-      axios.get(`http://127.0.0.1:8000/api/doctors/${this.$route.params.id}`, {
+      axios.get(`http://127.0.0.1:8000/api/doctor/${this.$route.params.id}`, {
         params: {
 
         }
       })
         .then((response) => {
+          console.log(response.data.response);
           this.doctor = (response.data.doctor);
           this.review = response.data.reviews
           // console.log(response.data.results)
