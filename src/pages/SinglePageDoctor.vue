@@ -16,6 +16,7 @@ export default {
       // store,
       doctor: null,
       review: [],
+      reviewsCount: null,
     }
   },
   methods: {
@@ -28,8 +29,9 @@ export default {
         .then((response) => {
           // console.log(response.data.response);
           this.doctor = (response.data.doctor);
-          this.review = response.data.reviews
-          // console.log(response.data.results)
+          this.review = response.data.reviews;
+          this.reviewsCount = response.data.reviews.length;
+          console.log(response.data.reviews.length)
         })
         .catch(function (error) {
           console.warn(error);
@@ -45,7 +47,7 @@ export default {
 <template>
   <div class="wallpaper w-100 h-100 pt-5">
     <div class="container card-doctor">
-      <SinglePageInfo :doctor="doctor" :review="review" />
+      <SinglePageInfo :doctor="doctor" :review="review" :reviewsCount="reviewsCount" />
       <SinglePageDash :doctor="doctor" :review="review" />
     </div>
   </div>

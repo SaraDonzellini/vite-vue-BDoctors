@@ -18,6 +18,7 @@ export default {
             type: Object,
             required: true,
         },
+        reviewsCount: Number,
     },
     methods: {
         averageByKey(array, key) {
@@ -60,12 +61,14 @@ export default {
         <section class=" image-box d-flex justify-content-center">
             <img class="image-doctor img-fluid" :src="`../../public/${doctor.photo}`" :alt="doctor.user.name">
         </section>
-        <section class="info-box d-flex flex-column justify-content-around ms-5">
-            <div class="infos">
+        <section class="info-box ps-5">
+            <div class="infos mb-5">
                 <h1>
                     {{ doctor.user.name }} {{ doctor.user.surname }}
                 </h1>
-                Specializzazione:
+                <h6 class="mt-4">
+                    Specializzazione:
+                </h6>
                 <span v-for="(specialization, index) in doctor.specializations" :key="index">
                     {{ specialization.title }} |
                 </span>
@@ -74,6 +77,7 @@ export default {
                         <h6 class="mt-3">Voto: </h6>
                         <i v-for="starEL in fullStars" class="fa-solid fa-star">piena</i>
                         <i v-for="star in emptyStars" class="fa-regular fa-star">vuota</i>
+                        <span class="ms-2">{{ reviewsCount }} recensioni</span>
                     </div>
                 </div>
             </div>
@@ -90,8 +94,8 @@ export default {
     padding: 4rem;
 
     .image-box {
-        width: 400px;
-        height: 400px;
+        width: 300px;
+        height: 300px;
         border-radius: 50%;
         overflow: hidden;
         border: 1px solid black;
