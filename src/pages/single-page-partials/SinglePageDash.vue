@@ -5,6 +5,8 @@ export default {
   name: 'SinglePageDash',
   data() {
     return {
+      fullStars: [],
+      emptyStars: [],
 
     }
   },
@@ -17,6 +19,26 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  methods: {
+    getStarsVote(num) {
+            let fullStarElement = num / num
+            console.log(fullStarElement)
+
+            for (let i = 0; i < num; i++) {
+                this.fullStars.push(fullStarElement);
+            }
+            console.log(`Lunghezza stelle piene${this.fullStars.length}`)
+
+            let emptyStarElement = 1
+            for (let i = 0; i < (5 - num); i++) {
+                this.emptyStars.push(emptyStarElement)
+            }
+            console.log(`Lunghezza stelle vuote${this.emptyStars.length}`)
+        },
+  },
+  created() {
+    this.getStarsVote(this.review['vote'])
   },
 
 }
@@ -85,7 +107,10 @@ export default {
         </p> -->
         <ul>
           <li v-for="(reviewEl, index) in review" :key="index">
-            {{ reviewEl.name }} {{ reviewEl.surname }} : {{ reviewEl.text }} (Voto: {{ reviewEl.vote }})
+            <h5><i v-for="starEL in fullStars" class="fa-solid fa-star">piena</i>
+                <i v-for="star in emptyStars" class="fa-regular fa-star">vuota</i></h5>
+            <h6>{{ reviewEl.name }} {{ reviewEl.surname }}</h6>
+            <p>{{ reviewEl.text }}</p>
 
           </li>
 
