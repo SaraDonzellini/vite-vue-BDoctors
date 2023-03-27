@@ -75,14 +75,14 @@ export default {
                 <div class="review-info">
                     <div class="vote-stars">
                         <h6 class="mt-3">Voto: </h6>
-                        <i v-for="starEL in fullStars" class="fa-solid fa-star">piena</i>
-                        <i v-for="star in emptyStars" class="fa-regular fa-star">vuota</i>
+                        <i v-for="starEL in fullStars" class="fa-solid fa-star"></i>
+                        <i v-for="star in emptyStars" class="fa-regular fa-star"></i>
                         <span class="ms-2">{{ reviewsCount }} recensioni</span>
                     </div>
                 </div>
             </div>
             <div class="buttons d-flex">
-                <a class="btn btn-info me-5" href="#">Invia un messaggio</a>
+                <a class="btn btn-info me-5" href="#messaggi">Invia un messaggio</a>
                 <a class="btn btn-success" href="#">Scrivi una recensione</a>
             </div>
         </section>

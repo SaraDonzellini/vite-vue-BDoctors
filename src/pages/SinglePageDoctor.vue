@@ -4,12 +4,14 @@ import axios from 'axios';
 
 import SinglePageDash from './single-page-partials/SinglePageDash.vue';
 import SinglePageInfo from './single-page-partials/SinglePageInfo.vue';
+import SinglePageMessage from './single-page-partials/SinglePageMessage.vue';
 
 export default {
   name: 'SinglePageDoctor',
   components: {
     SinglePageDash,
     SinglePageInfo,
+    SinglePageMessage,
   },
   data() {
     return {
@@ -49,6 +51,7 @@ export default {
     <div class="container card-doctor">
       <SinglePageInfo :doctor="doctor" :review="review" :reviewsCount="reviewsCount" />
       <SinglePageDash :doctor="doctor" :review="review" />
+      <SinglePageMessage :doctor="doctor" :review="review" />
     </div>
   </div>
 </template>
