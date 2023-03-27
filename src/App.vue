@@ -40,4 +40,8 @@ export default {
 <style lang="scss">
 @use './styles/general.scss' as *;
 @use 'bootstrap/scss/bootstrap' as *;
+
+main {
+  padding-top: 10vh;
+}
 </style>
