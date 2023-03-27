@@ -7,7 +7,7 @@ export default {
     return {
       fullStars: [],
       emptyStars: [],
-
+      vote: 0,
     }
   },
   props: {
@@ -19,27 +19,14 @@ export default {
       type: Object,
       required: true,
     },
+
   },
   methods: {
-    getStarsVote(num) {
-            let fullStarElement = num / num
-            console.log(fullStarElement)
-
-            for (let i = 0; i < num; i++) {
-                this.fullStars.push(fullStarElement);
-            }
-            console.log(`Lunghezza stelle piene${this.fullStars.length}`)
-
-            let emptyStarElement = 1
-            for (let i = 0; i < (5 - num); i++) {
-                this.emptyStars.push(emptyStarElement)
-            }
-            console.log(`Lunghezza stelle vuote${this.emptyStars.length}`)
-        },
   },
   created() {
-    this.getStarsVote(this.review['vote'])
+    
   },
+
 
 }
 </script>
@@ -47,9 +34,9 @@ export default {
 <template>
   <nav class="navbar navbar-expand-lg my_navbar">
     <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      <button class="navbar-toggler py-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav d-flex justify-content-between">
@@ -57,8 +44,8 @@ export default {
             <a class="nav-link my_navbar" href="#address">Informazioni Dottore</a>
           </li>
           <!-- <li class="nav-item">
-            <a class="nav-link my_navbar" href="#recensioni">Recensioni</a>
-          </li> -->
+                  <a class="nav-link my_navbar" href="#recensioni">Recensioni</a>
+                </li> -->
 
         </ul>
       </div>
@@ -66,31 +53,29 @@ export default {
   </nav>
   <div class="container card shadow-lg">
     <div class="row">
-      <div class="col-5 m-5">
+      <div class="col-12 col-md-5 m-2">
         <p>Address: {{ doctor.address }}</p>
         <p>Phone: {{ doctor.phone }}</p>
         <p>
           Bio: {{ doctor.bio }}
-
         </p>
 
       </div>
-      <div class="col-5 m-5">
+      <div class="col-12 col-md-5 m-2">
         Curriculum: {{ doctor.curriculum }}
       </div>
     </div>
   </div>
   <nav class="navbar navbar-expand-lg my_navbar">
     <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      <button class="navbar-toggler py-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav d-flex justify-content-between">
           <!-- <li class="nav-item">
-            <a class="nav-link my_navbar" href="#address">Informazioni Dottore</a>
-          </li> -->
+                  <a class="nav-link my_navbar" href="#address">Informazioni Dottore</a>
+                </li> -->
           <li class="nav-item">
             <a class="nav-link my_navbar" href="#recensioni">Recensioni</a>
           </li>
@@ -99,16 +84,16 @@ export default {
       </div>
     </div>
   </nav>
-  <div class="container card shadow-lg">
+  <div class="container-fluid card shadow-lg">
     <div class="row">
-      <div class="col-12 m-5">
+      <div class="col-12 m-2">
         <!-- <p>
-          Recensioni:
-        </p> -->
+                Recensioni:
+              </p> -->
         <ul>
           <li v-for="(reviewEl, index) in review" :key="index">
-            <h5><i v-for="starEL in fullStars" class="fa-solid fa-star">piena</i>
-                <i v-for="star in emptyStars" class="fa-regular fa-star">vuota</i></h5>
+            <h5>Vote: {{ reviewEl.vote }}
+            </h5>
             <h6>{{ reviewEl.name }} {{ reviewEl.surname }}</h6>
             <p>{{ reviewEl.text }}</p>
 
