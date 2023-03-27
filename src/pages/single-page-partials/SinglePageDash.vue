@@ -5,9 +5,6 @@ export default {
   name: 'SinglePageDash',
   data() {
     return {
-      fullStars: [],
-      emptyStars: [],
-      vote: 0,
     }
   },
   props: {
@@ -22,7 +19,7 @@ export default {
 
   },
   methods: {
-    
+
   },
   created() {
   },
@@ -99,8 +96,8 @@ export default {
                 <h6>Cognome:</h6>
               </label>
               <input class="d-block form-control" name="surname" type="text" id="surname">
-          </div>
-          <div class="vote col-12 col-md-3  px-2">
+            </div>
+            <div class="vote col-12 col-md-3  px-2">
               <label for="vote">
                 <h6>Voto:</h6>
               </label>
@@ -144,7 +141,8 @@ export default {
       <div class="col-12 m-2">
         <ul>
           <li v-for="(reviewEl, index) in review" :key="index">
-            <h5>Voto: {{ reviewEl.vote }}
+            <h5>Voto:
+              <i class="fa-solid fa-star" v-for="n in Math.ceil(reviewEl.vote)"></i>
             </h5>
             <h6>{{ reviewEl.name }} {{ reviewEl.surname }}</h6>
             <p>{{ reviewEl.text }}</p>
@@ -172,4 +170,10 @@ export default {
     color: $secondary-text-color;
   }
 }
+
+
+    .fa-star{
+        color: rgba(255, 208, 0, 0.815);
+    }
+
 </style>
