@@ -6,7 +6,7 @@ export default {
   data() {
     return {
       formData: {
-        // user_id: 10,
+        userId: this.userId,
         name: '',
         surname: '',
         email: '',
@@ -23,7 +23,10 @@ export default {
       type: Object,
       required: true,
     },
-    id: Number,
+    'userId': {
+      type: Number,
+      required: true,
+    },
   },
 
   methods: {
@@ -36,10 +39,6 @@ export default {
       }
     }
   },
-
-  created() { 
-    console.log(this.id)
-  }
 
 }
 </script>
