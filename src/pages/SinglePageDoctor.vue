@@ -62,7 +62,7 @@ export default {
 @use '../styles/partials/variables' as *;
 
 .wallpaper {
-  background-image: url('../../public/imgs/Bg-image.jpg');
+  background-image: url('/imgs/Bg-image.jpg');
   background-size: cover;
   background-position: center;
 
