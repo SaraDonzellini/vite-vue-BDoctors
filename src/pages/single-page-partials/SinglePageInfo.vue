@@ -57,35 +57,38 @@ export default {
 </script>
 
 <template>
-    <div class="info-container d-flex justify-content-around">
-        <section class=" image-box d-flex justify-content-center">
-            <img class="image-doctor img-fluid" :src="`../../public/${doctor.photo}`" :alt="doctor.user.name">
-        </section>
-        <section class="info-box ps-5">
-            <div class="infos mb-5">
-                <h1>
-                    {{ doctor.user.name }} {{ doctor.user.surname }}
-                </h1>
-                <h6 class="mt-4">
-                    Specializzazione:
-                </h6>
-                <span v-for="(specialization, index) in doctor.specializations" :key="index">
-                    {{ specialization.title }} |
-                </span>
-                <div class="review-info">
-                    <div class="vote-stars">
-                        <h6 class="mt-3">Voto: </h6>
-                        <i v-for="starEL in fullStars" class="fa-solid fa-star"></i>
-                        <i v-for="star in emptyStars" class="fa-regular fa-star"></i>
-                        <span class="ms-2">{{ reviewsCount }} recensioni</span>
+    <div class="info-container">
+        <div class="row w-100 justify-content-around">
+            <section class=" image-box col-12 col-lg-6 d-flex justify-content-center">
+                <img class="image-doctor img-fluid" :src="`../../public/${doctor.photo}`" :alt="doctor.user.name">
+            </section>
+
+            <section class="info-box pt-3 col-12 col-lg-6 ps-5">
+                <div class="infos mb-5">
+                    <h1>
+                        {{ doctor.user.name }} {{ doctor.user.surname }}
+                    </h1>
+                    <h6 class="mt-4">
+                        Specializzazione:
+                    </h6>
+                    <span v-for="(specialization, index) in doctor.specializations" :key="index">
+                        {{ specialization.title }} |
+                    </span>
+                    <div class="review-info">
+                        <div class="vote-stars">
+                            <h6 class="mt-3">Voto: </h6>
+                            <i v-for="starEL in fullStars" class="fa-solid fa-star"></i>
+                            <i v-for="star in emptyStars" class="fa-regular fa-star"></i>
+                            <span class="ms-2">{{ reviewsCount }} recensioni</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="buttons d-flex">
-                <a class="btn btn-info me-5" href="#messaggi">Invia un messaggio</a>
-                <a class="btn btn-success" href="#">Scrivi una recensione</a>
-            </div>
-        </section>
+                <div class="buttons d-flex">
+                    <a class="btn btn-info me-5" href="#messaggi">Invia un messaggio</a>
+                    <a class="btn btn-success" href="#">Scrivi una recensione</a>
+                </div>
+            </section>
+        </div>
     </div>
 </template>
 
@@ -95,6 +98,7 @@ export default {
 
     .image-box {
         width: 300px;
+        min-width: 300px;
         height: 300px;
         border-radius: 50%;
         overflow: hidden;
