@@ -34,8 +34,8 @@ export default {
                 })
                 .catch(error => {
                     // Gestisci gli errori di invio
-                })
-
+                });
+            this.clearInput();
         },
 
         clearInput() {
@@ -85,7 +85,7 @@ export default {
                     <textarea v-model="content" name="rev-text" id="rev-text" class="form-control"></textarea>
                 </div>
                 <div class="button-sub d-flex justify-content-start">
-                    <button class="btn btn-primary mt-4 py-2 px-4" @click="clearInput()" type="submit">Invia</button>
+                    <button class="btn btn-primary mt-4 py-2 px-4" type="submit">Invia</button>
                 </div>
             </form>
         </div>

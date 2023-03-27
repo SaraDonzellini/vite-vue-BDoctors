@@ -36,7 +36,15 @@ export default {
         console.log(response.data)
       } catch (error) {
         console.log(error.response.data)
-      }
+      };
+      this.clearInput()
+    },
+
+    clearInput() {
+      this.formData.name = '';
+      this.formData.surname = '';
+      this.formData.email = '';
+      this.formData.text = '';
     }
   },
 
