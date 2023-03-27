@@ -28,7 +28,7 @@ export default {
             const sum = array.reduce((acc, obj) => {
                 return acc + obj[key];
             }, 0);
-            this.averageVote = sum / array.length;
+            this.averageVote = Math.ceil(sum / array.length);
             console.log(this.averageVote)
             return this.averageVote
         },
@@ -105,7 +105,7 @@ export default {
         border: 1px solid black;
     }
 
-    .fa-star{
+    .fa-star {
         color: rgba(255, 208, 0, 0.815);
     }
 }
