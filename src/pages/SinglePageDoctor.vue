@@ -15,7 +15,6 @@ export default {
   },
   data() {
     return {
-      // store,
       doctor: null,
       review: [],
       reviewsCount: null,
