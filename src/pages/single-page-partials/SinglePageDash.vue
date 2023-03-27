@@ -143,6 +143,7 @@ export default {
           <li v-for="(reviewEl, index) in review" :key="index">
             <h5>Voto:
               <i class="fa-solid fa-star" v-for="n in Math.ceil(reviewEl.vote)"></i>
+              <i class="fa-regular fa-star" v-for="n in Math.floor(5 - (reviewEl.vote))"></i>
             </h5>
             <h6>{{ reviewEl.name }} {{ reviewEl.surname }}</h6>
             <p>{{ reviewEl.text }}</p>
