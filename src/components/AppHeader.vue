@@ -58,7 +58,7 @@ select {
 }
 
 .bg-nav {
-  background-color: $main-color;
+  background-color: $primary-bg-color;
   height: 10vh;
   backdrop-filter: blur(50px);
 

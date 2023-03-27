@@ -63,7 +63,7 @@ export default {
 #doctor-profile {
     border-radius: 25px;
     border-width: 0 !important;
-    background-color: $primary-bg-color !important;
+    background-color: $secondary-text-color !important;
     padding: 3rem;
     backdrop-filter: blur(50px);
 
