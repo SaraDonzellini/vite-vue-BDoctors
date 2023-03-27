@@ -1,13 +1,13 @@
 <script>
 import DoctorCard from '../components/DoctorCard.vue';
 
-import { store } from '../store';
 //importiamo la componente per la chiamata axios, con risposta l'elenco delle specializzazioni
 import SelectSpecializations from '../components/SelectSpecializations.vue';
+import VoteFilter from '../components/VoteFilter.vue';
+import ReviewFilter from '../components/ReviewFilter.vue';
 
 
 import axios from 'axios';
-import { nextTick } from 'vue';
 
 export default {
   name: 'PageDoctors',
@@ -15,7 +15,8 @@ export default {
   components: {
     DoctorCard,
     SelectSpecializations,
-
+    VoteFilter,
+    ReviewFilter,
   },
 
   data() {
@@ -25,38 +26,8 @@ export default {
     }
   },
   methods: {
-    // getDoctors() {
-    //   axios.get('http://127.0.0.1:8000/api/doctors', {
-    //     params: {}
-    //   })
-    //     .then((response) => {
-    //       this.doctors = (response.data.response.data);
-    //     })
-    //     .catch(function (error) {
-    //       console.warn(error);
-    //     });
-    // },
-
-    // getSpecializations() {
-    //   axios.get('http://127.0.0.1:8000/api/specializations', {
-    //     params: {
-    //     }
-    //   })
-
-    //     .then((response) => {
-    //       console.log(response.data.response);
-    //       this.specializations = response.data.response;
-
-    //     })
-
-    //     .catch(function (error) {
-    //       console.log(error);
-    //     })
-
-    // },
-
     async getDoctors(id) {
-      console.log(id)
+      //console.log(id)
       try {
         let response
         if (id) {
@@ -64,7 +35,7 @@ export default {
         } else {
           response = await axios.get(`http://127.0.0.1:8000/api/doctors/`)
         }
-        console.log(response)
+        //console.log(response)
         this.doctors = response.data.response.data
 
       } catch (error) {
@@ -75,7 +46,7 @@ export default {
     async getSpecializations() {
       try {
         const response = await axios.get('http://127.0.0.1:8000/api/specializations')
-        console.log(response)
+        //console.log(response)
         this.specializations = response.data.response.data
 
       } catch (error) {
@@ -95,14 +66,21 @@ export default {
 
 <template>
   <div class="container">
+
     <section class="row search-doctors">
-      <div class="col-2 m-auto my-2">
+      <div class="col-12 col-md-3 m-auto my-2">
         <SelectSpecializations @changeType="getDoctors" />
       </div>
+      <div class="col-12 col-md-3 m-auto my-2">
+        <VoteFilter />
+        <ReviewFilter />
+      </div>
     </section>
+
     <section class="row">
       <DoctorCard v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :key="doctor.id" />
     </section>
+
   </div>
 </template>
 
