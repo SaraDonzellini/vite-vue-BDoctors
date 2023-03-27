@@ -10,7 +10,7 @@ export default {
   <nav class="navbar navbar-expand-md navbar-bg navbar-dark bg-nav fixed-top">
     <div class="container ">
       <div class="logo">
-        <h3>Logo</h3>
+        <img src="../assets/Doctor-logo.png" class="img-fluid" alt="">
       </div>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
@@ -83,6 +83,7 @@ img {
 
 .logo {
   color: $primary-text-color;
+  width: 50px;
 }
 
 .offcanvas-body>a{
