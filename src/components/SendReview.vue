@@ -35,6 +35,14 @@ export default {
                 .catch(error => {
                     // Gestisci gli errori di invio
                 })
+
+        },
+
+        clearInput() {
+            this.name = '';
+            this.surname = '';
+            this.vote = '';
+            this.content = '';
         }
     }
 }
@@ -43,53 +51,43 @@ export default {
 
 <template>
     <div class="row w-100">
-    <div class="col-12 m-5">
-        <form @submit.prevent="sendReview">
-            <label>Nome</label>
-            <input v-model="name" type="text">
-                <label>Cognome</label>
-                <input v-model="surname" type="text">
-                <label>voto: </label>
-                <input v-model="vote" type="number">
-                <label>Testo</label>
-                <textarea v-model="content"></textarea>
-                <button type="submit">Invia</button>
+        <div class="col-12 m-5">
+            <form class="row w-100 justify-content-between" @submit.prevent="sendReview">
+                <div class="name col-12 col-md-3 px-2">
+                    <label for="name">
+                        <h6>Nome:</h6>
+                    </label>
+                    <input v-model="name" class="d-block form-control" name="name" type="text" id="name">
+                </div>
+                <div class="surname col-12 col-md-3  px-2">
+                    <label for="surname">
+                        <h6>Cognome:</h6>
+                    </label>
+                    <input v-model="surname" class="d-block form-control" name="surname" type="text" id="surname">
+                </div>
+                <div class="vote col-12 col-md-3  px-2">
+                    <label for="vote">
+                        <h6>Voto:</h6>
+                    </label>
+                    <select v-model="vote" name="vote" id="vote" class="d-block form-control form-select">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+
+                </div>
+                <div class="rev-text mt-4 col-12 px-2">
+                    <label for="rev-text">
+                        <h6>Testo:</h6>
+                    </label>
+                    <textarea v-model="content" name="rev-text" id="rev-text" class="form-control"></textarea>
+                </div>
+                <div class="button-sub d-flex justify-content-start">
+                    <button class="btn btn-primary mt-4 py-2 px-4" @click="clearInput()" type="submit">Invia</button>
+                </div>
             </form>
-
-            <!-- <form class="row w-100 justify-content-between" action="">
-                                                                        <div class="name col-12 col-md-3 px-2">
-                                                                            <label for="name">
-                                                                                <h6>Nome:</h6>
-                                                                            </label>
-                                                                            <input class="d-block form-control" name="name" type="text" id="name">
-                                                                        </div>
-                                                                        <div class="surname col-12 col-md-3  px-2">
-                                                                            <label for="surname">
-                                                                                <h6>Cognome:</h6>
-                                                                            </label>
-                                                                            <input class="d-block form-control" name="surname" type="text" id="surname">
-                                                                        </div>
-                                                                        <div class="vote col-12 col-md-3  px-2">
-                                                                            <label for="vote">
-                                                                                <h6>Voto:</h6>
-                                                                            </label>
-                                                                            <select name="vote" id="vote" class="d-block form-control form-select">
-                                                                                <option value="1">1</option>
-                                                                                <option value="2">2</option>
-                                                                                <option value="3">3</option>
-                                                                                <option value="4">4</option>
-                                                                                <option value="5">5</option>
-                                                                            </select>
-
-                                                                        </div>
-                                                                        <div class="rev-text mt-4 col-12 px-2">
-                                                                            <label for="rev-text">
-                                                                                <h6>Testo:</h6>
-                                                                            </label>
-                                                                            <textarea name="rev-text" id="rev-text" class="form-control"></textarea>
-                                                                        </div>
-
-                                                                    </form> -->
         </div>
     </div>
 </template>

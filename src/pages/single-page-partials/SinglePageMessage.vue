@@ -73,8 +73,7 @@ export default {
               <label for="surname">
                 <h6>Cognome:</h6>
               </label>
-              <input class="d-block form-control" v-model="formData.surname" name="surname" type="text"
-                id="surname">
+              <input class="d-block form-control" v-model="formData.surname" name="surname" type="text" id="surname">
             </div>
             <div class="email col-12 col-md-3  px-2">
               <label for="email">
@@ -88,7 +87,9 @@ export default {
               </label>
               <textarea name="text" v-model="formData.text" id="mex-text" class="form-control"></textarea>
             </div>
-            <button type="submit">Invia</button>
+            <div class="button-sub d-flex justify-content-start">
+              <button class="btn btn-primary mt-4 py-2 px-4" type="submit">Invia</button>
+            </div>
           </form>
         </div>
       </div>
