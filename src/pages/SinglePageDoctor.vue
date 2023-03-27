@@ -52,7 +52,7 @@ export default {
     <div class="container card-doctor">
       <SinglePageInfo :doctor="doctor" :review="review" :reviewsCount="reviewsCount" />
       <SinglePageDash :doctor="doctor" :review="review" :userId="userId" />
-      <SinglePageMessage :doctor="doctor" :review="review" />
+      <SinglePageMessage :doctor="doctor" :review="review" :userId="userId" />
     </div>
   </div>
 </template>
