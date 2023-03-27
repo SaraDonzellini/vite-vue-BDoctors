@@ -12,7 +12,7 @@ export default {
     props: {
         'doctor': {
             type: Object,
-            required: false,
+            required: true,
         },
         // 'isShow':{
         //     type: Boolean,
@@ -24,15 +24,15 @@ export default {
 </script>
 
 <template>
-    <article id="doctor-profile" class="card col-12 col-md-6 col-lg-3 mb-5 shadow rounded-lg my-card">
+    <article id="doctor-profile" class="card col-12 col-md-6 col-lg-3 mb-5 p-5 shadow rounded-lg my-card">
 
         <!-- Doctor's photo -->
-        <div class="d-flex justify-content-center">
-            <img :src="doctor.photo" :alt="doctor.user.name" class="img-fluid">
+        <div class="d-flex justify-content-center mb-4">
+            <img :src="doctor.photo" :alt="doctor.user.name" class="doctor-photo">
         </div>
 
         <!-- Doctor's infos -->
-        <div class="p-4">
+        <div class="text-center">
             <h5>
                 {{ doctor.user.name }} {{ doctor.user.surname }}
             </h5>
@@ -43,7 +43,7 @@ export default {
             <p>
                 {{ doctor.performance }}
             </p>
-            <div class="dash-bio">
+            <div class="dash-bio text-start">
                 Biografia: {{ doctor.bio }}
             </div>
 
@@ -58,6 +58,22 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
 @use '../styles/partials/variables' as *;
+
+
+#doctor-profile {
+    border-radius: 25px;
+    border-width: 0 !important;
+    background-color: $secondary-text-color !important;
+    padding: 3rem;
+    backdrop-filter: blur(50px);
+
+    .doctor-photo {
+        border-radius: 50%;
+        width: 125px;
+        height: 125px;
+        object-fit: cover;
+    }
+}
 </style>
 
 

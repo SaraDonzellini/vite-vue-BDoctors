@@ -15,13 +15,13 @@ export default {
   components: {
     DoctorCard,
     SelectSpecializations,
- 
+
   },
 
   data() {
     return {
       doctors: [],
-      specializations:[]
+      specializations: []
     }
   },
   methods: {
@@ -55,54 +55,55 @@ export default {
 
     // },
 
-     async getDoctors(id) {
-       console.log(id)
-       try {
-         let response
-         if(id){
-           response = await axios.get(`http://127.0.0.1:8000/api/doctors/${id}`)
-         }else{
-           response = await axios.get(`http://127.0.0.1:8000/api/doctors/`)
-         }
-         console.log(response)
-         this.doctors = response.data.response.data
-        
-       } catch(error){
-         console.log(error)
-       }
-     },
+    async getDoctors(id) {
+      console.log(id)
+      try {
+        let response
+        if (id) {
+          response = await axios.get(`http://127.0.0.1:8000/api/doctors/${id}`)
+        } else {
+          response = await axios.get(`http://127.0.0.1:8000/api/doctors/`)
+        }
+        console.log(response)
+        this.doctors = response.data.response.data
 
-     async getSpecializations() {
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    async getSpecializations() {
       try {
         const response = await axios.get('http://127.0.0.1:8000/api/specializations')
         console.log(response)
         this.specializations = response.data.response.data
-        
-       } catch(error){
-         console.log(error)
-       }
-     },
-   },
-   
-   mounted() {
+
+      } catch (error) {
+        console.log(error)
+      }
+    },
+  },
+
+  mounted() {
     this.getDoctors();
     this.getSpecializations();
-   },
+  },
 }
 
 
 </script>
 
 <template>
-  <section class="search-doctors">
-    <div class="row">
+  <div class="container">
+    <section class="row search-doctors">
       <div class="col-2 m-auto my-2">
-        <SelectSpecializations @changeType="getDoctors"/>
+        <SelectSpecializations @changeType="getDoctors" />
       </div>
-    </div>
-  </section>
-
-  <DoctorCard v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :key="doctor.id"/>
+    </section>
+    <section class="row">
+      <DoctorCard v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :key="doctor.id" />
+    </section>
+  </div>
 </template>
 
 <style lang="scss" scoped>
