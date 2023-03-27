@@ -13,10 +13,23 @@ export default {
         <h3>Logo</h3>
       </div>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+          <span class="navbar-toggler-icon"></span>
+          <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style="height: 100vh; position: fixed;">
+          <div class="offcanvas-header text-dark">
+            <h1>Menu</h1>
+          </div>
+          <div class="offcanvas-body text-danger d-flex flex-column align-items-start" style="overflow-y: auto;">
+            <router-link :to="{ name: 'home' }" :class="this.$route.name == 'home' ? 'active' : ''">
+              Home
+            </router-link>
+            <router-link :to="{ name: 'doctors' }" :class="this.$route.name == 'doctors' ? 'active' : ''">
+              Dottori
+            </router-link>                              
+          </div>
+        </div>            
       </button>
+
       <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -71,4 +84,15 @@ img {
 .logo {
   color: $primary-text-color;
 }
+
+.offcanvas-body>a{
+  color: black;
+  line-height: 2rem;
+  text-decoration: none;
+}
+.offcanvas-body{
+  height: 100%;
+  overflow: hidden;
+}
+
 </style>
