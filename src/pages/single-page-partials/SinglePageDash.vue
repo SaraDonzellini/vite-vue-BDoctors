@@ -54,15 +54,21 @@ export default {
   <div class="container card shadow-lg">
     <div class="row">
       <div class="col-12 col-md-5 m-2">
-        <p>Indirizzo: {{ doctor.address }}</p>
-        <p>Telefono: {{ doctor.phone }}</p>
+        <h5>Indirizzo:</h5><p> {{ doctor.address }}</p>
+        <h5>Telefono:</h5><p> {{ doctor.phone }}</p>
+        <h5>Biografia:</h5>
         <p>
-          Biografia: {{ doctor.bio }}
+          {{ doctor.bio }}
         </p>
 
       </div>
       <div class="col-12 col-md-5 m-2">
-        Curriculum: {{ doctor.curriculum }}
+        <h5>
+          Curriculum: 
+        </h5>
+        <p>
+          {{ doctor.curriculum }}
+        </p>
       </div>
     </div>
   </div>
