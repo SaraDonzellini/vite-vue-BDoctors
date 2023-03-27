@@ -45,7 +45,7 @@ export default {
                     {{ doctor.performance }}
                 </p>
                 <div class="dash-bio text-start">
-                    Biografia: {{ doctor.bio.substr(0, 140) }}
+                    Biografia: {{ doctor.bio.substr(0, 140) }}...
                 </div>
 
             </div>
