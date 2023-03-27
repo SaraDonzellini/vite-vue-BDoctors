@@ -29,7 +29,7 @@ export default {
 @use '../styles/partials/variables' as *;
 
 .jumbotron {
-  height: 600px;
+  height: 90vh;
   background-image: url('./imgs/jumbo-home.jpg');
   background-size: cover;
   background-repeat: no-repeat;
