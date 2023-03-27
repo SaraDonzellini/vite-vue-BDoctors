@@ -85,7 +85,7 @@ export default {
                 </div>
                 <div class="buttons d-flex">
                     <a class="btn btn-info me-5" href="#messaggi">Invia un messaggio</a>
-                    <a class="btn btn-success" href="#">Scrivi una recensione</a>
+                    <a class="btn btn-success" href="#recensioni">Scrivi una recensione</a>
                 </div>
             </section>
         </div>
