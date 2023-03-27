@@ -54,10 +54,10 @@ export default {
   <div class="container card shadow-lg">
     <div class="row">
       <div class="col-12 col-md-5 m-2">
-        <p>Address: {{ doctor.address }}</p>
-        <p>Phone: {{ doctor.phone }}</p>
+        <p>Indirizzo: {{ doctor.address }}</p>
+        <p>Telefono: {{ doctor.phone }}</p>
         <p>
-          Bio: {{ doctor.bio }}
+          Biografia: {{ doctor.bio }}
         </p>
 
       </div>
@@ -89,7 +89,7 @@ export default {
       <div class="col-12 m-2">
         <ul>
           <li v-for="(reviewEl, index) in review" :key="index">
-            <h5>Vote: {{ reviewEl.vote }}
+            <h5>Voto: {{ reviewEl.vote }}
             </h5>
             <h6>{{ reviewEl.name }} {{ reviewEl.surname }}</h6>
             <p>{{ reviewEl.text }}</p>
