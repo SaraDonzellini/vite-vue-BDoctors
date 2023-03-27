@@ -67,7 +67,7 @@ export default {
 <template>
   <div class="container">
 
-    <section class="row search-doctors">
+    <section class="row search-doctors mb-5">
       <div class="col-12 col-md-3 m-auto my-2">
         <SelectSpecializations @changeType="getDoctors" />
       </div>
@@ -76,8 +76,9 @@ export default {
         <ReviewFilter />
       </div>
     </section>
+
     <section class="container">
-      <div class="row g-4">
+      <div class="row gap-5 justify-content-around">
         <DoctorCard v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :key="doctor.id" />
       </div>
     </section>
@@ -89,6 +90,3 @@ export default {
 @use '../styles/general.scss' as *;
 @use '../styles/partials/variables' as *;
 </style>
-
-
-

@@ -32,7 +32,7 @@ export default {
 
 <template>
     <button>
-        Orina per recensioni
+        Ordina per recensioni
     </button>
 </template>
 

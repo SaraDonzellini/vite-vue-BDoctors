@@ -23,36 +23,33 @@ export default {
 }
 </script>
 
-
 <template>
-    <article id="doctor-profile" class="card col-xs-10 col-sm-10 col-md-6 col-lg-3 col-xl-3 shadow rounded-lg my-card">
+    <article class="card col-12 col-md-5 col-lg-3 shadow my-card">
+        <router-link :to="{ name: 'doctor', params: { id: doctor.id } }">
 
-        <!-- Doctor's photo -->
-        <div class="d-flex justify-content-center mb-4">
-            <img :src="doctor.photo" :alt="doctor.user.name" class="doctor-photo">
-        </div>
-
-        <!-- Doctor's infos -->
-        <div class="text-center">
-            <h5>
-                {{ doctor.user.name }} {{ doctor.user.surname }}
-            </h5>
-
-            <p v-for="(specialization, index) in doctor.specializations" :key="index">
-                {{ specialization.title }}
-            </p>
-            <p>
-                {{ doctor.performance }}
-            </p>
-            <div class="dash-bio text-start">
-                Biografia: {{ doctor.bio.substr(0, 140) }}
+            <!-- Doctor's photo -->
+            <div class="d-flex justify-content-center mb-4">
+                <img :src="doctor.photo" :alt="doctor.user.name" class="doctor-photo">
             </div>
 
-            <!-- v-if="!isShow" questa andrebbe nel router link -->
-            <router-link class="btn btn-primary" :to="{ name: 'doctor', params: { id: doctor.id } }">
-                Vai al profilo
-            </router-link>
-        </div>
+            <!-- Doctor's infos -->
+            <div class="text-center">
+                <h5>
+                    {{ doctor.user.name }} {{ doctor.user.surname }}
+                </h5>
+
+                <p v-for="(specialization, index) in doctor.specializations" :key="index">
+                    {{ specialization.title }}
+                </p>
+                <p>
+                    {{ doctor.performance }}
+                </p>
+                <div class="dash-bio text-start">
+                    Biografia: {{ doctor.bio.substr(0, 140) }}
+                </div>
+
+            </div>
+        </router-link>
     </article>
 </template>
 
@@ -60,8 +57,16 @@ export default {
 @use '../styles/general.scss' as *;
 @use '../styles/partials/variables' as *;
 
+a {
+    color: $pine-green;
+    text-decoration: none;
+}
 
-#doctor-profile {
+a:hover {
+    color: $primary-text-color;
+}
+
+.my-card {
     border-radius: 25px;
     border-width: 0 !important;
     background-color: $secondary-text-color !important;
