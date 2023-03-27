@@ -23,7 +23,7 @@ export default {
       })
 
         .then((response) => {
-          console.log(response.data.response);
+          //console.log(response.data.response);
           this.store.specializations = response.data.response;
 
         })
@@ -42,7 +42,7 @@ export default {
 
   watch: {
     selectedSpecialization(selectedSpecialization) {
-      console.log("L'ID selezionato è = " + selectedSpecialization)
+      //console.log("L'ID selezionato è = " + selectedSpecialization)
     }
   },
 
@@ -52,7 +52,8 @@ export default {
 
 <template>
   <nav>
-    <select class="form-select" aria-label="Default select example" v-model="selectedSpecialization" @change="$emit('changeType', selectedSpecialization)">
+    <select class="form-select" aria-label="Default select example" v-model="selectedSpecialization"
+      @change="$emit('changeType', selectedSpecialization)">
       <option v-for="element in store.specializations" :value="element.id">
         {{ element.title }}</option>
     </select>

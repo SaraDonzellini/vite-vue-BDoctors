@@ -14,7 +14,7 @@ export default {
             type: Object,
             required: true,
         },
-        'isShow':{
+        'isShow': {
             type: Boolean,
             required: false,
             default: false,
