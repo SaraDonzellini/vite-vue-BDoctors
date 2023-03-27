@@ -100,8 +100,10 @@ export default {
         <SelectSpecializations @changeType="getDoctors" />
       </div>
     </section>
-    <section class="row">
-      <DoctorCard v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :key="doctor.id" />
+    <section class="container">
+      <div class="row g-4">
+        <DoctorCard v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :key="doctor.id" />
+      </div>
     </section>
   </div>
 </template>

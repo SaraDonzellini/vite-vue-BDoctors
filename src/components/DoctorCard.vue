@@ -14,17 +14,18 @@ export default {
             type: Object,
             required: true,
         },
-        // 'isShow':{
-        //     type: Boolean,
-        //     required: false,
-        //     default: false,
-        // }
+        'isShow':{
+            type: Boolean,
+            required: false,
+            default: false,
+        }
     }
 }
 </script>
 
+
 <template>
-    <article id="doctor-profile" class="card col-12 col-md-6 col-lg-3 mb-5 p-5 shadow rounded-lg my-card">
+    <article id="doctor-profile" class="card col-xs-10 col-sm-10 col-md-6 col-lg-3 col-xl-3 shadow rounded-lg my-card">
 
         <!-- Doctor's photo -->
         <div class="d-flex justify-content-center mb-4">
@@ -44,7 +45,7 @@ export default {
                 {{ doctor.performance }}
             </p>
             <div class="dash-bio text-start">
-                Biografia: {{ doctor.bio }}
+                Biografia: {{ doctor.bio.substr(0, 140) }}
             </div>
 
             <!-- v-if="!isShow" questa andrebbe nel router link -->
@@ -75,6 +76,4 @@ export default {
     }
 }
 </style>
-
-
 
