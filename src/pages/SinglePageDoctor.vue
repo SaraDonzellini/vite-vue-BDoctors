@@ -15,10 +15,10 @@ export default {
   },
   data() {
     return {
-      // store,
       doctor: null,
       review: [],
       reviewsCount: null,
+      userId: null,
     }
   },
   methods: {
@@ -33,6 +33,7 @@ export default {
           this.doctor = (response.data.doctor);
           this.review = response.data.reviews;
           this.reviewsCount = response.data.reviews.length;
+          this.userId = response.data.userId;
           console.log(response.data.reviews.length)
         })
         .catch(function (error) {
@@ -50,8 +51,8 @@ export default {
   <div class="wallpaper w-100 h-100 pt-5">
     <div class="container card-doctor">
       <SinglePageInfo :doctor="doctor" :review="review" :reviewsCount="reviewsCount" />
-      <SinglePageDash :doctor="doctor" :review="review" />
-      <SinglePageMessage :doctor="doctor" :review="review" />
+      <SinglePageDash :doctor="doctor" :review="review" :userId="userId" />
+      <SinglePageMessage :doctor="doctor" :review="review" :userId="userId" />
     </div>
   </div>
 </template>
@@ -61,7 +62,7 @@ export default {
 @use '../styles/partials/variables' as *;
 
 .wallpaper {
-  background-image: url('../../public/imgs/Bg-image.jpg');
+  background-image: url('/imgs/Bg-image.jpg');
   background-size: cover;
   background-position: center;
 

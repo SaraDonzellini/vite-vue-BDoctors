@@ -28,7 +28,7 @@ export default {
             const sum = array.reduce((acc, obj) => {
                 return acc + obj[key];
             }, 0);
-            this.averageVote = sum / array.length;
+            this.averageVote = Math.ceil(sum / array.length);
             console.log(this.averageVote)
             return this.averageVote
         },
@@ -60,7 +60,7 @@ export default {
     <div class="info-container">
         <div class="row w-100 justify-content-around">
             <section class=" image-box col-12 col-lg-6 d-flex justify-content-center">
-                <img class="image-doctor img-fluid" :src="`../../public/${doctor.photo}`" :alt="doctor.user.name">
+                <img class="image-doctor img-fluid" :src="`/${doctor.photo}`" :alt="doctor.user.name">
             </section>
 
             <section class="info-box pt-3 col-12 col-lg-6 ps-5">
@@ -105,7 +105,7 @@ export default {
         border: 1px solid black;
     }
 
-    .fa-star{
+    .fa-star {
         color: rgba(255, 208, 0, 0.815);
     }
 }

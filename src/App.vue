@@ -42,6 +42,6 @@ export default {
 @use 'bootstrap/scss/bootstrap' as *;
 
 main {
-  padding-top: 10vh;
+  margin-top: 10vh;
 }
 </style>

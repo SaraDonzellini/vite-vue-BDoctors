@@ -1,8 +1,13 @@
 <script>
-
+import SendReview from '../../components/SendReview.vue';
 
 export default {
   name: 'SinglePageDash',
+  components: {
+    SendReview
+
+  },
+
   data() {
     return {
     }
@@ -16,6 +21,10 @@ export default {
       type: Object,
       required: true,
     },
+    'userId': {
+      type: Number,
+      required: true
+    }
 
   },
   methods: {
@@ -81,44 +90,10 @@ export default {
         </div>
       </div>
     </nav>
-    <div class="container card shadow-lg">
-      <div class="row w-100">
-        <div class="col-12 m-5">
-          <form class="row w-100 justify-content-between" action="">
-            <div class="name col-12 col-md-3 px-2">
-              <label for="name">
-                <h6>Nome:</h6>
-              </label>
-              <input class="d-block form-control" name="name" type="text" id="name">
-            </div>
-            <div class="surname col-12 col-md-3  px-2">
-              <label for="surname">
-                <h6>Cognome:</h6>
-              </label>
-              <input class="d-block form-control" name="surname" type="text" id="surname">
-            </div>
-            <div class="vote col-12 col-md-3  px-2">
-              <label for="vote">
-                <h6>Voto:</h6>
-              </label>
-              <select name="vote" id="vote" class="d-block form-control form-select">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-            </div>
-            <div class="rev-text mt-4 col-12 px-2">
-              <label for="rev-text">
-                <h6>Testo:</h6>
-              </label>
-              <textarea name="rev-text" id="rev-text" class="form-control"></textarea>
-            </div>
 
-          </form>
-        </div>
-      </div>
+    <!--Form per l'inserimento di una nuova recensione-->
+    <div class="container card shadow-lg">
+      <SendReview :userId="userId" />
     </div>
   </section>
   <nav class="navbar navbar-expand-lg my_navbar">
@@ -136,6 +111,7 @@ export default {
       </div>
     </div>
   </nav>
+
   <div class="container-fluid card shadow-lg">
     <div class="row">
       <div class="col-12 m-2">
@@ -143,14 +119,13 @@ export default {
           <li v-for="(reviewEl, index) in review" :key="index">
             <h5>Voto:
               <i class="fa-solid fa-star" v-for="n in Math.ceil(reviewEl.vote)"></i>
+              <i class="fa-regular fa-star" v-for="n in Math.floor(5 - reviewEl.vote)"></i>
             </h5>
             <h6>{{ reviewEl.name }} {{ reviewEl.surname }}</h6>
             <p>{{ reviewEl.text }}</p>
-
           </li>
-
         </ul>
-
+        <!-- <h4 v-else class="py-3">Non sono ancora presenti delle recensioni</h4> -->
       </div>
 
     </div>
@@ -172,8 +147,7 @@ export default {
 }
 
 
-    .fa-star{
-        color: rgba(255, 208, 0, 0.815);
-    }
-
+.fa-star {
+  color: rgba(255, 208, 0, 0.815);
+}
 </style>

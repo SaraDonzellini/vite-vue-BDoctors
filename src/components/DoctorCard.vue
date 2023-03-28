@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template>
-    <article class="card col-12 col-md-5 col-lg-3 shadow my-card">
+    <article class="card col-12 col-md-5 col-lg-3 shadow-lg my-card">
         <router-link :to="{ name: 'doctor', params: { id: doctor.id } }">
 
             <!-- Doctor's photo -->
@@ -45,7 +45,7 @@ export default {
                     {{ doctor.performance }}
                 </p>
                 <div class="dash-bio text-start">
-                    Biografia: {{ doctor.bio.substr(0, 140) }}
+                    Biografia: {{ doctor.bio.substr(0, 140) }}...
                 </div>
 
             </div>
