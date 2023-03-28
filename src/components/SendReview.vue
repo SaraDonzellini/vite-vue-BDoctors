@@ -10,6 +10,7 @@ export default {
             vote: '',
             content: '',
             userId: this.userId,
+
             showMessage: false,
         }
     },
@@ -36,7 +37,6 @@ export default {
                 .catch(error => {
                     // Gestisci gli errori di invio
                 });
-            this.clearInput();
         },
 
         clearInput() {
@@ -99,7 +99,7 @@ export default {
                     <button class="btn btn-primary mt-4 py-2 px-4" type="submit">Invia</button>
                 </div>
             </form>
-            <div class="alert alert-success">
+            <div class="alert alert-success" v-if="showMessage">
                 Recensione inviato con successo!
             </div>
         </div>
