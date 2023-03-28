@@ -39,9 +39,19 @@ export default {
 
 <style lang="scss">
 @use './styles/general.scss' as *;
+@use './styles/partials/variables' as *;
 @use 'bootstrap/scss/bootstrap' as *;
 
 main {
   margin-top: 10vh;
 }
+
+/* .my-btn {
+  border-radius: 15px;
+  background-color: $primary-bg-color;
+  text-decoration: none;
+  color: $primary-text-color;
+  padding: .5rem 1rem;
+  font-weight: bold;
+} */
 </style>

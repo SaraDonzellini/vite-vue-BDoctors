@@ -10,6 +10,7 @@ export default {
             vote: '',
             content: '',
             userId: this.userId,
+            showMessage: false,
         }
     },
 
@@ -43,7 +44,14 @@ export default {
             this.surname = '';
             this.vote = '';
             this.content = '';
+        },
+
+        onSubmit() {
+            this.sendReview();
+            this.clearInput();
+            this.showMessage = true;
         }
+
     }
 }
 
@@ -52,7 +60,7 @@ export default {
 <template>
     <div class="row w-100">
         <div class="col-12 m-5">
-            <form class="row w-100 justify-content-between" @submit.prevent="sendReview">
+            <form class="row w-100 justify-content-between" @submit.prevent="onSubmit">
                 <div class="name col-12 col-md-3 px-2">
                     <label for="name">
                         <h6>Nome(*):</h6>
@@ -91,6 +99,9 @@ export default {
                     <button class="btn btn-primary mt-4 py-2 px-4" type="submit">Invia</button>
                 </div>
             </form>
+            <div class="alert alert-success">
+                Recensione inviato con successo!
+            </div>
         </div>
     </div>
 </template>
@@ -120,3 +131,4 @@ textarea:valid {
     border: 2px solid black;
 }
 </style>
+
