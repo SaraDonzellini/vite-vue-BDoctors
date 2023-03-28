@@ -34,7 +34,7 @@ export default {
           this.review = response.data.reviews;
           this.reviewsCount = response.data.reviews.length;
           this.userId = response.data.userId;
-          console.log(response.data.reviews.length)
+          //console.log(response.data.reviews.length)
         })
         .catch(function (error) {
           console.warn(error);
