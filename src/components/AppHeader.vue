@@ -21,15 +21,20 @@ export default {
 
       <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto">
-          <li class="nav-item d-flex flex-column text-center me-3">
+          <li class="nav-item d-flex flex-column text-center me-3 mt-3">
             <router-link :to="{ name: 'home' }" :class="this.$route.name == 'home' ? 'active' : ''">
               Home
             </router-link>
           </li>
-          <li class="nav-item d-flex flex-column text-center me-3">
+          <li class="nav-item d-flex flex-column text-center me-3 mt-3">
             <router-link :to="{ name: 'doctors' }" :class="this.$route.name == 'doctors' ? 'active' : ''">
               Dottori
             </router-link>
+          </li>
+          <li class="nav-item d-flex flex-column text-center me-3">
+            <a class="login btn mt-1" href="http://127.0.0.1:8000/">
+              Sei un dottore? Registrati!
+            </a>
           </li>
         </ul>
       </div>
@@ -68,5 +73,16 @@ select {
 
 .navbar {
   min-height: 10vh;
+}
+
+.login {
+  background-color: $secondary-bg-color;
+  color: $primary-text-color;
+  padding: 0.5rem 1rem;
+
+  &:hover {
+    background-color: $primary-text-color;
+    color: $primary-bg-color;
+  }
 }
 </style>
