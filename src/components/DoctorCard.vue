@@ -5,20 +5,10 @@ export default {
     data() {
         return {
             doctors: [],
-            numReviews: null,
         }
     },
 
     methods: {
-        getStars(voteStar) {
-            let stars = '';
-            for (let i = 0; i < voteStar; i++) {
-                stars += '*';
-            }
-            console.log('numero di stelle = ' + stars);
-            return stars;
-
-        },
 
     },
     props: {
@@ -30,7 +20,7 @@ export default {
             type: Boolean,
             required: false,
             default: false,
-        }
+        },
     }
 }
 </script>
@@ -57,7 +47,7 @@ export default {
                     </p>
 
                     <p v-for="voteStar in doctor.user.reviews">
-                        Media voti: {{ getStars(voteStar.vote) }}
+                        Media voti: 
                     </p>
 
                 </div>

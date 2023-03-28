@@ -29,7 +29,7 @@ export default {
                 return acc + obj[key];
             }, 0);
             this.averageVote = Math.ceil(sum / array.length);
-            //console.log(this.averageVote)
+            console.log(this.averageVote)
             return this.averageVote
         },
 
