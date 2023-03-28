@@ -29,24 +29,24 @@ export default {
                 return acc + obj[key];
             }, 0);
             this.averageVote = Math.ceil(sum / array.length);
-            console.log(this.averageVote)
+            //console.log(this.averageVote)
             return this.averageVote
         },
 
         getStarsVote(num) {
             let fullStarElement = num / num
-            console.log(fullStarElement)
+            //console.log(fullStarElement)
 
             for (let i = 0; i < num; i++) {
                 this.fullStars.push(fullStarElement);
             }
-            console.log(`Lunghezza stelle piene${this.fullStars.length}`)
+            //console.log(`Lunghezza stelle piene${this.fullStars.length}`)
 
             let emptyStarElement = 1
             for (let i = 0; i < (5 - num); i++) {
                 this.emptyStars.push(emptyStarElement)
             }
-            console.log(`Lunghezza stelle vuote${this.emptyStars.length}`)
+            //console.log(`Lunghezza stelle vuote${this.emptyStars.length}`)
         },
     },
     created() {
@@ -60,7 +60,7 @@ export default {
     <div class="info-container">
         <div class="row w-100 justify-content-around">
             <section class=" image-box col-12 col-lg-6 d-flex justify-content-center">
-                <img class="image-doctor img-fluid" :src="`/${doctor.photo}`" :alt="doctor.user.name">
+                <img class="image-doctor img-fluid" :src="`http://127.0.0.1:8000/storage/${doctor.photo}`" :alt="doctor.user.name">
             </section>
 
             <section class="info-box pt-3 col-12 col-lg-6 ps-5">

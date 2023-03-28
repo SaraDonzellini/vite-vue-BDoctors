@@ -22,7 +22,8 @@ export default {
   data() {
     return {
       doctors: [],
-      specializations: []
+      specializations: [],
+      reviews: []
     }
   },
   methods: {
@@ -34,7 +35,9 @@ export default {
         } else {
           response = await axios.get(`http://127.0.0.1:8000/api/doctors/`)
         }
-        this.doctors = response.data.response.data
+        this.doctors = response.data.response.data;
+        console.log(response.data.response.data[0].user.reviews);
+        // this.reviews = 
 
       } catch (error) {
         console.log(error)
@@ -93,6 +96,11 @@ export default {
     </section>
 
     <section class="container">
+      <!-- <ul>
+          <li v-for="doctor in doctors">
+            {{ doctor.user.reviews }}
+          </li>
+        </ul> -->
       <div class="row gap-5 justify-content-around">
         <DoctorCard v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :key="doctor.id" />
       </div>

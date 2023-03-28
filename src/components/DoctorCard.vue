@@ -1,13 +1,25 @@
 <script>
-// import { store } from '../store';
 
 export default {
     name: 'PageDoctors',
     data() {
         return {
-            // store,
             doctors: [],
+            numReviews: null,
         }
+    },
+
+    methods: {
+        getStars(voteStar) {
+            let stars = '';
+            for (let i = 0; i < voteStar; i++) {
+                stars += '*';
+            }
+            console.log('numero di stelle = ' + stars);
+            return stars;
+
+        },
+
     },
     props: {
         'doctor': {
@@ -29,7 +41,7 @@ export default {
 
             <!-- Doctor's photo -->
             <div class="d-flex justify-content-center mb-4">
-                <img :src="doctor.photo" :alt="doctor.user.name" class="doctor-photo">
+                <img :src="`http://127.0.0.1:8000/storage/${doctor.photo}`" :alt="doctor.user.name" class="doctor-photo">
             </div>
 
             <!-- Doctor's infos -->
@@ -38,9 +50,22 @@ export default {
                     {{ doctor.user.name }} {{ doctor.user.surname }}
                 </h5>
 
+                <!--Reviews-->
+                <div class="reviews">
+                    <p>
+                        N° Recensioni: {{ doctor.user.reviews.length }}
+                    </p>
+
+                    <p v-for="voteStar in doctor.user.reviews">
+                        Media voti: {{ getStars(voteStar.vote) }}
+                    </p>
+
+                </div>
+
                 <p v-for="(specialization, index) in doctor.specializations" :key="index">
                     {{ specialization.title }}
                 </p>
+
                 <p>
                     {{ doctor.performance }}
                 </p>

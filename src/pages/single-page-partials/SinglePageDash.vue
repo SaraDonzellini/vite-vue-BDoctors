@@ -71,7 +71,7 @@ export default {
           Curriculum:
         </h5>
         <div>
-          <img class="image-cv img-fluid" :src="`/${doctor.curriculum}`" :alt="doctor.user.name">
+          <img class="image-cv img-fluid" :src="`http://127.0.0.1:8000/storage/${doctor.curriculum}`" :alt="doctor.user.name">
         </div>
       </div>
     </div>
