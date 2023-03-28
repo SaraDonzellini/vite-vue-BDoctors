@@ -73,27 +73,30 @@ export default {
           <form class="row w-100 justify-content-between" action="/messages" method="POST" @submit.prevent="handleSubmit">
             <div class="name col-12 col-md-3 px-2">
               <label for="name">
-                <h6>Nome:</h6>
+                <h6>Nome(*):</h6>
               </label>
-              <input class="d-block form-control" v-model="formData.name" name="name" type="text" id="name">
+              <input class="d-block form-control" required v-model="formData.name" name="name" type="text" id="name">
             </div>
             <div class="surname col-12 col-md-3  px-2">
               <label for="surname">
-                <h6>Cognome:</h6>
+                <h6>Cognome(*):</h6>
               </label>
-              <input class="d-block form-control" v-model="formData.surname" name="surname" type="text" id="surname">
+              <input class="d-block form-control" required v-model="formData.surname" name="surname" type="text" id="surname">
             </div>
             <div class="email col-12 col-md-3  px-2">
               <label for="email">
-                <h6>Email:</h6>
+                <h6>Email(*):</h6>
               </label>
-              <input class="d-block form-control" v-model="formData.email" name="email" type="email" id="email">
+              <input class="d-block form-control" required v-model="formData.email" name="email" type="email" id="email">
             </div>
             <div class="mex-text mt-4 col-12 px-2">
               <label for="mex-text">
-                <h6>Testo:</h6>
+                <h6>Testo(*):</h6>
               </label>
-              <textarea name="text" v-model="formData.text" id="mex-text" class="form-control"></textarea>
+              <textarea name="text" required v-model="formData.text" id="mex-text" class="form-control"></textarea>
+            </div>
+            <div>
+              (*) I campi sono obbligatori
             </div>
             <div class="button-sub d-flex justify-content-start">
               <button class="btn btn-primary mt-4 py-2 px-4" type="submit">Invia</button>
@@ -118,5 +121,28 @@ export default {
     color: $secondary-text-color;
   }
 
+}
+input:invalid {
+    border: 1px dashed red;
+}
+
+input:valid {
+    border: 2px solid black;
+}
+
+select:invalid {
+    border: 1px dashed red;
+}
+
+select:valid {
+    border: 2px solid black;
+}
+
+textarea:invalid {
+    border: 1px dashed red;
+}
+
+textarea:valid {
+    border: 2px solid black;
 }
 </style>
