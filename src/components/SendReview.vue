@@ -97,7 +97,7 @@ export default {
 
 <style lang="scss" scoped>
 input:invalid {
-    border: 1px dashed red;
+    border: 1px dashed rgb(0, 0, 0);
 }
 
 input:valid {
@@ -105,7 +105,7 @@ input:valid {
 }
 
 select:invalid {
-    border: 1px dashed red;
+    border: 1px dashed rgb(0, 0, 0);
 }
 
 select:valid {
@@ -113,7 +113,7 @@ select:valid {
 }
 
 textarea:invalid {
-    border: 1px dashed red;
+    border: 1px dashed rgb(0, 0, 0);
 }
 
 textarea:valid {
