@@ -111,10 +111,11 @@ export default {
       </div>
     </div>
   </nav>
+
   <div class="container-fluid card shadow-lg">
     <div class="row">
       <div class="col-12 m-2">
-        <ul>
+        <ul v-if="review.name == !null">
           <li v-for="(reviewEl, index) in review" :key="index">
             <h5>Voto:
               <i class="fa-solid fa-star" v-for="n in Math.ceil(reviewEl.vote)"></i>
@@ -122,11 +123,9 @@ export default {
             </h5>
             <h6>{{ reviewEl.name }} {{ reviewEl.surname }}</h6>
             <p>{{ reviewEl.text }}</p>
-
           </li>
-
         </ul>
-
+        <h4 v-else class="py-3">Non sono ancora presenti delle recensioni</h4>
       </div>
 
     </div>
