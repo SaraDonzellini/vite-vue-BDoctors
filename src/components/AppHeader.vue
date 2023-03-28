@@ -31,6 +31,11 @@ export default {
               Dottori
             </router-link>
           </li>
+          <li class="nav-item d-flex flex-column text-center me-3">
+            <a class="login btn" href="http://127.0.0.1:8000/">
+              Sei un dottore? Registrati!
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -68,5 +73,18 @@ select {
 
 .navbar {
   min-height: 10vh;
+}
+
+.login {
+  background-color: $secondary-bg-color;
+  color: $primary-text-color;
+  padding: 0.5rem 1rem;
+  position: relative;
+  bottom: 0.5rem;
+
+  &:hover {
+    background-color: $primary-text-color;
+    color: $primary-bg-color;
+  }
 }
 </style>
