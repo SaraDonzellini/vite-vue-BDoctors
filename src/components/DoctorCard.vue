@@ -29,7 +29,7 @@ export default {
 
             <!-- Doctor's photo -->
             <div class="d-flex justify-content-center mb-4">
-                <img :src="doctor.photo" :alt="doctor.user.name" class="doctor-photo">
+                <img :src="`http://127.0.0.1:8000/storage/${doctor.photo}`" :alt="doctor.user.name" class="doctor-photo">
             </div>
 
             <!-- Doctor's infos -->

@@ -60,7 +60,7 @@ export default {
     <div class="info-container">
         <div class="row w-100 justify-content-around">
             <section class=" image-box col-12 col-lg-6 d-flex justify-content-center">
-                <img class="image-doctor img-fluid" :src="`/${doctor.photo}`" :alt="doctor.user.name">
+                <img class="image-doctor img-fluid" :src="`http://127.0.0.1:8000/storage/${doctor.photo}`" :alt="doctor.user.name">
             </section>
 
             <section class="info-box pt-3 col-12 col-lg-6 ps-5">
