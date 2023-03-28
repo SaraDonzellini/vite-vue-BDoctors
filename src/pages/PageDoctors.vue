@@ -27,7 +27,6 @@ export default {
   },
   methods: {
     async getDoctors(id) {
-      //console.log(id)
       try {
         let response
         if (id) {
@@ -35,7 +34,6 @@ export default {
         } else {
           response = await axios.get(`http://127.0.0.1:8000/api/doctors/`)
         }
-        //console.log(response)
         this.doctors = response.data.response.data
 
       } catch (error) {
@@ -46,13 +44,30 @@ export default {
     async getSpecializations() {
       try {
         const response = await axios.get('http://127.0.0.1:8000/api/specializations')
-        //console.log(response)
         this.specializations = response.data.response.data
 
       } catch (error) {
         console.log(error)
       }
     },
+  },
+
+  computed: {
+    filteredDoctors() {
+      return this.doctors.filter(doctor => {
+        
+        if (this.selectedVote && doctor.user.reviews.vote !== this.selectedVote) {
+          return false
+        }
+        // if (this.selectedSize && doctor.size !== this.selectedSize) {
+        //   return false
+        // }
+        // if (this.selectedType && doctor.type !== this.selectedType) {
+        //   return false
+        // }
+        return true
+      })
+    }
   },
 
   mounted() {
@@ -72,7 +87,7 @@ export default {
         <SelectSpecializations @changeType="getDoctors" />
       </div>
       <div class="col-12 col-md-3 m-auto my-2">
-        <VoteFilter />
+        <VoteFilter @changeVote="getDoctors" />
         <ReviewFilter />
       </div>
     </section>
