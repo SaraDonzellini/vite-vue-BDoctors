@@ -29,24 +29,24 @@ export default {
                 return acc + obj[key];
             }, 0);
             this.averageVote = Math.ceil(sum / array.length);
-            console.log(this.averageVote)
+            //console.log(this.averageVote)
             return this.averageVote
         },
 
         getStarsVote(num) {
             let fullStarElement = num / num
-            console.log(fullStarElement)
+            //console.log(fullStarElement)
 
             for (let i = 0; i < num; i++) {
                 this.fullStars.push(fullStarElement);
             }
-            console.log(`Lunghezza stelle piene${this.fullStars.length}`)
+            //console.log(`Lunghezza stelle piene${this.fullStars.length}`)
 
             let emptyStarElement = 1
             for (let i = 0; i < (5 - num); i++) {
                 this.emptyStars.push(emptyStarElement)
             }
-            console.log(`Lunghezza stelle vuote${this.emptyStars.length}`)
+            //console.log(`Lunghezza stelle vuote${this.emptyStars.length}`)
         },
     },
     created() {

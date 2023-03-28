@@ -11,6 +11,8 @@ export default {
         surname: '',
         email: '',
         text: '',
+
+        showMessage: false,
       }
     }
   },
@@ -30,21 +32,37 @@ export default {
   },
 
   methods: {
-    async handleSubmit() {
+    sendMessage() {
+      axios.post('http://127.0.0.1:8000/api/messages', this.formData)
+        .then(response => {
+          // Gestisci la risposta del backend
+        })
+        .catch(error => {
+          // Gestisci gli errori di invio
+        });
+    },
+
+    /* async handleSubmit() {
       try {
         const response = await axios.post('http://127.0.0.1:8000/api/messages', this.formData)
-        console.log(response.data)
+        //console.log(response.data)
       } catch (error) {
         console.log(error.response.data)
       };
       this.clearInput()
-    },
+    }, */
 
     clearInput() {
       this.formData.name = '';
       this.formData.surname = '';
       this.formData.email = '';
       this.formData.text = '';
+    },
+
+    onSubmit() {
+      this.sendMessage();
+      this.clearInput();
+      this.showMessage = true;
     }
   },
 
@@ -70,7 +88,7 @@ export default {
       <div class="row w-100">
         <div class="col-12 m-5">
 
-          <form class="row w-100 justify-content-between" action="/messages" method="POST" @submit.prevent="handleSubmit">
+          <form class="row w-100 justify-content-between" action="/messages" method="POST" @submit.prevent="onSubmit">
             <div class="name col-12 col-md-3 px-2">
               <label for="name">
                 <h6>Nome(*):</h6>
@@ -81,7 +99,8 @@ export default {
               <label for="surname">
                 <h6>Cognome(*):</h6>
               </label>
-              <input class="d-block form-control" required v-model="formData.surname" name="surname" type="text" id="surname">
+              <input class="d-block form-control" required v-model="formData.surname" name="surname" type="text"
+                id="surname">
             </div>
             <div class="email col-12 col-md-3  px-2">
               <label for="email">
@@ -102,6 +121,9 @@ export default {
               <button class="btn btn-primary mt-4 py-2 px-4" type="submit">Invia</button>
             </div>
           </form>
+          <div class="alert alert-success" v-if="showMessage">
+            Messaggio inviato con successo!
+          </div>
         </div>
       </div>
     </div>
@@ -122,12 +144,13 @@ export default {
   }
 
 }
+
 input:invalid {
-    border: 1px dashed rgb(0, 0, 0);
+  border: 1px dashed rgb(0, 0, 0);
 }
 
 input:valid {
-    border: 2px solid black;
+  border: 2px solid black;
 }
 
 select:invalid {
@@ -135,7 +158,7 @@ select:invalid {
 }
 
 select:valid {
-    border: 2px solid black;
+  border: 2px solid black;
 }
 
 textarea:invalid {
@@ -143,6 +166,6 @@ textarea:invalid {
 }
 
 textarea:valid {
-    border: 2px solid black;
+  border: 2px solid black;
 }
 </style>
