@@ -54,7 +54,7 @@ export default {
     </div>
   </nav>
   <div class="container card shadow-lg">
-    <div class="row">
+    <div class="row justify-content-around">
       <div class="col-12 col-md-5 m-2">
         <h5>Indirizzo:</h5>
         <p> {{ doctor.address }}</p>
@@ -67,12 +67,12 @@ export default {
 
       </div>
       <div class="col-12 col-md-5 m-2">
-        <h5>
+        <h5 class="text-center">
           Curriculum:
         </h5>
-        <p>
-          {{ doctor.curriculum }}
-        </p>
+        <div>
+          <img class="image-cv img-fluid" :src="`http://127.0.0.1:8000/storage/${doctor.curriculum}`" :alt="doctor.user.name">
+        </div>
       </div>
     </div>
   </div>
