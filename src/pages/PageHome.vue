@@ -62,9 +62,9 @@ export default {
         <router-link class="btn btn-primary" :to="{ name: 'doctors' }">
           Tutti i nostri dottori
         </router-link>  
-        <div class="col-3 ms-2">
+        <div class="col-3 ms-2 d-flex ">
           <SelectSpecializations @changeType="getDoctors" />
-          <router-link :to="{ name: 'doctors' , params: [specializations.id] }" :class="this.$route.name == 'doctors' ? 'active' : ''">
+          <router-link :to="{ name: 'doctors' , params: [specializations.id] }" :class="this.$route.name == 'doctors' ? 'active' : ''" class="btn btn-primary ms-2">
             clicca
           </router-link>
         </div>
