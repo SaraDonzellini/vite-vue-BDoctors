@@ -23,7 +23,7 @@ export default {
       })
 
         .then((response) => {
-          //console.log(response.data.response);
+          console.log(response.data.response);
           this.store.specializations = response.data.response;
 
         })

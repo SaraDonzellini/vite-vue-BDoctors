@@ -22,7 +22,7 @@ export default {
       <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto">
           <li class="nav-item d-flex flex-column text-center me-3">
-            <router-link :to="{ name: 'home' }" :class="this.$route.name == 'home' ? 'active' : ''">
+            <router-link :to="{ name: 'home' }" :class="$route.name == 'home' ? 'active' : ''">
               Home
             </router-link>
           </li>
