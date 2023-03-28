@@ -4,10 +4,9 @@ import axios from 'axios';
 
 export default {
   name: 'SelectSpecializations',
-
   components: {
-
   },
+
   data() {
     return {
       store,
@@ -15,6 +14,7 @@ export default {
       selectedSpecialization: null
     }
   },
+  
   methods: {
     getSpecializations() {
       axios.get(this.url, {
@@ -54,7 +54,7 @@ export default {
   <nav>
     <select class="form-select" aria-label="Default select example" v-model="selectedSpecialization"
       @change="$emit('changeType', selectedSpecialization)">
-      <option v-for="element in store.specializations" :value="element.id">
+      <option v-for="element in store.specializations" :value="element.id" :key="element.id" >
         {{ element.title }}</option>
     </select>
   </nav>
