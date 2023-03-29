@@ -5,7 +5,9 @@ export default {
     data() {
         return {
             doctors: [],
-            numReviews: null,
+            fullStars: [],
+            emptyStars: [],
+            averageVote: null,
             averageVoteCard: null,
         }
     },
@@ -37,21 +39,47 @@ export default {
             type: Object,
             required: true,
         },
-        'isShow': {
-            type: Boolean,
-            required: false,
-            default: false,
-        },
         'review': {
             type: Object,
             required: true,
+        },
+        reviewsCount: Number,
+    },
+
+    methods: {
+        averageByKey(array, key) {
+            if (!array || array.length === 0 || !key) {
+                return 0;
+            }
+            const sum = array.reduce((acc, obj) => {
+                return acc + obj[key];
+            }, 0);
+            this.averageVote = Math.ceil(sum / array.length);
+            //console.log(this.averageVote)
+            return this.averageVote
+        },
+
+        getStarsVote(num) {
+            let fullStarElement = num / num
+            //console.log(fullStarElement)
+
+            for (let i = 0; i < num; i++) {
+                this.fullStars.push(fullStarElement);
+            }
+            //console.log(`Lunghezza stelle piene${this.fullStars.length}`)
+
+            let emptyStarElement = 1
+            for (let i = 0; i < (5 - num); i++) {
+                this.emptyStars.push(emptyStarElement)
+            }
+            //console.log(`Lunghezza stelle vuote${this.emptyStars.length}`)
         },
     },
 
     created() {
         this.averageByKey(this.review, "vote")
-    },
-
+        this.getStarsVote(this.averageVote);
+    }
 }
 </script>
 
@@ -60,38 +88,34 @@ export default {
         <router-link :to="{ name: 'doctor', params: { id: doctor.id } }">
 
             <!-- Doctor's photo -->
-            <div class="d-flex justify-content-center mb-4">
-                <img :src="`http://127.0.0.1:8000/storage/${doctor.photo}`" :alt="doctor.user.name" class="doctor-photo">
+            <div class="doctor-image-container d-flex justify-content-center mb-4">
+                <img :src="`http://127.0.0.1:8000/storage/${doctor.photo}`" :alt="doctor.user.name"
+                    class="doctor-photo img-fluid">
+            </div>
+
+            <div class="spec-info py-2 text-center">
+                <p class="m-0">{{ doctor.specializations.map(s => s.title).join(' - ') }}</p>
             </div>
 
             <!-- Doctor's infos -->
-            <div class="text-center">
-                <h5>
+            <div class="doctor-info-container">
+
+                <h4>
                     {{ doctor.user.name }} {{ doctor.user.surname }}
-                </h5>
+                </h4>
 
-                <!--Reviews-->
+                <!-- Reviews -->
                 <div class="reviews">
-                    <p>
-                        N° Recensioni: {{ doctor.user.reviews.length }}
-                    </p>
-
-                    <p>
-                        Media voti: {{ averageVoteCard }}
-                    </p>
-
+                    <div class="vote-stars">
+                        <i v-for="starEL in fullStars" class="fa-solid fa-star"></i>
+                        <i v-for="star in emptyStars" class="fa-regular fa-star"></i>
+                        <span class="ms-2">{{ doctor.user.reviews.length }} recensioni</span>
+                    </div>
                 </div>
 
-                <p v-for="(specialization, index) in doctor.specializations" :key="index">
-                    {{ specialization.title }}
-                </p>
-
-                <p>
+                <p class="text-center mt-4 mb-0">
                     {{ doctor.performance }}
                 </p>
-                <div class="dash-bio text-start">
-                    Biografia: {{ doctor.bio.substr(0, 140) }}...
-                </div>
             </div>
         </router-link>
     </article>
@@ -102,26 +126,40 @@ export default {
 @use '../styles/partials/variables' as *;
 
 a {
-    color: $secondary-color;
+    color: $primary-variant-color;
     text-decoration: none;
-}
-
-a:hover {
-    color: $primary-text-color;
 }
 
 .my-card {
     border-radius: 25px;
     border-width: 0 !important;
     background-color: $background-color !important;
-    padding: 3rem;
+    padding: 0;
     backdrop-filter: blur(50px);
+    overflow: hidden;
 
-    .doctor-photo {
-        border-radius: 50%;
-        width: 125px;
-        height: 125px;
-        object-fit: cover;
+    .doctor-image-container {
+        max-height: 275px;
+        margin-bottom: 0 !important;
+
+        .doctor-photo {
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+
+    .spec-info {
+        width: 100%;
+        color: $secondary-text-color;
+        background-color: $primary-color;
+    }
+
+    .doctor-info-container {
+        padding: 1rem 2rem 2rem;
+
+        h4 {
+            font-weight: bold;
+        }
     }
 }
 </style>
