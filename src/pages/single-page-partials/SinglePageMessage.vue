@@ -136,11 +136,11 @@ export default {
 
 
 .my_navbar {
-  background-color: $primary-bg-color;
+  background-color: $primary-color;
   color: $primary-text-color;
 
   :hover {
-    color: $secondary-text-color;
+    color: $secondary-variant-color;
   }
 
 }

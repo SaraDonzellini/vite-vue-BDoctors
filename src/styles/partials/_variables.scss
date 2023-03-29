@@ -1,8 +1,14 @@
-$primary-bg-color: #00244a;
-$primary-text-color: #00bea1;
+//Colori principali e secondari delle pagine con le varianti
 
-$secondary-bg-color: #004a82;
-$secondary-text-color: #f8f9f8;
+$primary-color: #004a82;  // Indigo dye #004a82
+$primary-variant-color: #00244a; //Oxford blue #00244a
 
-$pine-green: #037066ff;
-$columbia-blue: #cadcdeff;
+$secondary-color: #00bea1; // #00bea1
+$secondary-variant-color: #037066; //pine green #037066
+
+// Colori background
+
+$background-color: #f8f9f8; // seasalt #f8f9f8
+
+//Colore testi delle pagine
+$primary-text-color: black;

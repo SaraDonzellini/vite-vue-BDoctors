@@ -66,7 +66,7 @@ select {
 }
 
 .bg-nav {
-  background-color: $primary-bg-color;
+  background-color: $primary-color;
   backdrop-filter: blur(50px);
 
 }
@@ -76,13 +76,13 @@ select {
 }
 
 .login {
-  background-color: $secondary-bg-color;
-  color: $primary-text-color;
+  background-color: $secondary-color;
+  // color: $primary-text-color;
   padding: 0.5rem 1rem;
 
   &:hover {
-    background-color: $primary-text-color;
-    color: $primary-bg-color;
+    background-color: $secondary-variant-color;
+    // color: $secondary-variant-color;
   }
 }
 </style>
