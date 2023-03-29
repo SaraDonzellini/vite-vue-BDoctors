@@ -5,14 +5,35 @@ import { store } from '../store.js'
 //import axios
 import axios from 'axios'
 
+import { Splide, SplideSlide } from '@splidejs/vue-splide';
+
 export default {
   data() {
     return {
-      store
+      store,
+      sliderDoctors: [],
     }
+  },
+  components: {
+    Splide,
+    SplideSlide,
   },
 
   methods: {
+    async getDoctors(id) {
+      try {
+        let response
+        if (id) {
+          response = await axios.get(`http://127.0.0.1:8000/api/doctors/${id}`)
+        } else {
+          response = await axios.get(`http://127.0.0.1:8000/api/doctors/`)
+        }
+        this.doctors = response.data.response;
+        console.warn(response.data.response)
+      } catch (error) {
+        console.log(error)
+      }
+    },
     async getSpecializations() {
       try {
         const response = await axios.get('http://127.0.0.1:8000/api/specializations')
@@ -23,9 +44,14 @@ export default {
         console.log(error)
       }
     },
+    getBestDoctors(){
+
+    }
   },
 
   created() {
+    this.getBestDoctors();
+    this.getDoctors();
     this.getSpecializations();
   },
 }
@@ -65,30 +91,52 @@ export default {
       </div>
     </div>
   </section>
-  <section class="functions">
-    <div class="container mt-4 border p-3 d-flex justify-content-around">
-      <div class="card-tool border">
-        <h5>
-          Trova il dottore adatto a te!
-        </h5>
-        <p>
-          Scegli il tipo di specializzazione che ti interessa per trovare il medico inerente o
-          scopri la vasta scelta di dottori offerti dal nostro sito!
-        </p>
+  <section class="functions py-5">
+    <div class="container border p-3 justify-content-around shadow">
+      <div class="row w-100 justify-content-around">
+        <div class="col-12 col-md-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
+          <h5 class="mb-4">
+            <i class="fa-solid fa-magnifying-glass pe-2"></i>
+            Trova il dottore adatto a te!
+          </h5>
+          <p>
+            Scegli il tipo di specializzazione che ti interessa per trovare il medico inerente o
+            scopri la vasta scelta di dottori offerti dal nostro sito.
+          </p>
+        </div>
+        <div class="col-12 col-md-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
+          <h5 class="mb-4">
+            <i class="fa-regular fa-envelope pe-2"></i>
+            Prenota la tua visita!
+          </h5>
+          <p>
+            Con il nostro servizio di messaggistica, potrai inviare personalmente un messaggio ad uno dei nostri dottori
+            per avere informazioni e prenotare un appuntamento.
+          </p>
+        </div>
+        <div class="col-12 col-md-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
+          <h5 class="mb-4">
+            <i class="fa-solid fa-pen-nib pe-2"></i>
+            Lascia la tua recensione!
+          </h5>
+          <p>
+            Oltre a poter leggere le recensioni di altri pazienti, avrai la possibilità
+            di inserire la tua personale recensione per farci sapere la tua opinione sulla visita effettuate.
+          </p>
+        </div>
       </div>
-      <div class="card-tool border">
-        <h5>
-          Prenota la tua visita!
-        </h5>
-        <p>
-          Con il nostro servizio di messaggistica, potrai inviare personalmente un messaggio a
-        </p>
-      </div>
-      <div class="card-tool border">
-        <h5>
-          Lascia la tua recensione!
-        </h5>
-      </div>
+    </div>
+  </section>
+  <section class="slider-vote">
+    <div class="container p-3 border">
+      <Splide :options="{ rewind: true }" aria-label="My Favorite Images">
+        <SplideSlide>
+          <h1>ciao</h1>
+        </SplideSlide>
+        <SplideSlide>
+          <h1>buonasera</h1>
+        </SplideSlide>
+      </Splide>
     </div>
   </section>
 </template>
@@ -104,8 +152,8 @@ export default {
   background-repeat: no-repeat;
   background-position-y: 25%;
 }
-.functions{
-  height: 250px;
+
+.functions .container {
   background-color: $background-color;
 }
 </style>
