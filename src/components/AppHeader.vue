@@ -32,7 +32,7 @@ export default {
             </router-link>
           </li>
           <li class="nav-item d-flex flex-column text-center me-3">
-            <a class="login btn mt-1" href="http://127.0.0.1:8000/">
+            <a class="login btn mt-1" href="http://127.0.0.1:8000/register">
               Sei un dottore? Registrati!
             </a>
           </li>
