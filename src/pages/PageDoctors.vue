@@ -1,8 +1,6 @@
 <script>
 import DoctorCard from '../components/DoctorCard.vue';
 
-//importiamo la componente per la chiamata axios, con risposta l'elenco delle specializzazioni
-import SelectSpecializations from '../components/SelectSpecializations.vue';
 import VoteFilter from '../components/VoteFilter.vue';
 import ReviewFilter from '../components/ReviewFilter.vue';
 
@@ -14,7 +12,6 @@ export default {
 
   components: {
     DoctorCard,
-    SelectSpecializations,
     VoteFilter,
     ReviewFilter,
   },
@@ -23,12 +20,12 @@ export default {
     return {
       doctors: [],
       specializations: [],
-      reviews: []
+      reviews: [],
+      selectedSpecialization: ''
     }
   },
   methods: {
     async getDoctors(id) {
-      //console.log(id)
       try {
         let response
         if (id) {
@@ -37,7 +34,7 @@ export default {
           response = await axios.get(`http://127.0.0.1:8000/api/doctors/`)
         }
         this.doctors = response.data.response;
-        //console.log(response.data.response.data);
+        console.warn(response.data.response)
       } catch (error) {
         console.log(error)
       }
@@ -46,8 +43,8 @@ export default {
     async getSpecializations() {
       try {
         const response = await axios.get('http://127.0.0.1:8000/api/specializations')
-        //console.log(response)
-        this.specializations = response.data.response.data
+        this.specializations = response.data.response;
+        console.log(response.data.response);
 
       } catch (error) {
         console.log(error)
@@ -65,29 +62,33 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-3">
+        <div class="search-doctors">
+          <label for="specialization-select">Seleziona specializzazione:</label>
+          <select id="specialization-select" v-model="selectedSpecialization">
+            <option value="">Tutte le specializzazioni</option>
+            <option v-for="specialization in specializations" :key="specialization.id" :value="specialization.id">
+              {{ specialization.title }}</option>
+          </select>
 
-    <section class="row search-doctors mb-5">
-      <div class="col-12 col-md-3 m-auto my-2">
-        <SelectSpecializations @changeType="getDoctors" />
-      </div>
-      <div class="col-12 col-md-3 m-auto my-2">
-        <VoteFilter />
-        <ReviewFilter />
-      </div>
-    </section>
+          <p>
+            la scelta selezionata è : {{ selectedSpecialization }}
+          </p>
+        </div>
 
-    <section class="container">
-      <!-- <ul>
-                                  <li v-for="doctor in doctors">
-                                    {{ doctor.user.reviews }}
-                                  </li>
-                                </ul> -->
-      <div class="row gap-5 justify-content-around">
-        <DoctorCard v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :key="doctor.id" />
       </div>
-    </section>
+    </div>
+    <div v-if="!selectedSpecialization" class="row gap-5 justify-content-around">
+      <DoctorCard v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :key="doctor.id" />
+    </div>
 
+    <div v-else>
+      <div v-for="doctor in doctors" class="row gap-5 justify-content-around">
+        <DoctorCard v-if="doctor.specializations[0].id === selectedSpecialization" :doctor="doctor" :key="doctor.id" />
+      </div>
+    </div>
   </div>
 </template>
 
