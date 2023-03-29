@@ -2,6 +2,9 @@
 //import store
 import { store } from '../store.js'
 
+// import Home card
+import HomeDocCard from '../components/HomeDocCard.vue';
+
 //import axios
 import axios from 'axios'
 
@@ -11,10 +14,13 @@ export default {
   data() {
     return {
       store,
+      doctors: [],
       sliderDoctors: [],
+      averageVotes: null
     }
   },
   components: {
+    HomeDocCard,
     Splide,
     SplideSlide,
   },
@@ -44,6 +50,11 @@ export default {
         console.log(error)
       }
     },
+    setAverageVote(revVote) {
+      console.log(revVote);
+      return this.averageVotes = revVote;
+    },
+
     getBestDoctors(){
 
     }
@@ -131,7 +142,7 @@ export default {
     <div class="container p-3 border">
       <Splide :options="{ rewind: true }" aria-label="My Favorite Images">
         <SplideSlide>
-          <h1>ciao</h1>
+          <HomeDocCard v-for="doctor in doctors" :doctor="doctor" :review="doctor.user.reviews" />
         </SplideSlide>
         <SplideSlide>
           <h1>buonasera</h1>

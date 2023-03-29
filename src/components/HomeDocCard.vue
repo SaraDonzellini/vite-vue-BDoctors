@@ -1,27 +1,34 @@
 <script>
 
 export default {
-    name: 'PageDoctors',
+    name: 'HomeDocCard',
     data() {
         return {
             doctors: [],
-            numReviews: null,
+            averageVoteCard: null,
         }
     },
 
     methods: {
-        getStars(voteStar) {
-            let stars = '';
-            for (let i = 0; i < voteStar; i++) {
-                stars += '*';
+        averageByKey(array, key) {
+            if (!array || array.length === 0 || !key) {
+                return 0;
             }
-            return stars;
-
+            const sum = array.reduce((acc, obj) => {
+                return acc + obj[key];
+            }, 0);
+            this.averageVoteCard = Math.ceil(sum / array.length);
+            console.log(`Media voti doctor Card ${this.averageVoteCard}`)
+            this.$emit('findVote', this.averageVoteCard);
+            return this.averageVoteCard
         },
-
     },
     props: {
         'doctor': {
+            type: Object,
+            required: true,
+        },
+        'review': {
             type: Object,
             required: true,
         },
@@ -30,7 +37,10 @@ export default {
             required: false,
             default: false,
         }
-    }
+    },
+    created() {
+        this.averageByKey(this.review, "vote")
+    },
 }
 </script>
 
@@ -38,10 +48,10 @@ export default {
     <article class="card col-12 col-md-5 col-lg-3 shadow-lg my-card">
         <router-link :to="{ name: 'doctor', params: { id: doctor.id } }">
 
-            <!-- Doctor's photo -->
+            <!-- Doctor's photo
             <div class="d-flex justify-content-center mb-4">
                 <img :src="`http://127.0.0.1:8000/storage/${doctor.photo}`" :alt="doctor.user.name" class="doctor-photo">
-            </div>
+            </div> -->
 
             <!-- Doctor's infos -->
             <div class="text-center">
@@ -56,7 +66,7 @@ export default {
                     </p>
 
                     <p v-for="voteStar in doctor.user.reviews">
-                        Media voti: {{ getStars(voteStar.vote) }}
+                        Media voti: {{ averageVoteCard }}
                     </p>
 
                 </div>
@@ -68,9 +78,6 @@ export default {
                 <p>
                     {{ doctor.performance }}
                 </p>
-                <div class="dash-bio text-start">
-                    Biografia: {{ doctor.bio.substr(0, 140) }}...
-                </div>
 
             </div>
         </router-link>
@@ -92,17 +99,14 @@ a:hover {
 
 .my-card {
     border-radius: 25px;
-    border-width: 0 !important;
-    background-color: $background-color !important;
+    background-color: $background-color;
     padding: 3rem;
-    backdrop-filter: blur(50px);
-
-    .doctor-photo {
-        border-radius: 50%;
-        width: 125px;
-        height: 125px;
-        object-fit: cover;
-    }
+    // .doctor-photo {
+    //     border-radius: 50%;
+    //     width: 125px;
+    //     height: 125px;
+    //     object-fit: cover;
+    // }
 }
 </style>
 
