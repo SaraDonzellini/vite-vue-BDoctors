@@ -15,7 +15,6 @@ export default {
             for (let i = 0; i < voteStar; i++) {
                 stars += '*';
             }
-            console.log('numero di stelle = ' + stars);
             return stars;
 
         },
