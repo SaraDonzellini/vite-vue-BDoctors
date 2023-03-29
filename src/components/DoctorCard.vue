@@ -15,7 +15,6 @@ export default {
             for (let i = 0; i < voteStar; i++) {
                 stars += '*';
             }
-            console.log('numero di stelle = ' + stars);
             return stars;
 
         },
@@ -71,8 +70,8 @@ export default {
                     {{ doctor.performance }}
                 </p>
                 <!-- <div class="dash-bio text-start">
-                                Biografia: {{ doctor.bio.substr(0, 140) }}...
-                            </div> -->
+                                    Biografia: {{ doctor.bio.substr(0, 140) }}...
+                                </div> -->
 
             </div>
         </router-link>
@@ -84,7 +83,7 @@ export default {
 @use '../styles/partials/variables' as *;
 
 a {
-    color: $pine-green;
+    color: $secondary-color;
     text-decoration: none;
 }
 
