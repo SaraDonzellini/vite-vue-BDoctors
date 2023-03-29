@@ -40,12 +40,13 @@ export default {
         <router-link :to="{ name: 'doctor', params: { id: doctor.id } }">
 
             <!-- Doctor's photo -->
-            <div class="d-flex justify-content-center mb-4">
-                <img :src="`http://127.0.0.1:8000/storage/${doctor.photo}`" :alt="doctor.user.name" class="doctor-photo">
+            <div class="doctor-image d-flex justify-content-center mb-4">
+                <img :src="`http://127.0.0.1:8000/storage/${doctor.photo}`" :alt="doctor.user.name"
+                    class="doctor-photo img-fluid">
             </div>
 
             <!-- Doctor's infos -->
-            <div class="text-center">
+            <div class="doctor-info text-center">
                 <h5>
                     {{ doctor.user.name }} {{ doctor.user.surname }}
                 </h5>
@@ -69,9 +70,9 @@ export default {
                 <p>
                     {{ doctor.performance }}
                 </p>
-                <div class="dash-bio text-start">
-                    Biografia: {{ doctor.bio.substr(0, 140) }}...
-                </div>
+                <!-- <div class="dash-bio text-start">
+                                Biografia: {{ doctor.bio.substr(0, 140) }}...
+                            </div> -->
 
             </div>
         </router-link>
@@ -95,14 +96,17 @@ a:hover {
     border-radius: 25px;
     border-width: 0 !important;
     background-color: $secondary-text-color !important;
-    padding: 3rem;
+    padding: 0;
     backdrop-filter: blur(50px);
+    overflow: hidden;
 
     .doctor-photo {
-        border-radius: 50%;
-        width: 125px;
-        height: 125px;
         object-fit: cover;
+        width: 100%;
+    }
+
+    .doctor-info {
+        padding: 2rem;
     }
 }
 </style>
