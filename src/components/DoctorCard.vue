@@ -5,11 +5,22 @@ export default {
     data() {
         return {
             doctors: [],
+            averageVoteCard
         }
     },
 
     methods: {
-
+        averageByKey(array, key) {
+            if (!array || array.length === 0 || !key) {
+                return 0;
+            }
+            const sum = array.reduce((acc, obj) => {
+                return acc + obj[key];
+            }, 0);
+            this.averageVote = Math.ceil(sum / array.length);
+            console.log(this.averageVote)
+            return this.averageVoteCard
+        },
     },
     props: {
         'doctor': {
@@ -46,7 +57,7 @@ export default {
                         N° Recensioni: {{ doctor.user.reviews.length }}
                     </p>
 
-                    <p v-for="voteStar in doctor.user.reviews">
+                    <p>
                         Media voti: 
                     </p>
 

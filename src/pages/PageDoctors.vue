@@ -60,6 +60,7 @@ export default {
     filteredDoctors() {
       return this.doctors.filter(doctor => {
 
+        console.log(doctor.user.reviews[0])
         if (this.selectedVote && doctor.user.reviews.vote !== this.selectedVote) {
           return false
         }
@@ -91,7 +92,7 @@ export default {
         <SelectSpecializations @changeType="getDoctors" />
       </div>
       <div class="col-12 col-md-3 m-auto my-2">
-        <VoteFilter @changeVote="getDoctors" />
+        <VoteFilter @changeVote="filteredDoctors" />
         <ReviewFilter />
       </div>
     </section>
