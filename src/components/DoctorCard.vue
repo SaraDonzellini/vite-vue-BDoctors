@@ -28,7 +28,6 @@ export default {
             }, 0);
             this.averageVoteCard = Math.ceil(sum / array.length);
             console.log(`Media voti doctor Card ${this.averageVoteCard}`)
-            this.$emit('findVote', this.averageVoteCard);
             return this.averageVoteCard
         },
         
@@ -78,7 +77,7 @@ export default {
                     </p>
 
                     <p>
-                        Media voti: 
+                        Media voti: {{ averageVoteCard }}
                     </p>
 
                 </div>
@@ -93,7 +92,6 @@ export default {
                 <div class="dash-bio text-start">
                     Biografia: {{ doctor.bio.substr(0, 140) }}...
                 </div>
-
             </div>
         </router-link>
     </article>
