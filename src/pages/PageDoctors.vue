@@ -21,7 +21,8 @@ export default {
       doctors: [],
       specializations: [],
       reviews: [],
-      selectedSpecialization: ''
+      selectedSpecialization: '',
+      selectedVote: 0
     }
   },
   methods: {
@@ -50,6 +51,16 @@ export default {
         console.log(error)
       }
     },
+
+    setFilterVote(revVote) {
+      console.log(revVote);
+      this.averageVotes = revVote;
+    },
+
+    getFilteredVote(num){
+      console.log(num)
+    }
+
   },
 
   mounted() {
@@ -63,7 +74,7 @@ export default {
 
 <template>
   <div class="container py-5">
-    <div class="row">
+    <div class="row d-flex">
       <div class="col-3">
         <div class="search-doctors">
           <label for="specialization-select">Seleziona specializzazione:</label>
@@ -77,17 +88,20 @@ export default {
             la scelta selezionata è : {{ selectedSpecialization }}
           </p>
         </div>
-
+      </div>
+      <div class="col-2 col-md-2 m-auto my-2">
+        <VoteFilter @changeVote="getFilteredVote"/>
+        <ReviewFilter/>
       </div>
     </div>
     <div v-if="!selectedSpecialization" class="row gap-5 justify-content-around">
-      <DoctorCard v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :key="doctor.id" />
+      <DoctorCard @sendEmit="setFilterVote" :review="doctor.user.reviews" v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :key="doctor.id" />
     </div>
 
     <div v-else>
       <div v-for="doctor in doctors" class="container">
         <div v-for="filterDoctor in doctor.specializations" class="row gap-5 justify-content-around">
-          <DoctorCard v-if="filterDoctor.id === selectedSpecialization" :doctor="doctor" :key="doctor.id" />
+          <DoctorCard @findVote="setFilterVote" :review="doctor.user.reviews" v-if="filterDoctor.id === selectedSpecialization" :doctor="doctor" :key="doctor.id" />
         </div>
       </div>
     </div>

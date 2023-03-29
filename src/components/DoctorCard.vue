@@ -6,19 +6,32 @@ export default {
         return {
             doctors: [],
             numReviews: null,
+            averageVoteCard: null,
         }
     },
 
     methods: {
-        getStars(voteStar) {
-            let stars = '';
-            for (let i = 0; i < voteStar; i++) {
-                stars += '*';
+        // getStars(voteStar) {
+        //     let stars = '';
+        //     for (let i = 0; i < voteStar; i++) {
+        //         stars += '*';
+        //     }
+        //     return stars;
+        // },
+
+        averageByKey(array, key) {
+            if (!array || array.length === 0 || !key) {
+                return 0;
             }
-            return stars;
-
+            const sum = array.reduce((acc, obj) => {
+                return acc + obj[key];
+            }, 0);
+            this.averageVoteCard = Math.ceil(sum / array.length);
+            console.log(`Media voti doctor Card ${this.averageVoteCard}`)
+            this.$emit('findVote', this.averageVoteCard);
+            return this.averageVoteCard
         },
-
+        
     },
     props: {
         'doctor': {
@@ -29,8 +42,17 @@ export default {
             type: Boolean,
             required: false,
             default: false,
-        }
-    }
+        },
+        'review': {
+            type: Object,
+            required: true,
+        },
+    },
+
+    created() {
+        this.averageByKey(this.review, "vote")
+    },
+
 }
 </script>
 
@@ -55,8 +77,8 @@ export default {
                         N° Recensioni: {{ doctor.user.reviews.length }}
                     </p>
 
-                    <p v-for="voteStar in doctor.user.reviews">
-                        Media voti: {{ getStars(voteStar.vote) }}
+                    <p>
+                        Media voti: 
                     </p>
 
                 </div>
