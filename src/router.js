@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Doctors from './pages/PageDoctors.vue';
 import Home from './pages/PageHome.vue';
 import SinglePageDoctor from './pages/SinglePageDoctor.vue';
+import PageDoctors from './pages/PageDoctors.vue'
 
 
 
@@ -27,6 +28,7 @@ const router = createRouter({
       name: 'doctor',
       component: SinglePageDoctor
     },
+
   ]
 
 });

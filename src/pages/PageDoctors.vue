@@ -37,9 +37,7 @@ export default {
           response = await axios.get(`http://127.0.0.1:8000/api/doctors/`)
         }
         this.doctors = response.data.response;
-        console.log(response.data.response);
-        // this.reviews = 
-
+        //console.log(response.data.response.data);
       } catch (error) {
         console.log(error)
       }
