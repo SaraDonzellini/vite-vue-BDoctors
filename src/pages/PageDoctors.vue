@@ -1,8 +1,6 @@
 <script>
 import DoctorCard from '../components/DoctorCard.vue';
 
-//importiamo la componente per la chiamata axios, con risposta l'elenco delle specializzazioni
-import SelectSpecializations from '../components/SelectSpecializations.vue';
 import VoteFilter from '../components/VoteFilter.vue';
 import ReviewFilter from '../components/ReviewFilter.vue';
 
@@ -14,7 +12,6 @@ export default {
 
   components: {
     DoctorCard,
-    SelectSpecializations,
     VoteFilter,
     ReviewFilter,
   },
@@ -24,7 +21,8 @@ export default {
       doctors: [],
       specializations: [],
       // reviews: [],
-      averageVotes: null,
+      averageVotes: null,,
+      selectedSpecialization: ''
     }
   },
   methods: {
@@ -37,7 +35,7 @@ export default {
           response = await axios.get(`http://127.0.0.1:8000/api/doctors/`)
         }
         this.doctors = response.data.response;
-        console.log(this.reviews);
+        console.warn(response.data.response)
       } catch (error) {
         console.log(error)
       }
@@ -47,7 +45,8 @@ export default {
     async getSpecializations() {
       try {
         const response = await axios.get('http://127.0.0.1:8000/api/specializations')
-        this.specializations = response.data.response.data
+        this.specializations = response.data.response;
+        console.log(response.data.response);
 
       } catch (error) {
         console.log(error)
@@ -100,11 +99,22 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-3">
+        <div class="search-doctors">
+          <label for="specialization-select">Seleziona specializzazione:</label>
+          <select class="form-select" id="specialization-select" v-model="selectedSpecialization">
+            <option value="">Tutte le specializzazioni</option>
+            <option v-for="specialization in specializations" :key="specialization.id" :value="specialization.id">
+              {{ specialization.title }}</option>
+          </select>
 
-    <section class="row search-doctors mb-5">
-      <div class="col-12 col-md-3 m-auto my-2">
-        <SelectSpecializations @changeType="getDoctors" />
+          <p>
+            la scelta selezionata è : {{ selectedSpecialization }}
+          </p>
+        </div>
+
       </div>
       <div class="col-12 col-md-3 m-auto my-2">
         <VoteFilter @changeVote="filteredDoctors" />

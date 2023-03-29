@@ -92,7 +92,7 @@ export default {
 @use '../styles/partials/variables' as *;
 
 a {
-    color: $pine-green;
+    color: $secondary-color;
     text-decoration: none;
 }
 
@@ -103,7 +103,7 @@ a:hover {
 .my-card {
     border-radius: 25px;
     border-width: 0 !important;
-    background-color: $secondary-text-color !important;
+    background-color: $background-color !important;
     padding: 3rem;
     backdrop-filter: blur(50px);
 
