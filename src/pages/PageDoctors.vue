@@ -21,7 +21,7 @@ export default {
       doctors: [],
       specializations: [],
       // reviews: [],
-      averageVotes: null,,
+      averageVotes: null,
       selectedSpecialization: ''
     }
   },
@@ -56,7 +56,7 @@ export default {
     // getMediaVote() {
     //     // for (let i = 0; i < reviews.length; i++) {
     //     //   const mediaVote = doctor.user.reviews[i].vote.reduce((sum, val) => sum + val, 0) / doctor.recensioni.length;
-          
+
     //     // }
     //     this.doctors.forEach(doctor => {
     //       this.reviews = doctor.user
@@ -81,7 +81,7 @@ export default {
         } else if (this.averageVotes !== selectVote) {
           console.log(`Il voto e il filtro non metchano`)
           return doctor = false
-        } else if (this.averageVotes == selectVote){
+        } else if (this.averageVotes == selectVote) {
           console.log(`Ci sono dei voti che metchano col filtro`)
           return doctor = true
         }
@@ -120,18 +120,16 @@ export default {
         <VoteFilter @changeVote="filteredDoctors" />
         <ReviewFilter />
       </div>
-    </section>
-
-    <section class="container">
-      <!-- <ul>
-              <li v-for="doctor in doctors">
-                {{ doctor.user.reviews }}
-              </li>
-            </ul> -->
-      <div class="row gap-5 justify-content-around">
-        <DoctorCard @findVote="setFilterVote" v-show="doctor" v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :review="doctor.user.reviews" :key="doctor.id" />
-      </div>
-    </section>
+    </div>
+    <!-- <ul>
+                <li v-for="doctor in doctors">
+                  {{ doctor.user.reviews }}
+                </li>
+              </ul> -->
+    <div class="row gap-5 justify-content-around">
+      <DoctorCard @findVote="setFilterVote" v-show="doctor" v-if="doctors.length" v-for="doctor in doctors"
+        :doctor="doctor" :review="doctor.user.reviews" :key="doctor.id" />
+    </div>
 
   </div>
 </template>
