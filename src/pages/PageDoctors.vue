@@ -67,7 +67,7 @@ export default {
       <div class="col-3">
         <div class="search-doctors">
           <label for="specialization-select">Seleziona specializzazione:</label>
-          <select id="specialization-select" v-model="selectedSpecialization">
+          <select class="form-select" id="specialization-select" v-model="selectedSpecialization">
             <option value="">Tutte le specializzazioni</option>
             <option v-for="specialization in specializations" :key="specialization.id" :value="specialization.id">
               {{ specialization.title }}</option>
