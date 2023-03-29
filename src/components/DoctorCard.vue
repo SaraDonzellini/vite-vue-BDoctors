@@ -5,7 +5,7 @@ export default {
     data() {
         return {
             doctors: [],
-            averageVoteCard
+            averageVoteCard: null,
         }
     },
 
@@ -17,8 +17,9 @@ export default {
             const sum = array.reduce((acc, obj) => {
                 return acc + obj[key];
             }, 0);
-            this.averageVote = Math.ceil(sum / array.length);
-            console.log(this.averageVote)
+            this.averageVoteCard = Math.ceil(sum / array.length);
+            console.log(`Media voti doctor Card ${this.averageVoteCard}`)
+            this.$emit('findVote', this.averageVoteCard);
             return this.averageVoteCard
         },
     },
@@ -27,12 +28,19 @@ export default {
             type: Object,
             required: true,
         },
+        'review': {
+            type: Object,
+            required: true,
+        },
         'isShow': {
             type: Boolean,
             required: false,
             default: false,
         },
-    }
+    },
+    created() {
+        this.averageByKey(this.review, "vote")
+    },
 }
 </script>
 

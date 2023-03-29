@@ -14,7 +14,9 @@ export default {
         }
     },
     methods: {
-
+        sendEmit(){
+            this.$emit('changeVote', this.selectedVote)
+        }
     },
 
 
@@ -29,30 +31,20 @@ export default {
 </script>
 
 <template>
-    <select class="form-select" aria-label="Default select example" v-model="selectedVote"
-        @change="$emit('changeVote', selectedVote)">
+    <select class="form-select" aria-label="Default select example" @change="sendEmit()" v-model="selectedVote">
         <option value="5">
-            <i v-for="star in 5" class="fa-solid fa-star bg-dark"></i>
             5 stelle
         </option>
         <option value="4">
-            <i v-for="star in 4" class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
             4 stelle
         </option>
         <option value="3">
-            <i v-for="star in 3" class="fa-solid fa-star"></i>
-            <i v-for="star in 2" class="fa-regular fa-star"></i>
             3 stelle
         </option>
         <option value="2">
-            <i v-for="star in 2" class="fa-solid fa-star"></i>
-            <i v-for="star in 3" class="fa-regular fa-star"></i>
             2 stelle
         </option>
         <option value="1">
-            <i v-for="star in 1" class="fa-solid fa-star"></i>
-            <i v-for="star in emptyStars" class="fa-regular fa-star"></i>
             1 stella
         </option>
     </select>

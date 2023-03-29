@@ -23,8 +23,8 @@ export default {
     return {
       doctors: [],
       specializations: [],
-      reviews: [],
-      // averageVote: null,
+      // reviews: [],
+      averageVotes: null,
     }
   },
   methods: {
@@ -37,11 +37,12 @@ export default {
           response = await axios.get(`http://127.0.0.1:8000/api/doctors/`)
         }
         this.doctors = response.data.response;
-        //console.log(response.data.response.data);
+        console.log(this.reviews);
       } catch (error) {
         console.log(error)
       }
     },
+
 
     async getSpecializations() {
       try {
@@ -52,23 +53,39 @@ export default {
         console.log(error)
       }
     },
+
+    // getMediaVote() {
+    //     // for (let i = 0; i < reviews.length; i++) {
+    //     //   const mediaVote = doctor.user.reviews[i].vote.reduce((sum, val) => sum + val, 0) / doctor.recensioni.length;
+          
+    //     // }
+    //     this.doctors.forEach(doctor => {
+    //       this.reviews = doctor.user
+    //       console.log();
+    //     });
+    //     // return { nome: doctor.nome, mediaRecensioni: media };
+    // }
+    setFilterVote(revVote) {
+      console.log(revVote);
+      return this.averageVotes = revVote;
+    }
   },
 
-  computed: {
-    filteredDoctors() {
+  mounted: {
+    filteredDoctors(selectVote) {
       return this.doctors.filter(doctor => {
 
-        console.log(doctor.user.reviews[0])
-        if (this.selectedVote && doctor.user.reviews.vote !== this.selectedVote) {
-          return false
+        console.log(this.averageVotes)
+        if (selectVote == null) {
+          console.log(`Non è stato selezionato il filtro`)
+          return doctor = true
+        } else if (this.averageVotes !== selectVote) {
+          console.log(`Il voto e il filtro non metchano`)
+          return doctor = false
+        } else if (this.averageVotes == selectVote){
+          console.log(`Ci sono dei voti che metchano col filtro`)
+          return doctor = true
         }
-        // if (this.selectedSize && doctor.size !== this.selectedSize) {
-        //   return false
-        // }
-        // if (this.selectedType && doctor.type !== this.selectedType) {
-        //   return false
-        // }
-        return true
       })
     }
   },
@@ -97,12 +114,12 @@ export default {
 
     <section class="container">
       <!-- <ul>
-            <li v-for="doctor in doctors">
-              {{ doctor.user.reviews }}
-            </li>
-          </ul> -->
+              <li v-for="doctor in doctors">
+                {{ doctor.user.reviews }}
+              </li>
+            </ul> -->
       <div class="row gap-5 justify-content-around">
-        <DoctorCard v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :key="doctor.id" />
+        <DoctorCard @findVote="setFilterVote" v-show="doctor" v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :review="doctor.user.reviews" :key="doctor.id" />
       </div>
     </section>
 
