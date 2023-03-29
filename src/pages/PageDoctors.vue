@@ -84,6 +84,10 @@ export default {
         });
       this.specializations = specializationsResponse.data.response;
     },
+    getVoteDoctors(revVote) {
+      this.voteDoctors = this.doctorsWithAverageVote.filter((doctor) => doctor.averageVote == revVote);
+      console.log(this.voteDoctors)
+    }
   },
 
     // questa chiamata si occupa di dare tutti i dottori con determinata specializzazione
@@ -107,13 +111,7 @@ export default {
           doctor.specializations.some((spec) => spec.id === this.selectedSpecialization)
         );
       }
-    },
-
-    getVoteDoctors(revVote) {
-      this.voteDoctors = this.doctorsWithAverageVote.filter((doctor) => doctor.averageVote == revVote);
-      console.log(this.voteDoctors)
     }
-
   },
 
   mounted() {
