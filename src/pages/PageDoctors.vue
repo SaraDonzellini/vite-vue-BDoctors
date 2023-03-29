@@ -4,7 +4,9 @@ import DoctorCard from '../components/DoctorCard.vue';
 import VoteFilter from '../components/VoteFilter.vue';
 import ReviewFilter from '../components/ReviewFilter.vue';
 
-
+//import store
+import { store } from '../store.js'
+//import axios
 import axios from 'axios';
 
 export default {
@@ -18,6 +20,7 @@ export default {
 
   data() {
     return {
+      store,
       doctors: [],
       specializations: [],
       reviews: [],
@@ -65,29 +68,27 @@ export default {
   <div class="container py-5">
     <div class="row">
       <div class="col-3">
-        <div class="search-doctors">
+
+        <!--search bar for doctor's specialization-->
+        <div class="search-doctors mb-5">
           <label for="specialization-select">Seleziona specializzazione:</label>
-          <select class="form-select" id="specialization-select" v-model="selectedSpecialization">
+          <select class="form-select" id="specialization-select" v-model="store.selectedSpecialization">
             <option value="">Tutte le specializzazioni</option>
             <option v-for="specialization in specializations" :key="specialization.id" :value="specialization.id">
               {{ specialization.title }}</option>
           </select>
-
-          <p>
-            la scelta selezionata è : {{ selectedSpecialization }}
-          </p>
         </div>
 
       </div>
     </div>
-    <div v-if="!selectedSpecialization" class="row gap-5 justify-content-around">
+    <div v-if="!store.selectedSpecialization" class="row gap-5 justify-content-around">
       <DoctorCard v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :key="doctor.id" />
     </div>
 
     <div v-else>
       <div v-for="doctor in doctors" class="container">
         <div v-for="filterDoctor in doctor.specializations" class="row gap-5 justify-content-around">
-          <DoctorCard v-if="filterDoctor.id === selectedSpecialization" :doctor="doctor" :key="doctor.id" />
+          <DoctorCard v-if="filterDoctor.id === store.selectedSpecialization" :doctor="doctor" :key="doctor.id" />
         </div>
       </div>
     </div>
