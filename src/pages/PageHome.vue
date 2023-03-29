@@ -15,8 +15,29 @@ export default {
     return {
       store,
       doctors: [],
+      averageVote: null,
       sliderDoctors: [],
-      averageVotes: null
+      sliderOptions: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        perPage: 3,
+        pagination: false,
+        type: 'loop',
+        gap: '1rem',
+        // autoplay: true,
+        // breakpoints: {
+        //   640: {
+        //     perPage: 1,
+        //     gap: '0.5rem'
+        //   },
+        //   768: {
+        //     perPage: 2,
+        //   },
+        //   1024: {
+        //     perPage: 3,
+        //   },
+        // },
+      },
     }
   },
   components: {
@@ -26,16 +47,31 @@ export default {
   },
 
   methods: {
-    async getDoctors(id) {
+    async getDoctorsWithAverageVote() {
       try {
-        let response
-        if (id) {
-          response = await axios.get(`http://127.0.0.1:8000/api/doctors/${id}`)
-        } else {
-          response = await axios.get(`http://127.0.0.1:8000/api/doctors/`)
-        }
+        const response = await axios.get('http://127.0.0.1:8000/api/doctors/')
         this.doctors = response.data.response;
         console.warn(response.data.response)
+
+        // Calcola la media dei voti per ogni dottore
+        this.doctors.forEach(doctor => {
+          for (let i = 0; i < doctor.user.reviews.length; i++) {
+            const doctorsWithAverageVote = this.doctors.map(doctor => {
+              const reviews = doctor.user.reviews;
+              const totalVotes = reviews.reduce((sum, review) => sum + review.vote, 0);
+              const averageVote = totalVotes / reviews.length;
+              console.log(averageVote);
+              return {
+                ...doctor,
+                averageVote: averageVote.toFixed(2)
+              };
+            });
+            // console.log(doctor);
+            this.sliderDoctors = doctorsWithAverageVote.filter(doctor => doctor.averageVote >= 4);
+            console.log(doctorsWithAverageVote)
+          }
+        });
+
       } catch (error) {
         console.log(error)
       }
@@ -44,25 +80,22 @@ export default {
       try {
         const response = await axios.get('http://127.0.0.1:8000/api/specializations')
         this.store.specializations = response.data.response;
-        console.log(response.data.response);
+        // console.log(response.data.response);
 
       } catch (error) {
         console.log(error)
       }
     },
-    setAverageVote(revVote) {
-      console.log(revVote);
-      return this.averageVotes = revVote;
-    },
 
-    getBestDoctors(){
+    // setAverageVote(revVote) {
+    //   console.log(revVote);
+    //   return this.averageVotes = revVote;
+    // },
 
-    }
   },
 
   created() {
-    this.getBestDoctors();
-    this.getDoctors();
+    this.getDoctorsWithAverageVote();
     this.getSpecializations();
   },
 }
@@ -140,12 +173,9 @@ export default {
   </section>
   <section class="slider-vote">
     <div class="container p-3 border">
-      <Splide :options="{ rewind: true }" aria-label="My Favorite Images">
-        <SplideSlide>
-          <HomeDocCard v-for="doctor in doctors" :doctor="doctor" :review="doctor.user.reviews" />
-        </SplideSlide>
-        <SplideSlide>
-          <h1>buonasera</h1>
+      <Splide :options="sliderOptions">
+        <SplideSlide class="row justify-content-start" v-for="(doctor, index) in sliderDoctors">
+          <HomeDocCard :doctor="doctor" :key="index" :review="doctor.user.reviews" />
         </SplideSlide>
       </Splide>
     </div>
