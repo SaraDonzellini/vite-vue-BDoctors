@@ -19,7 +19,6 @@ export default {
             }, 0);
             this.averageVoteCard = Math.ceil(sum / array.length);
             console.log(`Media voti doctor Card ${this.averageVoteCard}`)
-            this.$emit('findVote', this.averageVoteCard);
             return this.averageVoteCard
         },
     },
