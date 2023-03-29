@@ -34,7 +34,7 @@ export default {
           response = await axios.get(`http://127.0.0.1:8000/api/doctors/`)
         }
         this.doctors = response.data.response;
-        console.warn(response.data.response)
+        //console.log(response.data.response)
       } catch (error) {
         console.log(error)
       }
@@ -44,7 +44,7 @@ export default {
       try {
         const response = await axios.get('http://127.0.0.1:8000/api/specializations')
         this.specializations = response.data.response;
-        console.log(response.data.response);
+        //console.log(response.data.response);
 
       } catch (error) {
         console.log(error)
@@ -81,13 +81,15 @@ export default {
       </div>
     </div>
     <div v-if="!selectedSpecialization" class="row gap-5 justify-content-around">
-      <DoctorCard v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :key="doctor.id" />
+      <DoctorCard v-if="doctors.length" v-for="doctor in doctors" :doctor="doctor" :key="doctor.id"
+        :review="doctor.user.reviews" />
     </div>
 
     <div v-else>
       <div v-for="doctor in doctors" class="container">
         <div v-for="filterDoctor in doctor.specializations" class="row gap-5 justify-content-around">
-          <DoctorCard v-if="filterDoctor.id === selectedSpecialization" :doctor="doctor" :key="doctor.id" />
+          <DoctorCard v-if="filterDoctor.id === selectedSpecialization" :doctor="doctor" :key="doctor.id"
+            :review="doctor.user.reviews" />
         </div>
       </div>
     </div>
