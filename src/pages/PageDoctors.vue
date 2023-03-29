@@ -85,8 +85,10 @@ export default {
     </div>
 
     <div v-else>
-      <div v-for="doctor in doctors" class="row gap-5 justify-content-around">
-        <DoctorCard v-if="doctor.specializations[0].id === selectedSpecialization" :doctor="doctor" :key="doctor.id" />
+      <div v-for="doctor in doctors" class="container">
+        <div v-for="filterDoctor in doctor.specializations" class="row gap-5 justify-content-around">
+          <DoctorCard v-if="filterDoctor.id === selectedSpecialization" :doctor="doctor" :key="doctor.id" />
+        </div>
       </div>
     </div>
   </div>
