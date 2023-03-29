@@ -27,7 +27,7 @@ export default {
                 return acc + obj[key];
             }, 0);
             this.averageVoteCard = Math.ceil(sum / array.length);
-            console.log(`Media voti doctor Card ${this.averageVoteCard}`)
+            // console.log(`Media voti doctor Card ${this.averageVoteCard}`)
             return this.averageVoteCard
         },
         
