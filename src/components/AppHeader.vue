@@ -14,7 +14,7 @@ export default {
         <a class="navbar-brand">
           <img src="../assets/Doctor-logo.png" class="img-fluid" alt="" width="40">
         </a>
-        <h2 class="ms-3 text-light mt-1">Bdoctors</h2>
+        <h2 class="ms-3 text-logo mt-1">Bdoctors</h2>
       </div>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -88,5 +88,9 @@ select {
     background-color: $secondary-variant-color;
     color: $secondary-color;
   }
+}
+
+.text-logo{
+  color:$secondary-color;
 }
 </style>

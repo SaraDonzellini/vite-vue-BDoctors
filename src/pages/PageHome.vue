@@ -137,7 +137,7 @@ export default {
     <div class="container">
       <div class="text-home">
         <h1>
-          Benvenuta/o in Bdoctors!
+          Benvenuti in Bdoctors
         </h1>
         <h5 class="mb-4">
           Cerca tra i nostri dottori per trovare il tuo specialista
