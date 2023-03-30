@@ -81,6 +81,7 @@ select {
   padding: 0.5rem 1rem;
 
   &:hover {
+    color:  rgb(187, 184, 184);
     background-color: $secondary-variant-color;
     color: $secondary-color;
   }
