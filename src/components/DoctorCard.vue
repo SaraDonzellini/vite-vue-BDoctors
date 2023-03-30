@@ -84,7 +84,7 @@ export default {
 </script>
 
 <template>
-    <article class="card col-12 col-md-5 col-lg-3 shadow-lg my-card">
+    <article class="card col-11 col-md-5 col-lg-3 shadow-lg my-card">
         <router-link :to="{ name: 'doctor', params: { id: doctor.id } }">
 
             <!-- Doctor's photo -->
