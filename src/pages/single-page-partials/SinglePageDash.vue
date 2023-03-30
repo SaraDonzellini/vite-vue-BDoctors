@@ -40,22 +40,18 @@ export default {
 <template>
   <nav class="navbar navbar-expand-lg my_navbar">
     <div class="container-fluid">
-      <button class="navbar-toggler py-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="" id="navbarNav">
         <ul class="navbar-nav d-flex justify-content-between">
           <li class="nav-item">
-            <a class="nav-link my_navbar" href="#address">Informazioni Dottore</a>
+            <a class="nav-link my_navbar text-light" href="#address">Informazioni Dottore</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <div class="container card shadow-lg">
-    <div class="row justify-content-around">
-      <div class="col-12 col-md-5 m-2">
+    <div class="row justify-content-between p-3">
+      <div class="col-12 col-md-5 ">
         <h5>Indirizzo:</h5>
         <p> {{ doctor.address }}</p>
         <h5>Telefono:</h5>
@@ -66,12 +62,16 @@ export default {
         </p>
 
       </div>
-      <div class="col-12 col-md-5 m-2">
+      <div class="col-12 col-md-5 ">
         <h5 class="text-center">
           Curriculum:
         </h5>
+        <p class="text-center">Clicca qui per scaricare il cv</p>
         <div>
-          <img class="image-cv img-fluid" :src="`http://127.0.0.1:8000/storage/${doctor.curriculum}`" :alt="doctor.user.name">
+          <!-- <img class="image-cv img-fluid" :src="`http://127.0.0.1:8000/storage/${doctor.curriculum}`" :alt="doctor.user.name"> -->
+          <a href="../../../public/imgs/Curriculum_1.png" download>
+            <img class="image-cv img-fluid" src="../../../public/imgs/Curriculum_1.png" :alt="doctor.user.name">
+          </a>
         </div>
       </div>
     </div>
@@ -79,12 +79,10 @@ export default {
   <section id="recensioni">
     <nav class="navbar navbar-expand-lg my_navbar">
       <div class="container-fluid">
-        <button class="navbar-toggler py-3" type="button">
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="" id="navbarNav">
           <ul class="navbar-nav d-flex justify-content-between">
             <li class="nav-item">
-              <span class="nav-link my_navbar" href="#recensioni" id="bg-toggle">Scrivi una recensione</span>
+              <span class="nav-link my_navbar text-light" href="#recensioni" id="bg-toggle">Scrivi una recensione</span>
             </li>
           </ul>
         </div>
@@ -98,13 +96,10 @@ export default {
   </section>
   <nav class="navbar navbar-expand-lg my_navbar">
     <div class="container-fluid">
-      <button class="navbar-toggler py-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="" id="navbarNav">
         <ul class="navbar-nav d-flex justify-content-between">
           <li class="nav-item">
-            <a class="nav-link my_navbar" href="#recensioni">Recensioni</a>
+            <a class="nav-link my_navbar text-light" href="#recensioni">Recensioni</a>
           </li>
 
         </ul>
@@ -138,11 +133,11 @@ export default {
 
 
 .my_navbar {
-  background-color: $primary-bg-color;
+  background-color: $primary-color;
   color: $primary-text-color;
 
   :hover {
-    color: $secondary-text-color;
+    color: $secondary-variant-color;
   }
 }
 
