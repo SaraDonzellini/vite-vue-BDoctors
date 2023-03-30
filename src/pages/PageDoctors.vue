@@ -30,41 +30,8 @@ export default {
     }
   },
 
-  // questa chiamata si occupa di dare tutti i dottori che hanno id nel caso contrario tutti i dottori
   methods: {
 
-    //questa chiamata si occupa di dare i dottori filtrati con il voto selezionato
-
-    // async getDoctorsWithAverageVote(id) {
-    //   try {
-    //     let response
-    //     if (id) {
-    //       response = await axios.get(`http://127.0.0.1:8000/api/doctors/${id}`)
-    //     } else {
-    //       response = await axios.get(`http://127.0.0.1:8000/api/doctors/`)
-    //     }
-    //     this.doctors = response.data.response;
-    //     // console.warn(response.data.response);
-
-    //     this.doctors.forEach(doctor => {
-    //       for (let i = 0; i < doctor.user.reviews.length; i++) {
-    //         this.doctorsWithAverageVote = this.doctors.map(doctor => {
-    //           const reviews = doctor.user.reviews;
-    //           const totalVotes = reviews.reduce((sum, review) => sum + review.vote, 0);
-    //           const averageVote = totalVotes / reviews.length;
-    //           // console.log(averageVote);
-    //           return {
-    //             ...doctor,
-    //             averageVote: averageVote.toFixed(2)
-    //           };
-    //         });
-    //       }
-    //     });
-
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // },
     async getDoctors() {
       const [doctorsResponse, specializationsResponse] = await Promise.all([ // Execute when all request in the array are resolved
         axios.get('http://127.0.0.1:8000/api/doctors/'),
@@ -73,39 +40,25 @@ export default {
 
       this.doctors = doctorsResponse.data.response;
       this.doctors.forEach(doctor => {
-        for (let i = 0; i < doctor.user.reviews.length; i++) {
-          this.doctorsWithAverageVote = this.doctors.map(doctor => {
-            const reviews = doctor.user.reviews;
-            const totalVotes = reviews.reduce((sum, review) => sum + review.vote, 0);
-            const averageVote = totalVotes / reviews.length;
-            // console.log(averageVote);
-            return {
-              ...doctor,
-              averageVote: averageVote.toFixed(2)
-            };
-          });
-        }
-      });
+          for (let i = 0; i < doctor.user.reviews.length; i++) {
+            this.doctorsWithAverageVote = this.doctors.map(doctor => {
+              const reviews = doctor.user.reviews;
+              const totalVotes = reviews.reduce((sum, review) => sum + review.vote, 0);
+              const averageVote = totalVotes / reviews.length;
+              // console.log(averageVote);
+              return {
+                ...doctor,
+                averageVote: averageVote.toFixed(2)
+              };
+            });
+          }
+        });
       this.specializations = specializationsResponse.data.response;
     },
     getVoteDoctors(revVote) {
-      // this.voteDoctors = this.doctorsWithAverageVote.filter((doctor) => doctor.averageVote == revVote);
-      // console.log(this.voteDoctors)
       this.selectedVote = revVote;
     }
   },
-
-  // questa chiamata si occupa di dare tutti i dottori con determinata specializzazione
-  // async getSpecializations() {
-  //   try {
-  //     const response = await axios.get('http://127.0.0.1:8000/api/specializations')
-  //     this.specializations = response.data.response;
-  //     // console.log(response.data.response);
-
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // },
 
   computed: {
     filteredDoctors() {
@@ -122,11 +75,6 @@ export default {
           return this.specDoctors
         }
       }
-      // else {
-      //   return this.doctorsWithAverageVote.filter((doctor) =>
-      //     doctor.specializations.some((spec) => spec.id === this.selectedSpecialization)
-      //   );
-      // }
     }
   },
 
@@ -135,9 +83,6 @@ export default {
   },
 
   created() {
-    // this.getDoctors();
-    // this.getDoctorsWithAverageVote();
-    // this.getSpecializations();
   },
 }
 
@@ -154,7 +99,7 @@ export default {
 
           <label for="specialization-select">Seleziona specializzazione:</label>
 
-          <select class="form-select" id="specialization-select" v-model="store.selectedSpecialization">
+          <select class="form-select" id="specialization-select" v-model="selectedSpecialization">
             <option value="">Tutte le specializzazioni</option>
             <option v-for="specialization in specializations" :key="specialization.id" :value="specialization.id">
               {{ specialization.title }}
