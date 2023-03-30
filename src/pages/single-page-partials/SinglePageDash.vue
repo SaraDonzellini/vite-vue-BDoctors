@@ -54,8 +54,8 @@ export default {
     </div>
   </nav>
   <div class="container card shadow-lg">
-    <div class="row justify-content-around">
-      <div class="col-12 col-md-5 m-2">
+    <div class="row justify-content-between p-3">
+      <div class="col-12 col-md-5 ">
         <h5>Indirizzo:</h5>
         <p> {{ doctor.address }}</p>
         <h5>Telefono:</h5>
@@ -66,7 +66,7 @@ export default {
         </p>
 
       </div>
-      <div class="col-12 col-md-5 m-2">
+      <div class="col-12 col-md-5 ">
         <h5 class="text-center">
           Curriculum:
         </h5>

@@ -61,6 +61,7 @@ export default {
     //     console.log(error);
     //   }
     // },
+    
     async getDoctors() {
       const [doctorsResponse, specializationsResponse] = await Promise.all([ // Execute when all request in the array are resolved
         axios.get('http://127.0.0.1:8000/api/doctors/'),
@@ -84,6 +85,7 @@ export default {
         });
       this.specializations = specializationsResponse.data.response;
     },
+    
     getVoteDoctors(revVote) {
       this.voteDoctors = this.doctorsWithAverageVote.filter((doctor) => doctor.averageVote == revVote);
       console.log(this.voteDoctors)
