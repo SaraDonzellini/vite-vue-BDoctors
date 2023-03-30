@@ -32,7 +32,7 @@ export default {
             </router-link>
           </li>
           <li class="nav-item d-flex flex-column text-center me-3">
-            <a class="login btn mt-1" href="http://127.0.0.1:8000/">
+            <a class="login btn mt-1" href="http://127.0.0.1:8000/register">
               Sei un dottore? Registrati!
             </a>
           </li>
@@ -58,7 +58,7 @@ li {
 }
 
 .active {
-  color: $primary-text-color;
+  color: $secondary-color;
 }
 
 select {
@@ -66,7 +66,7 @@ select {
 }
 
 .bg-nav {
-  background-color: $primary-bg-color;
+  background-color: $primary-color;
   backdrop-filter: blur(50px);
 
 }
@@ -76,13 +76,13 @@ select {
 }
 
 .login {
-  background-color: $secondary-bg-color;
-  color: $primary-text-color;
+  background-color: $secondary-color;
+  // color: $primary-text-color;
   padding: 0.5rem 1rem;
 
   &:hover {
-    background-color: $primary-text-color;
-    color: $primary-bg-color;
+    background-color: $secondary-variant-color;
+    color: $secondary-color;
   }
 }
 </style>
