@@ -1,7 +1,5 @@
 <script>
 import DoctorCard from '../components/DoctorCard.vue';
-import VoteFilter from '../components/VoteFilter.vue';
-import ReviewFilter from '../components/ReviewFilter.vue';
 import axios from 'axios';
 //import store
 import { store } from '../store.js'
@@ -11,8 +9,6 @@ export default {
 
   components: {
     DoctorCard,
-    VoteFilter,
-    ReviewFilter,
   },
 
   data() {
