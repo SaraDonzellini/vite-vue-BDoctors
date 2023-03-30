@@ -239,7 +239,7 @@ export default {
                 <!-- Blog's photo -->
                 <div class="blog-image-container mb-4">
                   <div class="blog-photo">
-                    <img class="img-fluid" :src="`../../public/imgs/${blog.photo}`" :alt="blog.name">
+                    <img class="img-fluid" :src="`/imgs/${blog.photo}`" :alt="blog.name">
                   </div>
                 </div>
 
