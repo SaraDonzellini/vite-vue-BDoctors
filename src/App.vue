@@ -54,4 +54,9 @@ main {
   padding: .5rem 1rem;
   font-weight: bold;
 } */
+
+body{
+    font-family: 'Work Sans', sans-serif;
+}
+
 </style>
