@@ -3,6 +3,8 @@ import DoctorCard from '../components/DoctorCard.vue';
 import VoteFilter from '../components/VoteFilter.vue';
 import ReviewFilter from '../components/ReviewFilter.vue';
 import axios from 'axios';
+//import store
+import { store } from '../store.js'
 
 export default {
   name: 'PageDoctors',
@@ -15,6 +17,7 @@ export default {
 
   data() {
     return {
+      store,
       doctors: [],
       specializations: [],
       reviews: [],
@@ -70,19 +73,19 @@ export default {
 
       this.doctors = doctorsResponse.data.response;
       this.doctors.forEach(doctor => {
-          for (let i = 0; i < doctor.user.reviews.length; i++) {
-            this.doctorsWithAverageVote = this.doctors.map(doctor => {
-              const reviews = doctor.user.reviews;
-              const totalVotes = reviews.reduce((sum, review) => sum + review.vote, 0);
-              const averageVote = totalVotes / reviews.length;
-              // console.log(averageVote);
-              return {
-                ...doctor,
-                averageVote: averageVote.toFixed(2)
-              };
-            });
-          }
-        });
+        for (let i = 0; i < doctor.user.reviews.length; i++) {
+          this.doctorsWithAverageVote = this.doctors.map(doctor => {
+            const reviews = doctor.user.reviews;
+            const totalVotes = reviews.reduce((sum, review) => sum + review.vote, 0);
+            const averageVote = totalVotes / reviews.length;
+            // console.log(averageVote);
+            return {
+              ...doctor,
+              averageVote: averageVote.toFixed(2)
+            };
+          });
+        }
+      });
       this.specializations = specializationsResponse.data.response;
     },
     getVoteDoctors(revVote) {
@@ -92,17 +95,17 @@ export default {
     }
   },
 
-    // questa chiamata si occupa di dare tutti i dottori con determinata specializzazione
-    // async getSpecializations() {
-    //   try {
-    //     const response = await axios.get('http://127.0.0.1:8000/api/specializations')
-    //     this.specializations = response.data.response;
-    //     // console.log(response.data.response);
+  // questa chiamata si occupa di dare tutti i dottori con determinata specializzazione
+  // async getSpecializations() {
+  //   try {
+  //     const response = await axios.get('http://127.0.0.1:8000/api/specializations')
+  //     this.specializations = response.data.response;
+  //     // console.log(response.data.response);
 
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // },
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // },
 
   computed: {
     filteredDoctors() {
@@ -151,7 +154,7 @@ export default {
 
           <label for="specialization-select">Seleziona specializzazione:</label>
 
-          <select class="form-select" id="specialization-select" v-model="selectedSpecialization">
+          <select class="form-select" id="specialization-select" v-model="store.selectedSpecialization">
             <option value="">Tutte le specializzazioni</option>
             <option v-for="specialization in specializations" :key="specialization.id" :value="specialization.id">
               {{ specialization.title }}

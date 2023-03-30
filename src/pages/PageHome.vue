@@ -113,14 +113,14 @@ export default {
 
       <div class="row">
         <div class="col-3">
-          <!-- <div class="search-doctors my-3">
+          <div class="search-doctors my-3">
             <label class="mb-2" for="specialization-select">Seleziona specializzazione:</label>
             <select class="form-select" id="specialization-select" v-model="store.selectedSpecialization">
               <option value="">Tutte le specializzazioni</option>
               <option v-for="specialization in store.specializations" :key="specialization.id" :value="specialization.id">
                 {{ specialization.title }}</option>
             </select>
-          </div> -->
+          </div>
 
         </div>
         <div class="d-flex">
@@ -128,9 +128,16 @@ export default {
             Tutti i nostri dottori
           </router-link>
 
-          <!-- <router-link v-else class="btn btn-primary" :to="{ name: 'doctors' }">
-            Cerca un {{ store.selectedSpecialization }}
-          </router-link> -->
+          <div v-else class="d-flex">
+            <router-link class="btn btn-primary me-3" :to="{ name: 'doctors' }">
+              Cerca per specializzazione
+            </router-link>
+
+            <button class="btn btn-danger" @click="store.selectedSpecialization = ''">
+              Rimuovi filtro
+            </button>
+          </div>
+
         </div>
       </div>
     </div>
