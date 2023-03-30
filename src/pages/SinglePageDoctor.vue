@@ -48,7 +48,7 @@ export default {
 </script>
 
 <template>
-  <div class="wallpaper w-100 h-100 pt-5">
+  <div class="wallpaper w-100 h-100 p-2">
     <div class="container card-doctor">
       <SinglePageInfo :doctor="doctor" :review="review" :reviewsCount="reviewsCount" />
       <SinglePageDash :doctor="doctor" :review="review" :userId="userId" />
@@ -68,7 +68,7 @@ export default {
 
   .card-doctor {
     border-radius: 20px;
-    background-color: white;
+    background-color: $primary-color;
     width: 100%;
   }
 }

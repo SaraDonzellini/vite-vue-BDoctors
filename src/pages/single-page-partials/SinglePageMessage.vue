@@ -70,15 +70,13 @@ export default {
 </script>
 
 <template>
-  <section id="messaggi ">
+  <section id="messaggi">
     <nav class="navbar navbar-expand-lg my_navbar">
       <div class="container-fluid">
-        <button class="navbar-toggler py-3" type="button">
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="" id="navbarNav">
           <ul class="navbar-nav d-flex justify-content-between">
             <li class="nav-item">
-              <span class="nav-link my_navbar" href="#messaggi" id="bg-toggle">Invia un messaggio</span>
+              <span class="nav-link my_navbar text-light" href="#messaggi" id="bg-toggle">Invia un messaggio</span>
             </li>
           </ul>
         </div>
