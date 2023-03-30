@@ -48,7 +48,7 @@ main {
 
 /* .my-btn {
   border-radius: 15px;
-  background-color: $primary-bg-color;
+  background-color: $primary-color;
   text-decoration: none;
   color: $primary-text-color;
   padding: .5rem 1rem;
