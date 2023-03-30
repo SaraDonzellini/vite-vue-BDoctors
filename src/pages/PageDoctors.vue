@@ -18,6 +18,7 @@ export default {
       doctors: [],
       specializations: [],
       reviews: [],
+      specDoctors: [],
       voteDoctors: [],
       selectedSpecialization: '',
       selectedVote: null,
@@ -85,8 +86,9 @@ export default {
       this.specializations = specializationsResponse.data.response;
     },
     getVoteDoctors(revVote) {
-      this.voteDoctors = this.doctorsWithAverageVote.filter((doctor) => doctor.averageVote == revVote);
-      console.log(this.voteDoctors)
+      // this.voteDoctors = this.doctorsWithAverageVote.filter((doctor) => doctor.averageVote == revVote);
+      // console.log(this.voteDoctors)
+      this.selectedVote = revVote;
     }
   },
 
@@ -105,12 +107,23 @@ export default {
   computed: {
     filteredDoctors() {
       if (!this.selectedSpecialization) {
-        return this.doctors;
-      } else {
-        return this.doctors.filter((doctor) =>
+        return this.doctorsWithAverageVote;
+      } else if (this.selectedSpecialization) {
+        this.specDoctors = this.doctorsWithAverageVote.filter((doctor) =>
           doctor.specializations.some((spec) => spec.id === this.selectedSpecialization)
         );
+        if (this.selectedVote) {          
+          this.voteDoctors = this.specDoctors.filter((doctor) => doctor.averageVote == this.selectedVote)
+          return this.voteDoctors
+        } else {
+          return this.specDoctors
+        }
       }
+      // else {
+      //   return this.doctorsWithAverageVote.filter((doctor) =>
+      //     doctor.specializations.some((spec) => spec.id === this.selectedSpecialization)
+      //   );
+      // }
     }
   },
 
