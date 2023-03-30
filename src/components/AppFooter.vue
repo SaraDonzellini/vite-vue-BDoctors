@@ -36,7 +36,7 @@ export default {
         <p class="p-0 m-0" v-for="professional in professionals">{{ professional }}</p>
       </div>
       <div class="col-3">
-        <img src="public\imgs\Doctor-logo.png" style="width:30px" alt=""><h4 class="d-inline">BDoctors</h4>
+        <img src="\imgs\Doctor-logo.png" style="width:30px" alt=""><h4 class="d-inline">BDoctors</h4>
         <p class="m-0 p-0">&#169; Boolean by 
           <a href="https://github.com/AlessioNapoletano">Alessio</a>, 
           <a href="https://github.com/ManuelBravaccini">Manuel</a>, 
