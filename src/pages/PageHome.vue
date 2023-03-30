@@ -80,17 +80,11 @@ export default {
       try {
         const response = await axios.get('http://127.0.0.1:8000/api/specializations')
         this.store.specializations = response.data.response;
-        // console.log(response.data.response);
 
       } catch (error) {
         console.log(error)
       }
     },
-
-    // setAverageVote(revVote) {
-    //   console.log(revVote);
-    //   return this.averageVotes = revVote;
-    // },
 
   },
 
@@ -142,51 +136,63 @@ export default {
       </div>
     </div>
   </section>
-  <section class="functions py-5">
-    <div class="container border p-3 justify-content-around shadow">
-      <div class="row w-100 justify-content-around">
-        <div class="col-12 col-md-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
-          <h5 class="mb-4">
-            <i class="fa-solid fa-magnifying-glass pe-2"></i>
-            Trova il dottore adatto a te!
-          </h5>
-          <p>
-            Scegli il tipo di specializzazione che ti interessa per trovare il medico inerente o
-            scopri la vasta scelta di dottori offerti dal nostro sito.
-          </p>
-        </div>
-        <div class="col-12 col-md-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
-          <h5 class="mb-4">
-            <i class="fa-regular fa-envelope pe-2"></i>
-            Prenota la tua visita!
-          </h5>
-          <p>
-            Con il nostro servizio di messaggistica, potrai inviare personalmente un messaggio ad uno dei nostri dottori
-            per avere informazioni e prenotare un appuntamento.
-          </p>
-        </div>
-        <div class="col-12 col-md-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
-          <h5 class="mb-4">
-            <i class="fa-solid fa-pen-nib pe-2"></i>
-            Lascia la tua recensione!
-          </h5>
-          <p>
-            Oltre a poter leggere le recensioni di altri pazienti, avrai la possibilità
-            di inserire la tua personale recensione per farci sapere la tua opinione sulla visita effettuate.
-          </p>
+
+  <div class="main-home">
+    <section class="functions py-5">
+      <div class="container p-3 justify-content-around">
+        <div class="row w-100 justify-content-center">
+          <div class="col-12 mx-4 col-md-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
+            <div class="info-title d-flex flex-column">
+              <i class="fa-solid fa-magnifying-glass pe-2 fs-3 mb-3"></i>
+              <h5 class="mb-4">
+                Trova il dottore adatto a te!
+              </h5>
+            </div>
+            <p>
+              Scegli il tipo di specializzazione che ti interessa per trovare il medico inerente o
+              scopri la vasta scelta di dottori offerti dal nostro sito.
+            </p>
+          </div>
+          <div class="col-12 mx-4 col-md-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
+            <div class="info-title d-flex flex-column">
+              <i class="fa-regular fa-envelope pe-2 fs-3 mb-3"></i>
+              <h5 class="mb-4">
+                Prenota la tua visita!
+              </h5>
+            </div>
+            <p>
+              Con il nostro servizio di messaggistica, potrai inviare personalmente un messaggio ad uno dei nostri dottori
+              per avere informazioni e prenotare un appuntamento.
+            </p>
+          </div>
+          <div class="col-12 mx-4 col-md-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
+            <div class="info-title d-flex flex-column">
+              <i class="fa-solid fa-pen-nib pe-2 fs-3 mb-3"></i>
+              <h5 class="mb-4 ">
+                Lascia la tua recensione!
+              </h5>
+            </div>
+            <p>
+              Oltre a poter leggere le recensioni di altri pazienti, avrai la possibilità
+              di inserire la tua personale recensione per farci sapere la tua opinione sulla visita effettuate.
+            </p>
+          </div>
         </div>
       </div>
+    </section>
+
+    <div class="bg-doctors py-5">
+      <section class="slider-vote">
+        <div class="container container-slider p-3">
+          <Splide :options="sliderOptions">
+            <SplideSlide class="row justify-content-start" v-for="(doctor, index) in sliderDoctors">
+              <HomeDocCard :doctor="doctor" :key="index" :review="doctor.user.reviews" />
+            </SplideSlide>
+          </Splide>
+        </div>
+      </section>
     </div>
-  </section>
-  <section class="slider-vote">
-    <div class="container p-3 border">
-      <Splide :options="sliderOptions">
-        <SplideSlide class="row justify-content-start" v-for="(doctor, index) in sliderDoctors">
-          <HomeDocCard :doctor="doctor" :key="index" :review="doctor.user.reviews" />
-        </SplideSlide>
-      </Splide>
-    </div>
-  </section>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -201,7 +207,21 @@ export default {
   background-position-y: 25%;
 }
 
-.functions .container {
-  background-color: $background-color;
+.functions {
+  background-color: $primary-color;
+  .info-title{
+    font-weight: bolder;
+    color: $secondary-variant-color;
+  }
 }
+.bg-doctors {
+  height: 100%;
+  background-image: url('/imgs/bg-main-home.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+// .functions .container{
+//   background-color: $background-color;
+// }
 </style>
