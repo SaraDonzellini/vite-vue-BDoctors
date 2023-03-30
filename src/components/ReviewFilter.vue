@@ -31,9 +31,9 @@ export default {
 </script>
 
 <template>
-    <button>
+    <!-- <button>
         Ordina per recensioni
-    </button>
+    </button> -->
 </template>
 
 <style lang="scss" scoped>
