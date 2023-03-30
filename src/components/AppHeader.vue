@@ -58,7 +58,7 @@ li {
 }
 
 .active {
-  color: $primary-text-color;
+  color: $secondary-color;
 }
 
 select {
@@ -82,7 +82,7 @@ select {
 
   &:hover {
     background-color: $secondary-variant-color;
-    // color: $secondary-variant-color;
+    color: $secondary-color;
   }
 }
 </style>
