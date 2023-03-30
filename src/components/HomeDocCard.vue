@@ -129,7 +129,7 @@ a {
     .doctor-info-container {
         padding: 1rem 2rem 2rem;
 
-        h4 {
+        h5 {
             font-weight: bold;
         }
     }

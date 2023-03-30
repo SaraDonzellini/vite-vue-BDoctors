@@ -25,19 +25,56 @@ export default {
         type: 'slide',
         gap: '1rem',
         // autoplay: true,
-        // breakpoints: {
-        //   640: {
-        //     perPage: 1,
-        //     gap: '0.5rem'
-        //   },
-        //   768: {
-        //     perPage: 2,
-        //   },
-        //   1024: {
-        //     perPage: 3,
-        //   },
-        // },
+        breakpoints: {
+          640: {
+            perPage: 1,
+            gap: '0.5rem'
+          },
+          992: {
+            perPage: 2,
+          },
+          1200: {
+            perPage: 3,
+          },
+        },
       },
+      blogs: [
+        {
+          name: 'Alessio',
+          surname: 'Napoletano',
+          photo: 'alessio-photo.jpg',
+          place: 'Milano | Lombardia',
+          text: ''
+        },
+        {
+          name: 'Giada',
+          surname: 'Gallitto',
+          photo: 'giada-photo.jpg',
+          place: 'Cordignano | Veneto',
+          text: ''
+        },
+        {
+          name: 'Sara',
+          surname: 'Donzellini',
+          photo: 'sara-photo.png',
+          place: 'Savona | Liguria',
+          text: ''
+        },
+        {
+          name: 'Manuel',
+          surname: 'Bravaccini',
+          photo: 'manuel-photo.jpg',
+          place: 'Firenze | Toscana',
+          text: ''
+        },
+        {
+          name: 'Vincenzo',
+          surname: 'Belardo',
+          photo: 'vincenzo-photo.jpg',
+          place: 'Caserta | Campania',
+          text: ''
+        },
+      ],
     }
   },
   components: {
@@ -141,7 +178,7 @@ export default {
     <section class="functions py-5">
       <div class="container p-3 justify-content-around">
         <div class="row w-100 justify-content-center">
-          <div class="col-12 mx-4 col-md-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
+          <div class="col-11 mx-4 mb-3 col-md-8 col-lg-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
             <div class="info-title d-flex flex-column">
               <i class="fa-solid fa-magnifying-glass pe-2 fs-3 mb-3"></i>
               <h5 class="mb-4">
@@ -153,7 +190,7 @@ export default {
               scopri la vasta scelta di dottori offerti dal nostro sito.
             </p>
           </div>
-          <div class="col-12 mx-4 col-md-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
+          <div class="col-11 mx-4 mb-3 col-md-8 col-lg-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
             <div class="info-title d-flex flex-column">
               <i class="fa-regular fa-envelope pe-2 fs-3 mb-3"></i>
               <h5 class="mb-4">
@@ -165,7 +202,7 @@ export default {
               per avere informazioni e prenotare un appuntamento.
             </p>
           </div>
-          <div class="col-12 mx-4 col-md-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
+          <div class="col-11 mx-4 mb-3 col-md-8 col-lg-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
             <div class="info-title d-flex flex-column">
               <i class="fa-solid fa-pen-nib pe-2 fs-3 mb-3"></i>
               <h5 class="mb-4 ">
@@ -191,6 +228,38 @@ export default {
           </Splide>
         </div>
       </section>
+
+      <section class="blogs">
+        <div class="container container-slider p-3 my-5">
+          <Splide :options="sliderOptions">
+            <SplideSlide class="row justify-content-start" v-for="blog in blogs">
+              <div class="blog-card col-12">
+                <!-- Blog's photo -->
+                <div class="blog-image-container mb-4">
+                  <div class="blog-photo">
+                    <img class="img-fluid" :src="`../../public/imgs/${blog.photo}`" :alt="blog.name">
+                  </div>
+                </div>
+
+                <div class="card-info card">                  
+                  <!-- Blog's info -->
+                  <div class="blog-info">
+                    <div class="title">
+                      <h4>
+                        {{ blog.name }} {{ blog.surname }}
+                      </h4>
+                    </div>
+                    <span class="text-place mb-3 d-inline-block">{{ blog.place }}</span>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus velit a nostrum accusamus. Repellendus incidunt blanditiis fuga aliquam illum autem aperiam quis nemo non dignissimos accusantium, cum quos! Delectus, odio.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </SplideSlide>
+          </Splide>
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -209,16 +278,61 @@ export default {
 
 .functions {
   background-color: $primary-color;
-  .info-title{
+
+  .info-title {
     font-weight: bolder;
     color: $secondary-variant-color;
   }
 }
+
 .bg-doctors {
   height: 100%;
   background-image: url('/imgs/bg-main-home.jpg');
   background-size: cover;
   background-position: center;
+  backdrop-filter: blur(50px);
+  .blog-card {
+    position: relative;
+    padding-top: 3.5rem;
+
+    .blog-image-container{
+      padding-left: 2rem;
+      .blog-photo {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        z-index: 5;
+        
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+    
+    .card-info{
+      border-radius: 25px;
+      padding: 1rem;
+      height: 80%;
+      .blog-info {
+        padding: 4.5rem 1rem 3rem 1rem;
+          width: 100%;
+          color: $primary-variant-color;
+  
+          h4{
+            font-weight: bold;
+          }
+
+          .text-place{
+            font-weight: 600;
+            font-size: 0.8rem;
+          }
+      }
+    }
+  }
 }
 
 // .functions .container{
