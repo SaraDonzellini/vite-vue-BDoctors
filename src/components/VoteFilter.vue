@@ -24,13 +24,6 @@ export default {
         }
     },
 
-
-    created() {
-    },
-
-    watch: {
-    },
-
 }
 
 </script>

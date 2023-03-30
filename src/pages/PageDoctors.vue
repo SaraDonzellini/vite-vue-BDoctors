@@ -23,9 +23,12 @@ export default {
       reviews: [],
       specDoctors: [],
       voteDoctors: [],
+      revDoctors: [],
       selectedSpecialization: '',
       selectedVote: null,
+      selectedReview: null,
       averageVote: null,
+      // numReview: null,
       doctorsWithAverageVote: null,
     }
   },
@@ -40,35 +43,53 @@ export default {
 
       this.doctors = doctorsResponse.data.response;
       this.doctors.forEach(doctor => {
-          for (let i = 0; i < doctor.user.reviews.length; i++) {
-            this.doctorsWithAverageVote = this.doctors.map(doctor => {
-              const reviews = doctor.user.reviews;
-              const totalVotes = reviews.reduce((sum, review) => sum + review.vote, 0);
-              const averageVote = totalVotes / reviews.length;
-              // console.log(averageVote);
-              return {
-                ...doctor,
-                averageVote: averageVote.toFixed(2)
-              };
-            });
-          }
-        });
+        for (let i = 0; i < doctor.user.reviews.length; i++) {
+          this.doctorsWithAverageVote = this.doctors.map(doctor => {
+            const reviews = doctor.user.reviews;
+            // const numReview = reviews.length;
+            const totalVotes = reviews.reduce((sum, review) => sum + review.vote, 0);
+            const averageVote = totalVotes / reviews.length;
+            // console.log(this.numReview);
+            return {
+              ...doctor,
+              averageVote: averageVote.toFixed(2),
+              numReview: reviews.length
+            };
+          });
+        }
+      });
       this.specializations = specializationsResponse.data.response;
     },
     getVoteDoctors(revVote) {
       this.selectedVote = revVote;
+    },
+    getReviewDoctors(rev) {
+      this.selectedReview = rev;
     }
   },
 
   computed: {
     filteredDoctors() {
       if (!this.selectedSpecialization) {
-        return this.doctorsWithAverageVote;
+        this.specDoctors = this.doctorsWithAverageVote;
+
+        if (this.selectedVote) {
+          this.voteDoctors = this.specDoctors.filter((doctor) => doctor.averageVote == this.selectedVote)
+          return this.voteDoctors
+          
+        } else {
+          return this.specDoctors
+        }
+        // if (this.selectedReview) {
+        //   this.revDoctors = this.voteDoctors.filter((doctor) => doctor.numReview == this.selectedReview)
+        // } else {
+        // }
+
       } else if (this.selectedSpecialization) {
         this.specDoctors = this.doctorsWithAverageVote.filter((doctor) =>
           doctor.specializations.some((spec) => spec.id === this.selectedSpecialization)
         );
-        if (this.selectedVote) {          
+        if (this.selectedVote) {
           this.voteDoctors = this.specDoctors.filter((doctor) => doctor.averageVote == this.selectedVote)
           return this.voteDoctors
         } else {
@@ -85,6 +106,7 @@ export default {
   created() {
   },
 }
+
 
 </script>
 
@@ -110,7 +132,7 @@ export default {
       </div>
       <div class="col-2 col-md-2 m-auto my-2">
         <VoteFilter @changeVote="getVoteDoctors" />
-        <ReviewFilter />
+        <ReviewFilter @changeReviews="getReviewDoctors"/>
       </div>
     </div>
 

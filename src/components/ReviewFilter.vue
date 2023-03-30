@@ -12,18 +12,15 @@ export default {
         return {
             store,
             url: 'http://127.0.0.1:8000/api/specializations',
-            selectedSpecialization: null
+            selectedReviews: null,
+            reviews: [1, 2, 5, 10]
         }
     },
     methods: {
-
-    },
-
-
-    created() {
-    },
-
-    watch: {
+        sendEmit() {
+            console.log('selectedReviews:', this.selectedReviews);
+            this.$emit('changeReviews', this.selectedReviews)
+        }
     },
 
 }
@@ -31,9 +28,12 @@ export default {
 </script>
 
 <template>
-    <!-- <button>
-        Ordina per recensioni
-    </button> -->
+    <select class="form-select" aria-label="Default select example" v-model="selectedReviews" @change="sendEmit()">
+        <option value="">N° min Recensioni</option>
+        <option v-for="review in reviews" :key="review" :value="review">
+            {{ review }}
+        </option>
+    </select>
 </template>
 
 <style lang="scss" scoped>
