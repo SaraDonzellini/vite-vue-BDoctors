@@ -66,12 +66,12 @@ export default {
         <h5 class="text-center">
           Curriculum:
         </h5>
-        <p class="text-center">Clicca qui per scaricare il cv</p>
+        <a href="/imgs/Curriculum_1.png" download>
+          Scarica
+        </a>
         <div>
           <!-- <img class="image-cv img-fluid" :src="`http://127.0.0.1:8000/storage/${doctor.curriculum}`" :alt="doctor.user.name"> -->
-          <a href="../../../public/imgs/Curriculum_1.png" download>
-            <img class="image-cv img-fluid" src="../../../public/imgs/Curriculum_1.png" :alt="doctor.user.name">
-          </a>
+          <img class="image-cv img-fluid" src="/imgs/Curriculum_1.png" :alt="doctor.user.name">
         </div>
       </div>
     </div>
