@@ -39,7 +39,7 @@ export default {
         </div>
 
         <div class="text col col-xs-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 ">
-          <img src="public\imgs\Doctor-logo.png" style="width:30px" alt=""><h4 class="d-inline title"> BDoctors</h4>
+          <img src="\imgs\Doctor-logo.png" style="width:30px" alt=""><h4 class="d-inline title"> BDoctors</h4>
           <p class="mb-3 mt-3 p-0">&#169; Boolean by 
             <a href="https://github.com/AlessioNapoletano">Alessio</a>, 
             <a href="https://github.com/ManuelBravaccini">Manuel</a>, 
