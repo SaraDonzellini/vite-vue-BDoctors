@@ -30,7 +30,7 @@ export default {
 
 <template>
     <select class="form-select" aria-label="Default select example" v-model="selectedVote" @change="sendEmit()">
-        <option value="">Vote</option>
+        <option selected value="">Vote</option>
         <option v-for="vote in votes" :key="vote" :value="vote">
             {{ vote }}
         </option>
