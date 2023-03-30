@@ -96,6 +96,10 @@ export default {
         }
       }
     },
+    clearFilters(){
+      this.selectedVote = '',
+      this.selectedSpecialization = ''
+    }
   },
 
   mounted() {
@@ -147,7 +151,7 @@ export default {
               </select>
             </div>
             <div class="col-3">
-              <button @click="selectedVote = ''" class="btn btn-info">
+              <button @click="clearFilters" class="btn btn-info">
                 Rimuovi filtri
               </button>
             </div>
