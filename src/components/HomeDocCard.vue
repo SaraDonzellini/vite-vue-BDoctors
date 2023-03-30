@@ -5,8 +5,21 @@ export default {
     data() {
         return {
             doctors: [],
-            averageVoteCard: null,
+            fullStars: [],
+            emptyStars: [],
+            averageVote: null,
         }
+    },
+
+    props: {
+        'doctor': {
+            type: Object,
+            required: true,
+        },
+        'review': {
+            type: Object,
+            required: true,
+        },
     },
 
     methods: {
@@ -17,64 +30,61 @@ export default {
             const sum = array.reduce((acc, obj) => {
                 return acc + obj[key];
             }, 0);
-            this.averageVoteCard = Math.ceil(sum / array.length);
-            console.log(`Media voti doctor Card ${this.averageVoteCard}`)
-            return this.averageVoteCard
+            this.averageVote = Math.ceil(sum / array.length);
+            //console.log(this.averageVote)
+            return this.averageVote
         },
-    },
-    props: {
-        'doctor': {
-            type: Object,
-            required: true,
+
+        getStarsVote(num) {
+            let fullStarElement = num / num
+
+            for (let i = 0; i < num; i++) {
+                this.fullStars.push(fullStarElement);
+            }
+
+            let emptyStarElement = 1
+            for (let i = 0; i < (5 - num); i++) {
+                this.emptyStars.push(emptyStarElement)
+            }
         },
-        'review': {
-            type: Object,
-            required: true,
-        },
-        'isShow': {
-            type: Boolean,
-            required: false,
-            default: false,
-        }
     },
     created() {
         this.averageByKey(this.review, "vote")
+        this.getStarsVote(this.averageVote);
     },
 }
 </script>
 
 <template>
-    <article class="card col-12 shadow-lg my-card">
+    <article class="card shadow col-12 shadow-lg my-card">
         <router-link :to="{ name: 'doctor', params: { id: doctor.id } }">
 
-            <!-- Doctor's photo
-            <div class="d-flex justify-content-center mb-4">
-                <img :src="`http://127.0.0.1:8000/storage/${doctor.photo}`" :alt="doctor.user.name" class="doctor-photo">
-            </div> -->
+            <!-- Doctor's photo -->
+            <div class="doctor-image-container d-flex justify-content-center mb-4">
+                <img :src="`http://127.0.0.1:8000/storage/${doctor.photo}`" :alt="doctor.user.name"
+                    class="doctor-photo img-fluid">
+            </div>
+
+            <div class="spec-info py-2 text-center">
+                <p class="m-0">{{ doctor.specializations.map(s => s.title).join(' - ') }}</p>
+            </div>
 
             <!-- Doctor's infos -->
-            <div class="text-center">
+            <div class="doctor-info-container">
                 <h5>
                     {{ doctor.user.name }} {{ doctor.user.surname }}
                 </h5>
 
-                <!--Reviews-->
+                <!-- Reviews -->
                 <div class="reviews">
-                    <p>
-                        N° Recensioni: {{ doctor.user.reviews.length }}
-                    </p>
-
-                    <p>
-                        Media voti: {{ averageVoteCard }}
-                    </p>
-
+                    <div class="vote-stars">
+                        <i v-for="starEL in fullStars" class="fa-solid fa-star"></i>
+                        <i v-for="star in emptyStars" class="fa-regular fa-star"></i>
+                        <span class="ms-2">{{ doctor.user.reviews.length }} recensioni</span>
+                    </div>
                 </div>
 
-                <p v-for="(specialization, index) in doctor.specializations" :key="index">
-                    {{ specialization.title }}
-                </p>
-
-                <p>
+                <p class="text-center mt-4 mb-0">
                     {{ doctor.performance }}
                 </p>
 
@@ -88,24 +98,41 @@ export default {
 @use '../styles/partials/variables' as *;
 
 a {
-    color: $secondary-color;
+    color: $primary-variant-color;
     text-decoration: none;
-}
-
-a:hover {
-    color: $primary-text-color;
 }
 
 .my-card {
     border-radius: 25px;
-    background-color: $background-color;
-    padding: 3rem;
-    // .doctor-photo {
-    //     border-radius: 50%;
-    //     width: 125px;
-    //     height: 125px;
-    //     object-fit: cover;
-    // }
+    border-width: 0 !important;
+    background-color: $background-color !important;
+    padding: 0;
+    backdrop-filter: blur(50px);
+    overflow: hidden;
+
+    .doctor-image-container {
+        max-height: 300px;
+        margin-bottom: 0 !important;
+
+        .doctor-photo {
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+
+    .spec-info {
+        width: 100%;
+        color: $secondary-text-color;
+        background-color: $primary-color;
+    }
+
+    .doctor-info-container {
+        padding: 1rem 2rem 2rem;
+
+        h5 {
+            font-weight: bold;
+        }
+    }
 }
 </style>
 

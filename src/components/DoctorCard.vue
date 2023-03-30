@@ -21,18 +21,6 @@ export default {
         //     return stars;
         // },
 
-        averageByKey(array, key) {
-            if (!array || array.length === 0 || !key) {
-                return 0;
-            }
-            const sum = array.reduce((acc, obj) => {
-                return acc + obj[key];
-            }, 0);
-            this.averageVoteCard = Math.ceil(sum / array.length);
-            // console.log(`Media voti doctor Card ${this.averageVoteCard}`)
-            return this.averageVoteCard
-        },
-        
     },
     props: {
         'doctor': {
