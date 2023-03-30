@@ -21,50 +21,20 @@ export default {
       doctors: [],
       specializations: [],
       reviews: [],
+      specDoctors: [],
       voteDoctors: [],
+      revDoctors: [],
       selectedSpecialization: '',
       selectedVote: null,
+      selectedReview: null,
       averageVote: null,
+      // numReview: null,
       doctorsWithAverageVote: null,
     }
   },
 
-  // questa chiamata si occupa di dare tutti i dottori che hanno id nel caso contrario tutti i dottori
   methods: {
 
-    //questa chiamata si occupa di dare i dottori filtrati con il voto selezionato
-
-    // async getDoctorsWithAverageVote(id) {
-    //   try {
-    //     let response
-    //     if (id) {
-    //       response = await axios.get(`http://127.0.0.1:8000/api/doctors/${id}`)
-    //     } else {
-    //       response = await axios.get(`http://127.0.0.1:8000/api/doctors/`)
-    //     }
-    //     this.doctors = response.data.response;
-    //     // console.warn(response.data.response);
-
-    //     this.doctors.forEach(doctor => {
-    //       for (let i = 0; i < doctor.user.reviews.length; i++) {
-    //         this.doctorsWithAverageVote = this.doctors.map(doctor => {
-    //           const reviews = doctor.user.reviews;
-    //           const totalVotes = reviews.reduce((sum, review) => sum + review.vote, 0);
-    //           const averageVote = totalVotes / reviews.length;
-    //           // console.log(averageVote);
-    //           return {
-    //             ...doctor,
-    //             averageVote: averageVote.toFixed(2)
-    //           };
-    //         });
-    //       }
-    //     });
-
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // },
-    
     async getDoctors() {
       const [doctorsResponse, specializationsResponse] = await Promise.all([ // Execute when all request in the array are resolved
         axios.get('http://127.0.0.1:8000/api/doctors/'),
@@ -76,12 +46,14 @@ export default {
         for (let i = 0; i < doctor.user.reviews.length; i++) {
           this.doctorsWithAverageVote = this.doctors.map(doctor => {
             const reviews = doctor.user.reviews;
+            // const numReview = reviews.length;
             const totalVotes = reviews.reduce((sum, review) => sum + review.vote, 0);
             const averageVote = totalVotes / reviews.length;
-            // console.log(averageVote);
+            // console.log(this.numReview);
             return {
               ...doctor,
-              averageVote: averageVote.toFixed(2)
+              averageVote: averageVote.toFixed(2),
+              numReview: reviews.length
             };
           });
         }
@@ -90,31 +62,40 @@ export default {
     },
     
     getVoteDoctors(revVote) {
-      this.voteDoctors = this.doctorsWithAverageVote.filter((doctor) => doctor.averageVote == revVote);
-      console.log(this.voteDoctors)
+      this.selectedVote = revVote;
+    },
+    getReviewDoctors(rev) {
+      this.selectedReview = rev;
     }
   },
 
-  // questa chiamata si occupa di dare tutti i dottori con determinata specializzazione
-  // async getSpecializations() {
-  //   try {
-  //     const response = await axios.get('http://127.0.0.1:8000/api/specializations')
-  //     this.specializations = response.data.response;
-  //     // console.log(response.data.response);
-
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // },
-
   computed: {
     filteredDoctors() {
-      if (!this.store.selectedSpecialization) {
-        return this.doctors;
-      } else {
-        return this.doctors.filter((doctor) =>
-          doctor.specializations.some((spec) => spec.id === this.store.selectedSpecialization)
+      if (!this.selectedSpecialization) {
+        this.specDoctors = this.doctorsWithAverageVote;
+
+        if (this.selectedVote) {
+          this.voteDoctors = this.specDoctors.filter((doctor) => doctor.averageVote == this.selectedVote)
+          return this.voteDoctors
+          
+        } else {
+          return this.specDoctors
+        }
+        // if (this.selectedReview) {
+        //   this.revDoctors = this.voteDoctors.filter((doctor) => doctor.numReview == this.selectedReview)
+        // } else {
+        // }
+
+      } else if (this.selectedSpecialization) {
+        this.specDoctors = this.doctorsWithAverageVote.filter((doctor) =>
+          doctor.specializations.some((spec) => spec.id === this.selectedSpecialization)
         );
+        if (this.selectedVote) {
+          this.voteDoctors = this.specDoctors.filter((doctor) => doctor.averageVote == this.selectedVote)
+          return this.voteDoctors
+        } else {
+          return this.specDoctors
+        }
       }
     }
   },
@@ -124,11 +105,9 @@ export default {
   },
 
   created() {
-    // this.getDoctors();
-    // this.getDoctorsWithAverageVote();
-    // this.getSpecializations();
   },
 }
+
 
 </script>
 
