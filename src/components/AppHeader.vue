@@ -8,11 +8,14 @@ export default {
 
 <template>
   <nav class="navbar navbar-expand-md navbar-bg navbar-dark fixed-top shadow-lg bg-nav">
-    <div class="container">
+    <div class="container d-flex align-items-center">
 
-      <a class="navbar-brand">
-        <img src="../assets/Doctor-logo.png" class="img-fluid" alt="" width="40">
-      </a>
+      <div class="d-flex align-items-center">
+        <a class="navbar-brand">
+          <img src="../assets/Doctor-logo.png" class="img-fluid" alt="" width="40">
+        </a>
+        <h2 class="ms-3 text-light mt-1">Bdoctors</h2>
+      </div>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls=" navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
