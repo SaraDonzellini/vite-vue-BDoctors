@@ -58,8 +58,8 @@ export default {
 </script>
 
 <template>
-    <div class="row w-100">
-        <div class="col-12 m-5">
+    <div class="row w-100 p-3">
+        <div class="col-12 ">
             <form class="row w-100 justify-content-between" @submit.prevent="onSubmit">
                 <div class="name col-12 col-md-3 px-2">
                     <label for="name">

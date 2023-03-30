@@ -57,25 +57,27 @@ export default {
 </script>
 
 <template>
-    <div class="info-container">
+    <div class="info-container mt-5">
         <div class="row w-100 justify-content-around">
-            <section class=" image-box col-12 col-lg-6 d-flex justify-content-center">
+            <section class="image-box col-10 col-lg-6 d-flex justify-content-center">
                 <img class="image-doctor img-fluid" :src="`http://127.0.0.1:8000/storage/${doctor.photo}`" :alt="doctor.user.name">
             </section>
 
             <section class="info-box pt-3 col-12 col-lg-6 ps-5">
                 <div class="infos mb-5">
-                    <h1>
+                    <h1 class="d-flex justify-content-center justify-content-lg-start text-light">
                         {{ doctor.user.name }} {{ doctor.user.surname }}
                     </h1>
-                    <h6 class="mt-4">
+
+                    <h6 class="mt-4 text-light">
                         Specializzazione:
                     </h6>
-                    <span v-for="(specialization, index) in doctor.specializations" :key="index">
+                    <span class="text-light" v-for="(specialization, index) in doctor.specializations" :key="index">
                         {{ specialization.title }} |
                     </span>
+
                     <div class="review-info">
-                        <div class="vote-stars">
+                        <div class="vote-stars text-light">
                             <h6 class="mt-3">Voto: </h6>
                             <i v-for="starEL in fullStars" class="fa-solid fa-star"></i>
                             <i v-for="star in emptyStars" class="fa-regular fa-star"></i>
@@ -102,7 +104,7 @@ export default {
         height: 300px;
         border-radius: 50%;
         overflow: hidden;
-        border: 1px solid black;
+        // border: 1px solid black;
     }
 
     .fa-star {

@@ -64,6 +64,7 @@ export default {
     //     console.log(error);
     //   }
     // },
+    
     async getDoctors() {
       const [doctorsResponse, specializationsResponse] = await Promise.all([ // Execute when all request in the array are resolved
         axios.get('http://127.0.0.1:8000/api/doctors/'),
@@ -87,6 +88,7 @@ export default {
       });
       this.specializations = specializationsResponse.data.response;
     },
+    
     getVoteDoctors(revVote) {
       this.voteDoctors = this.doctorsWithAverageVote.filter((doctor) => doctor.averageVote == revVote);
       console.log(this.voteDoctors)
@@ -131,33 +133,35 @@ export default {
 </script>
 
 <template>
-  <div class="container py-5">
-
-    <div class="row">
-      <div class="col-3">
-
-        <!-- Filter doctors -->
-        <div class="search-doctors mb-5">
-
-          <label for="specialization-select">Seleziona specializzazione:</label>
-
-          <select class="form-select" id="specialization-select" v-model="store.selectedSpecialization">
-            <option value="">Tutte le specializzazioni</option>
-            <option v-for="specialization in specializations" :key="specialization.id" :value="specialization.id">
-              {{ specialization.title }}
-            </option>
-          </select>
-
+  <div class="bg-doctors">
+    <div class="container py-5">
+  
+      <div class="row">
+        <div class="col-3">
+  
+          <!-- Filter doctors -->
+          <div class="search-doctors mb-5">
+  
+            <label for="specialization-select">Seleziona specializzazione:</label>
+  
+            <select class="form-select" id="specialization-select" v-model="selectedSpecialization">
+              <option value="">Tutte le specializzazioni</option>
+              <option v-for="specialization in specializations" :key="specialization.id" :value="specialization.id">
+                {{ specialization.title }}
+              </option>
+            </select>
+  
+          </div>
+        </div>
+        <div class="col-2 col-md-2 m-auto my-2">
+          <VoteFilter @changeVote="getVoteDoctors" />
+          <ReviewFilter />
         </div>
       </div>
-      <div class="col-2 col-md-2 m-auto my-2">
-        <VoteFilter @changeVote="getVoteDoctors" />
-        <ReviewFilter />
+  
+      <div class="row gap-5 justify-content-around">
+        <DoctorCard v-for="doctor in filteredDoctors" :doctor="doctor" :key="doctor.id" :review="doctor.user.reviews" />
       </div>
-    </div>
-
-    <div class="row gap-5 justify-content-around">
-      <DoctorCard v-for="doctor in filteredDoctors" :doctor="doctor" :key="doctor.id" :review="doctor.user.reviews" />
     </div>
   </div>
 </template>
@@ -165,4 +169,10 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
 @use '../styles/partials/variables' as *;
+
+.bg-doctors{
+  background-image: url('/imgs/Bg-image.jpg');
+  background-size: cover;
+  background-position: center;
+}
 </style>
