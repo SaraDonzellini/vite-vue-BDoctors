@@ -86,8 +86,8 @@ export default {
                     </div>
                 </div>
                 <div class="buttons d-flex">
-                    <a class="btn btn-info me-5" href="#messaggi">Invia un messaggio</a>
-                    <a class="btn btn-success" href="#recensioni">Scrivi una recensione</a>
+                    <a class="btn btn-message  me-5" href="#messaggi">Invia un messaggio</a>
+                    <a class="btn btn-review" href="#recensioni">Scrivi una recensione</a>
                 </div>
             </section>
         </div>
@@ -95,6 +95,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../../styles/general.scss' as *;
+@use '../../styles/partials/variables' as *;
 .info-container {
     padding: 4rem;
 
@@ -110,5 +112,14 @@ export default {
     .fa-star {
         color: rgba(255, 208, 0, 0.815);
     }
+}
+
+a{
+    color: white;
+    background-color: $secondary-color !important;
+  &:hover{
+    color: rgb(187, 184, 184);
+    background-color: $secondary-variant-color !important;
+  }
 }
 </style>
