@@ -18,7 +18,7 @@ export default {
     },
     methods: {
         sendEmit() {
-            console.log('selectedReviews:', this.selectedReviews);
+            // console.log('selectedReviews:', this.selectedReviews);
             this.$emit('changeReviews', this.selectedReviews)
         }
     },

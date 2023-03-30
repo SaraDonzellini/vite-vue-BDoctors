@@ -17,18 +17,18 @@ export default {
 
   data() {
     return {
+      votes: [1, 2, 3, 4, 5],
+      reviews: [1, 2, 5, 10],
       store,
       doctors: [],
       specializations: [],
-      reviews: [],
       specDoctors: [],
       voteDoctors: [],
       revDoctors: [],
       selectedSpecialization: '',
-      selectedVote: null,
+      selectedVote: '',
       selectedReview: null,
       averageVote: null,
-      // numReview: null,
       doctorsWithAverageVote: null,
     }
   },
@@ -60,13 +60,7 @@ export default {
       });
       this.specializations = specializationsResponse.data.response;
     },
-    
-    getVoteDoctors(revVote) {
-      this.selectedVote = revVote;
-    },
-    getReviewDoctors(rev) {
-      this.selectedReview = rev;
-    }
+
   },
 
   computed: {
@@ -76,28 +70,32 @@ export default {
 
         if (this.selectedVote) {
           this.voteDoctors = this.specDoctors.filter((doctor) => doctor.averageVote == this.selectedVote)
-          return this.voteDoctors
-          
+          if (this.selectedReview) {
+            this.revDoctors = this.voteDoctors.filter((doctor) => doctor.numReview >= this.selectedReview)
+            return this.revDoctors
+          } else {
+            return this.voteDoctors
+          }
         } else {
           return this.specDoctors
         }
-        // if (this.selectedReview) {
-        //   this.revDoctors = this.voteDoctors.filter((doctor) => doctor.numReview == this.selectedReview)
-        // } else {
-        // }
-
       } else if (this.selectedSpecialization) {
         this.specDoctors = this.doctorsWithAverageVote.filter((doctor) =>
           doctor.specializations.some((spec) => spec.id === this.selectedSpecialization)
         );
         if (this.selectedVote) {
           this.voteDoctors = this.specDoctors.filter((doctor) => doctor.averageVote == this.selectedVote)
-          return this.voteDoctors
+          if (this.selectedReview) {
+            this.revDoctors = this.voteDoctors.filter((doctor) => doctor.numReview >= this.selectedReview)
+            return this.revDoctors
+          } else {
+            return this.voteDoctors
+          }
         } else {
           return this.specDoctors
         }
       }
-    }
+    },
   },
 
   mounted() {
@@ -114,30 +112,49 @@ export default {
 <template>
   <div class="bg-doctors">
     <div class="container py-5">
-  
-      <div class="row">
+
+      <div class="row justify-content-between">
         <div class="col-3">
-  
           <!-- Filter doctors -->
           <div class="search-doctors mb-5">
-  
             <label for="specialization-select">Seleziona specializzazione:</label>
-  
+
             <select class="form-select" id="specialization-select" v-model="selectedSpecialization">
               <option value="">Tutte le specializzazioni</option>
               <option v-for="specialization in specializations" :key="specialization.id" :value="specialization.id">
                 {{ specialization.title }}
               </option>
             </select>
-  
+
           </div>
         </div>
-        <div class="col-2 col-md-2 m-auto my-2">
-          <VoteFilter @changeVote="getVoteDoctors" />
-          <ReviewFilter />
+        <div class="col-6 col-md-6 my-2">
+          <div class="filters row">
+            <div class="col-4">
+              <select v-if="this.selectedVote" class="form-select" aria-label="Default select example" v-model="selectedReview">
+                <option selected value="">N° min Recensioni</option>
+                <option v-for="review in reviews" :key="review" :value="review">
+                  {{ review }}
+                </option>
+              </select>
+            </div>
+            <div class="col-4">
+              <select class="form-select" aria-label="Default select example" v-model="selectedVote">
+                <option selected value="">Vote</option>
+                <option v-for="vote in votes" :key="vote" :value="vote">
+                  {{ vote }}
+                </option>
+              </select>
+            </div>
+            <div class="col-3">
+              <button @click="selectedVote = ''" class="btn btn-info">
+                Rimuovi filtri
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-  
+
       <div class="row gap-5 justify-content-around">
         <DoctorCard v-for="doctor in filteredDoctors" :doctor="doctor" :key="doctor.id" :review="doctor.user.reviews" />
       </div>
@@ -149,7 +166,7 @@ export default {
 @use '../styles/general.scss' as *;
 @use '../styles/partials/variables' as *;
 
-.bg-doctors{
+.bg-doctors {
   background-image: url('/imgs/Bg-image.jpg');
   background-size: cover;
   background-position: center;
