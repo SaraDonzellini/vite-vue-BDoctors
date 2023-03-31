@@ -295,6 +295,12 @@ export default {
 .btn-doctors{
   background-color: $secondary-color;
   color: white;
+
+  &:hover {
+    color:  rgb(187, 184, 184);
+    background-color: $secondary-variant-color;
+    color: $secondary-color;
+  }
 }
 .functions {
   background-color: $primary-color;
