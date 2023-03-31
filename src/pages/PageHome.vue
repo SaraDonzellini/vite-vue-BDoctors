@@ -280,11 +280,15 @@ export default {
   .text-home {
       color: rgb(202, 214, 231);
       font-weight: bold;
-      transition: color 1s ease-in-out;
+      transition: color 4s ease-in-out;
       cursor:default;
+      transition: color 3s ease-in-out, text-shadow 2s ease-in-out;
 
       &:hover {
-        color: $hover-home;
+        text-shadow:0 0 10px rgba(0, 190, 161, 0.7),
+          0 0 20px rgba(0, 190, 161, 0.5),
+          0 0 30px rgba(0, 190, 161, 0.3),
+          0 0 40px rgba(0, 190, 161, 0.1); 
       }
     }
 }
