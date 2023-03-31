@@ -47,6 +47,7 @@ export default {
       selectedReview: null,
       averageVote: null,
       doctorsWithAverageVote: null,
+      messageElement: false,
     }
   },
 
@@ -118,6 +119,14 @@ export default {
   mounted() {
     this.getDoctors();
     this.selectedReview = '';
+    // const doctorsShowDiv = document.querySelector("#doctors-show");
+    // const messageElement = document.querySelector("#message");
+
+    // if (doctorsShowDiv.querySelectorAll(".card").length === 0) {
+    //   messageElement.classList.remove("hidden");
+    // } else {
+    //   messageElement.classList.add("hidden");
+    // }
   },
 
   created() {
@@ -148,6 +157,9 @@ export default {
         </div>
         <div class="col-6 col-md-6 my-2">
           <div class="filters row justify-content-end">
+            <div class="label-place d-flex justify-content-end w-75">
+              <label class="w-75">Seleziona i filtri:</label>
+            </div>
             <div class="col-4">
               <select v-if="selectedVote" class="form-select" aria-label="Default select example"
                 v-model="selectedReview">
@@ -166,7 +178,9 @@ export default {
               </select>
             </div>
             <div class="col-3 d-flex justify-content-end">
-              <button @click="(this.selectedVote = '') && (this.selectedSpecialization = '')" class="btn filter-btn">
+              <button
+                @click="(this.selectedVote = '') && (this.selectedSpecialization = '') && (this.selectedReview = '')"
+                class="btn filter-btn">
                 Rimuovi filtri
               </button>
             </div>
@@ -174,9 +188,18 @@ export default {
         </div>
       </div>
 
-      <div class="row gap-5 justify-content-around">
+      <section v-if="(filteredDoctors == (this.specDoctors == 0))" class="no-doctor">
+        <div>
+          <h2 class="mt-3">
+            Nessun dottore corrisponde ai criteri di ricerca
+          </h2>
+        </div>
+      </section>
+
+      <section v-else class="doctor row gap-5 justify-content-around">
         <DoctorCard v-for="doctor in filteredDoctors" :doctor="doctor" :key="doctor.id" :review="doctor.user.reviews" />
-      </div>
+      </section>
+
     </div>
   </div>
 </template>
@@ -184,6 +207,14 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
 @use '../styles/partials/variables' as *;
+
+.page-container {
+  height: 1000px;
+  /* altezza fissa */
+  overflow-y: auto;
+  /* aggiunge la scrollbar verticale */
+  overflow-x: hidden;
+}
 
 .bg-doctors {
   background-image: url('/imgs/Bg-image.jpg');
@@ -194,5 +225,10 @@ export default {
     background-color: $secondary-variant-color;
     color: white;
   }
+}
+
+
+.no-doctor {
+  height: 60vh;
 }
 </style>
