@@ -190,7 +190,9 @@ export default {
 
       <section v-if="(filteredDoctors == (this.specDoctors == 0))" class="no-doctor">
         <div>
-          <p>No doctors found.</p>
+          <h2 class="mt-3">
+            Nessun dottore corrisponde ai criteri di ricerca
+          </h2>
         </div>
       </section>
 
