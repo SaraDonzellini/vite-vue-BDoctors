@@ -61,11 +61,21 @@ li {
   a {
     text-decoration: none;
     color: white;
+    transition: border-bottom-color 1s ease-in-out;
   }
 }
 
 .active {
   color: $secondary-color;
+  text-decoration: none;
+  border-bottom: 1px solid $secondary-color;
+  padding-left: 10px;
+  transition: color 1.2s ease-in-out, border-bottom-color 1s ease-in-out;
+}
+
+.active:hover {
+  color: $secondary-variant-color;
+  border-bottom-color: $secondary-variant-color ;
 }
 
 select {
