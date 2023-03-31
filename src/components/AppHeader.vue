@@ -25,12 +25,12 @@ export default {
       <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto align-middle">
           <li class="nav-link d-flex flex-column text-center align-self-center">
-            <router-link :to="{ name: 'home' }" :class="this.$route.name == 'home' ? 'active' : ''" class="router">
+            <router-link :to="{ name: 'home' }" :class="this.$route.name == 'home' ? 'active' : ''">
               Home
             </router-link>
           </li>
           <li class="nav-link d-flex flex-column text-center align-self-center">
-            <router-link :to="{ name: 'doctors' }" :class="this.$route.name == 'doctors' ? 'active' : ''" class="router">
+            <router-link :to="{ name: 'doctors' }" :class="this.$route.name == 'doctors' ? 'active' : ''">
               Dottori
             </router-link>
           </li>
@@ -53,7 +53,7 @@ export default {
 li {
   list-style-type: none;
 
-  a.router {
+  a {
     text-decoration: none;
     color: white;
     transition: border-bottom-color 1s ease-in-out;
