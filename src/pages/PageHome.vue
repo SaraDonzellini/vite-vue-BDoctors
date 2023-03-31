@@ -106,7 +106,7 @@ export default {
             });
             // console.log(doctor);
             this.sliderDoctors = doctorsWithAverageVote.filter(doctor => doctor.averageVote >= 4);
-            this.sponsorSliderDoctors = doctorsWithAverageVote.filter(doctor => doctor.user.sponsorships = true)
+            this.sponsorSliderDoctors = doctorsWithAverageVote.filter(doctor => doctor.user.sponsorships.length > 0 )
             // console.log(doctorsWithAverageVote)
           }
         });
@@ -209,7 +209,7 @@ export default {
           <div class="col-11 mx-4 mb-3 col-md-8 col-lg-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
             <div class="info-title d-flex flex-column">
               <i class="fa-solid fa-pen-nib pe-2 fs-3 mb-3"></i>
-              <h5 class="mb-4 ">
+              <h5 class="mb-4">
                 Lascia la tua recensione!
               </h5>
             </div>
@@ -224,7 +224,7 @@ export default {
 
     <div class="bg-doctors py-5">
       <section class="slider-sponsor mb-5">
-        <div class="title-section text-center text-white">
+        <div class="title-section text-center col-7 col-md-5 col-lg-4 text-white">
           <h3>
             Medici in evidenza
           </h3>
@@ -239,7 +239,7 @@ export default {
       </section>
 
       <section class="slider-vote">
-        <div class="title-section text-center text-white">
+        <div class="title-section text-center col-7 col-md-5 col-lg-4 text-white">
           <h3>
             Con i voti migliori
           </h3>
@@ -335,7 +335,6 @@ export default {
 
   .title-section{
     margin: auto;
-    width: 18%;
     background-color: $primary-color;
     border-radius: 35px;
     padding: 1rem 0 0.7rem;
