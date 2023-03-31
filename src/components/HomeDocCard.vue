@@ -97,6 +97,10 @@ export default {
 @use '../styles/general.scss' as *;
 @use '../styles/partials/variables' as *;
 
+.fa-star {
+    color: rgba(255, 208, 0, 0.815);
+}
+
 a {
     color: $primary-variant-color;
     text-decoration: none;
