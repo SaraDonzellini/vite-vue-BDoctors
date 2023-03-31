@@ -17,6 +17,7 @@ export default {
       doctors: [],
       averageVote: null,
       sliderDoctors: [],
+      sponsorSliderDoctors: [],
       sliderOptions: {
         slidesToShow: 3,
         slidesToScroll: 3,
@@ -105,7 +106,8 @@ export default {
             });
             // console.log(doctor);
             this.sliderDoctors = doctorsWithAverageVote.filter(doctor => doctor.averageVote >= 4);
-            //console.log(doctorsWithAverageVote)
+            this.sponsorSliderDoctors = doctorsWithAverageVote.filter(doctor => doctor.user.sponsorships = true)
+            // console.log(doctorsWithAverageVote)
           }
         });
 
@@ -221,7 +223,27 @@ export default {
     </section>
 
     <div class="bg-doctors py-5">
+      <section class="slider-sponsor mb-5">
+        <div class="title-section text-center text-white">
+          <h3>
+            Medici in evidenza
+          </h3>
+        </div>
+        <div class="container container-slider p-3">
+          <Splide :options="sliderOptions">
+            <SplideSlide class="row justify-content-start" v-for="(doctor, index) in sponsorSliderDoctors">
+              <HomeDocCard :doctor="doctor" :key="index" :review="doctor.user.reviews" />
+            </SplideSlide>
+          </Splide>
+        </div>
+      </section>
+
       <section class="slider-vote">
+        <div class="title-section text-center text-white">
+          <h3>
+            Con i voti migliori
+          </h3>
+        </div>
         <div class="container container-slider p-3">
           <Splide :options="sliderOptions">
             <SplideSlide class="row justify-content-start" v-for="(doctor, index) in sliderDoctors">
@@ -310,6 +332,15 @@ export default {
   background-size: cover;
   background-position: center;
   backdrop-filter: blur(50px);
+
+  .title-section{
+    margin: auto;
+    width: 18%;
+    background-color: $primary-color;
+    border-radius: 35px;
+    padding: 1rem 0 0.7rem;
+    margin-bottom: 1rem;
+  }
 
   .blog-card {
     position: relative;
