@@ -119,14 +119,6 @@ export default {
   mounted() {
     this.getDoctors();
     this.selectedReview = '';
-    // const doctorsShowDiv = document.querySelector("#doctors-show");
-    // const messageElement = document.querySelector("#message");
-
-    // if (doctorsShowDiv.querySelectorAll(".card").length === 0) {
-    //   messageElement.classList.remove("hidden");
-    // } else {
-    //   messageElement.classList.add("hidden");
-    // }
   },
 
   created() {
@@ -188,6 +180,19 @@ export default {
         </div>
       </div>
 
+      <section v-show="doctors.length === 0" class="wait-api">
+        <div class="loader">
+
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="-466.4 259.6 280.2 47.3" enable-background="new -466.4 259.6 280.2 47.3" xml:space="preserve">
+            <polyline class="animation"
+              points="-465.4,281 -436,281 -418.9,281 -423.9,281 -363.2,281 -355.2,269 -345.2,303 -335.2,263 -325.2,291 -319.2,281 -187.2,281 ">
+            </polyline>
+
+          </svg>
+        </div>
+      </section>
+
       <section v-if="(filteredDoctors == (this.specDoctors == 0))" class="no-doctor">
         <div>
           <h2 class="mt-3">
@@ -208,13 +213,6 @@ export default {
 @use '../styles/general.scss' as *;
 @use '../styles/partials/variables' as *;
 
-.page-container {
-  height: 1000px;
-  /* altezza fissa */
-  overflow-y: auto;
-  /* aggiunge la scrollbar verticale */
-  overflow-x: hidden;
-}
 
 .bg-doctors {
   background-image: url('/imgs/Bg-image.jpg');
@@ -228,7 +226,132 @@ export default {
 }
 
 
-.no-doctor {
+.no-doctor,
+.wait-api {
   height: 60vh;
+}
+
+
+.loader {
+  @mixin translate($x, $y) {
+    -webkit-transform: translate($x, $y);
+    -ms-transform: translate($x, $y);
+    -o-transform: translate($x, $y);
+    transform: translate($x, $y);
+  }
+
+  @mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+      @content;
+    }
+
+    @-moz-keyframes #{$animationName} {
+      @content;
+    }
+
+    @-o-keyframes #{$animationName} {
+      @content;
+    }
+
+    @keyframes #{$animationName} {
+      @content;
+    }
+  }
+
+  @mixin animate($name, $duration, $iteration, $direction) {
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    -o-animation-duration: $duration;
+    animation-duration: $duration;
+
+    -webkit-animation-iteration-count: $iteration;
+    -moz-animation-iteration-count: $iteration;
+    -o-animation-iteration-count: $iteration;
+    animation-iteration-count: $iteration;
+
+    -webkit-animation-name: $name;
+    -moz-animation-name: $name;
+    -o-animation-name: $name;
+    animation-name: $name;
+
+    -webkit-animation-direction: $direction;
+    -moz-animation-direction: $direction;
+    -o-animation-direction: $direction;
+    animation-direction: $direction;
+  }
+
+  @include keyframes(pulsate) {
+    0% {
+      background-color: #f44336;
+    }
+
+    25% {
+      background-color: #E91E63;
+    }
+
+    50% {
+      background-color: #2196F3;
+    }
+
+    75% {
+      background-color: #FFC107;
+    }
+
+    100% {
+      background-color: #FF5722;
+    }
+  }
+
+  @include keyframes(move) {
+    to {
+      stroke-dashoffset: -1200;
+    }
+  }
+
+  @include keyframes(fade) {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @mixin pulsate {
+    @include animate(pulsate, 80s, infinite, normal);
+  }
+
+
+  .loader {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999999;
+    @include pulsate;
+
+    svg {
+      left: 0;
+      position: absolute;
+      top: 50%;
+      @include translate(0, -50%);
+
+    }
+  }
+
+  .animation {
+    fill: none;
+    stroke: $secondary-variant-color;
+    stroke-linecap: square;
+    stroke-miterlimit: 10;
+    stroke-width: 0.5px;
+    opacity: 1;
+    stroke-dasharray: 600;
+    -webkit-animation: move 5s linear forwards infinite, fade 5s linear infinite;
+    animation: move 5s linear forwards infinite, fade 5s linear infinite;
+  }
+
 }
 </style>
