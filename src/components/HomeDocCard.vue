@@ -56,7 +56,7 @@ export default {
 </script>
 
 <template>
-    <article class="card shadow col-12 shadow-lg my-card">
+    <article class="card col-12 my-card">
         <router-link :to="{ name: 'doctor', params: { id: doctor.id } }">
 
             <!-- Doctor's photo -->
