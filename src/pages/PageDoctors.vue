@@ -113,10 +113,6 @@ export default {
         }
       }
     },
-    clearFilters(){
-      this.selectedVote = '',
-      this.selectedSpecialization = ''
-    }
   },
 
   mounted() {
@@ -151,9 +147,10 @@ export default {
           </div>
         </div>
         <div class="col-6 col-md-6 my-2">
-          <div class="filters row">
+          <div class="filters row justify-content-end">
             <div class="col-4">
-              <select v-if="this.selectedVote" class="form-select" aria-label="Default select example" v-model="selectedReview">
+              <select v-if="selectedVote" class="form-select" aria-label="Default select example"
+                v-model="selectedReview">
                 <option selected value="">N° min Recensioni</option>
                 <option v-for="review in reviews" :key="review" :value="review">
                   {{ review }}
@@ -168,8 +165,8 @@ export default {
                 </option>
               </select>
             </div>
-            <div class="col-3">
-              <button @click="clearFilters" class="btn filter-btn">
+            <div class="col-3 d-flex justify-content-end">
+              <button @click="(this.selectedVote = '') && (this.selectedSpecialization = '')" class="btn filter-btn">
                 Rimuovi filtri
               </button>
             </div>
@@ -193,7 +190,7 @@ export default {
   background-size: cover;
   background-position: center;
 
-  .filter-btn{
+  .filter-btn {
     background-color: $secondary-variant-color;
     color: white;
   }
