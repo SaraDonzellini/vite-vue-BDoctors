@@ -133,51 +133,45 @@ export default {
   <div class="bg-doctors">
     <div class="container py-5">
 
-      <div class="row justify-content-between">
-        <div class="col-3">
-          <!-- Filter doctors -->
-          <div class="search-doctors mb-5">
-            <label for="specialization-select">Seleziona specializzazione:</label>
+      <div class="d-flex justify-content-between mb-4 flex-wrap">
 
-            <select class="form-select" id="specialization-select" v-model="selectedSpecialization">
-              <option value="">Tutte le specializzazioni</option>
-              <option v-for="specialization in specializations" :key="specialization.id" :value="specialization.id">
-                {{ specialization.title }}
+        <!-- Filter doctors -->
+        <div class="col-12 col-md-3 mb-3">
+          <h5 class="mb-3 secondary-text-color">Seleziona specializzazione:</h5>
+
+          <select class="form-select" id="specialization-select" v-model="selectedSpecialization">
+            <option value="">Tutte le specializzazioni</option>
+            <option v-for="specialization in specializations" :key="specialization.id" :value="specialization.id">
+              {{ specialization.title }}
+            </option>
+          </select>
+
+        </div>
+
+        <div class="col-12 col-md-6">
+          <h5 class="mb-3 secondary-text-color">Seleziona filtri:</h5>
+
+          <div class="d-flex filters gap-1">
+            <select v-if="selectedVote" class="form-select" aria-label="Default select example" v-model="selectedReview">
+              <option selected value="">N° min Recensioni</option>
+              <option v-for="review in reviews" :key="review" :value="review">
+                {{ review }}
               </option>
             </select>
 
+            <select class="form-select" aria-label="Default select example" v-model="selectedVote">
+              <option selected value="">Voto</option>
+              <option v-for=" vote in votes" :key="vote" :value="vote.num">
+                {{ vote.num }} {{ vote.text }}
+              </option>
+            </select>
+
+            <button @click="(this.selectedVote = '') && (this.selectedSpecialization = '') && (this.selectedReview = '')"
+              class="btn btn-danger container-fluid" style="border-radius: 25px;">
+              Rimuovi
+            </button>
           </div>
-        </div>
-        <div class="col-6 col-md-6 my-2">
-          <div class="filters row justify-content-end">
-            <div class="label-place d-flex justify-content-end w-75">
-              <label class="w-75">Seleziona i filtri:</label>
-            </div>
-            <div class="col-4">
-              <select v-if="selectedVote" class="form-select" aria-label="Default select example"
-                v-model="selectedReview">
-                <option selected value="">N° min Recensioni</option>
-                <option v-for="review in reviews" :key="review" :value="review">
-                  {{ review }}
-                </option>
-              </select>
-            </div>
-            <div class="col-4">
-              <select class="form-select" aria-label="Default select example" v-model="selectedVote">
-                <option selected value="">Voto</option>
-                <option v-for="vote in votes" :key="vote" :value="vote.num">
-                  {{ vote.num }} {{ vote.text }}
-                </option>
-              </select>
-            </div>
-            <div class="col-3 d-flex justify-content-end">
-              <button
-                @click="(this.selectedVote = '') && (this.selectedSpecialization = '') && (this.selectedReview = '')"
-                class="btn btn-danger" style="border-radius: 25px;">
-                Rimuovi filtri
-              </button>
-            </div>
-          </div>
+
         </div>
       </div>
 
@@ -221,13 +215,20 @@ export default {
   background-position: center;
 }
 
+div.filters {
+
+  select,
+  button {
+    height: 38px !important;
+  }
+}
 
 .no-doctor,
 .wait-api {
   height: 60vh;
 }
 
-
+// Heartbeat loading
 .loader {
   @mixin translate($x, $y) {
     -webkit-transform: translate($x, $y);
