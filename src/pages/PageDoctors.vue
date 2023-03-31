@@ -13,7 +13,28 @@ export default {
 
   data() {
     return {
-      votes: [1, 2, 3, 4, 5],
+      votes: [
+        {
+          num: 1,
+          text: 'stella',
+        },
+        {
+          num: 2,
+          text: 'stelle',
+        },
+        {
+          num: 3,
+          text: 'stelle',
+        },
+        {
+          num: 4,
+          text: 'stelle',
+        },
+        {
+          num: 5,
+          text: 'stelle',
+        }
+      ],
       reviews: [1, 2, 5, 10],
       store,
       doctors: [],
@@ -100,6 +121,7 @@ export default {
 
   mounted() {
     this.getDoctors();
+    this.selectedReview = '';
   },
 
   created() {
@@ -140,14 +162,14 @@ export default {
             </div>
             <div class="col-4">
               <select class="form-select" aria-label="Default select example" v-model="selectedVote">
-                <option selected value="">Vote</option>
-                <option v-for="vote in votes" :key="vote" :value="vote">
-                  {{ vote }}
+                <option selected value="">Voto</option>
+                <option v-for="vote in votes" :key="vote" :value="vote.num">
+                  {{ vote.num }} {{ vote.text }}
                 </option>
               </select>
             </div>
             <div class="col-3">
-              <button @click="clearFilters" class="btn btn-info">
+              <button @click="clearFilters" class="btn filter-btn">
                 Rimuovi filtri
               </button>
             </div>
@@ -170,5 +192,10 @@ export default {
   background-image: url('/imgs/Bg-image.jpg');
   background-size: cover;
   background-position: center;
+
+  .filter-btn{
+    background-color: $secondary-variant-color;
+    color: white;
+  }
 }
 </style>
