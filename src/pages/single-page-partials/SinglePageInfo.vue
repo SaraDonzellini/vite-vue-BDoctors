@@ -79,6 +79,13 @@ export default {
                         {{ specialization.title }} |
                     </span>
 
+                    <h6 class=" secondary-text-color mt-3">
+                        Prestazione
+                    </h6>
+                    <span>
+                        {{ doctor.performance }}
+                    </span>
+
                     <div class="vote-stars mt-4">
                         <h6 class="secondary-text-color">Voto </h6>
                         <i v-for="starEL in fullStars" class="fa-solid fa-star"></i>
