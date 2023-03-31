@@ -119,6 +119,7 @@ export default {
   mounted() {
     this.getDoctors();
     this.selectedReview = '';
+    this.selectedSpecialization = store.selectedSpecialization;
   },
 
   created() {
