@@ -88,7 +88,7 @@ export default {
       try {
         const response = await axios.get('http://127.0.0.1:8000/api/doctors/')
         this.doctors = response.data.response;
-        console.warn(response.data.response)
+        //console.log(response.data.response)
 
         // Calcola la media dei voti per ogni dottore
         this.doctors.forEach(doctor => {
@@ -97,7 +97,7 @@ export default {
               const reviews = doctor.user.reviews;
               const totalVotes = reviews.reduce((sum, review) => sum + review.vote, 0);
               const averageVote = totalVotes / reviews.length;
-              console.log(averageVote);
+              //console.log(averageVote);
               return {
                 ...doctor,
                 averageVote: averageVote.toFixed(2)
@@ -105,7 +105,7 @@ export default {
             });
             // console.log(doctor);
             this.sliderDoctors = doctorsWithAverageVote.filter(doctor => doctor.averageVote >= 4);
-            console.log(doctorsWithAverageVote)
+            //console.log(doctorsWithAverageVote)
           }
         });
 
