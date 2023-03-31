@@ -148,7 +148,7 @@ export default {
 
       <div class="row">
         <div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-          <div class="search-doctors my-3">
+          <div class="my-3">
             <label class="mb-2 text-light" for="specialization-select">Seleziona specializzazione:</label>
             <select class="form-select" id="specialization-select" v-model="store.selectedSpecialization">
               <option value="">Tutte le specializzazioni</option>
@@ -181,9 +181,9 @@ export default {
   <div class="main-home">
     <section class="functions py-5">
       <div class="container p-3 justify-content-around">
-        <div class="row w-100 justify-content-center">
+        <div class="row justify-content-center">
           <div class="col-11 mx-4 mb-3 col-md-8 col-lg-3 card-tool border rounded-4 p-3 text-center bg-white shadow">
-            <div class="info-title d-flex flex-column">
+            <div class="info-title d-flex flex-column justify-content-center">
               <i class="fa-solid fa-magnifying-glass pe-2 fs-3 mb-3"></i>
               <h5 class="mb-4">
                 Trova il dottore adatto a te!
@@ -386,8 +386,4 @@ export default {
     }
   }
 }
-
-// .functions .container{
-//   background-color: $background-color;
-// }
 </style>
