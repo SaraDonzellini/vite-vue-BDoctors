@@ -81,7 +81,6 @@ export default {
                 <option value="1">1 stella</option>
                 <option value="2">2 stelle</option>
                 <option value="3">3 stelle</option>
-                <!-- stelle dorate al posto dei numeri <i v-for="starEL in fullStars" class="fa-solid fa-star"></i> -->
                 <option value="4">4 stelle</option>
                 <option value="5">5 stelle</option>
             </select>
