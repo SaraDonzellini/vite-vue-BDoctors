@@ -38,45 +38,47 @@ export default {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg my_navbar">
-    <div class="container-fluid">
-      <div class="" id="navbarNav">
-        <ul class="navbar-nav d-flex justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link my_navbar text-light" href="#address">Informazioni Dottore</a>
-          </li>
-        </ul>
-      </div>
+  <section id="doctor-infos" class="my-card shadow-lg">
+    <div class="info-title d-flex justify-content-center">
+      <h5 class="m-0">Informazioni</h5>
     </div>
-  </nav>
-  <div class="container card shadow-lg">
-    <div class="row justify-content-between p-3">
-      <div class="col-12 col-md-5 ">
-        <h5>Indirizzo:</h5>
-        <p> {{ doctor.address }}</p>
-        <h5>Telefono:</h5>
-        <p> {{ doctor.phone }}</p>
-        <h5>Biografia:</h5>
-        <p>
-          {{ doctor.bio }}
-        </p>
+    
+    <div class="container-fluid">
+      <div class="row justify-content-between p-4">
+        
+        <div class="col-12 col-md-5">
+          <div class="d-flex justify-content-between mb-3">
+            <div>
+              <h5 class="secondary-text-color">Indirizzo</h5>
+              <p>{{ doctor.address }}</p>
+            </div>
 
-      </div>
-      <div class="col-12 col-md-5 ">
-        <h5 class="text-center">
-          Curriculum:
-        </h5>
-        <a href="/imgs/Curriculum_1.png" download>
-          Scarica
-        </a>
-        <div>
-          <!-- <img class="image-cv img-fluid" :src="`http://127.0.0.1:8000/storage/${doctor.curriculum}`" :alt="doctor.user.name"> -->
-          <img class="image-cv img-fluid" src="/imgs/Curriculum_1.png" :alt="doctor.user.name">
+            <div>
+              <h5 class="secondary-text-color">Telefono</h5>
+              <p>{{ doctor.phone }}</p>              
+            </div>
+          </div>
+
+          <div class="">
+            <h5 class="text-center mb-3 secondary-text-color">Biografia</h5>
+            <p>{{ doctor.bio }}</p>
+          </div>
+        </div>
+          
+        <div class="col-12 col-md-5 d-flex flex-column align-items-center">
+          <h5 class="text-center secondary-text-color">Curriculum</h5>
+          
+          <a href="/imgs/Curriculum_1.png" download class="download-button mb-3"><i class="fa-solid fa-download"></i> Scarica</a>
+
+          <div class="curriculum-image-container shadow-lg">
+            <img class="image-cv img-fluid" src="/imgs/Curriculum_1.png" :alt="doctor.user.name">
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <section id="recensioni">
+  </section>
+
+  <section id="reviews">
     <nav class="navbar navbar-expand-lg my_navbar">
       <div class="container-fluid">
         <div class="" id="navbarNav">
@@ -131,18 +133,37 @@ export default {
 @use '../../styles/general.scss' as *;
 @use '../../styles/partials/variables' as *;
 
-
-.my_navbar {
-  background-color: $primary-color;
-  color: $primary-text-color;
-
-  :hover {
-    color: $secondary-variant-color;
-  }
+.my-card {
+  border-radius: 25px !important;
+  border-width: 0 !important;
+  background-color: $background-color !important;
+  padding: 0;
+  backdrop-filter: blur(50px);
+  overflow: hidden;
 }
 
+.info-title {
+  padding: 1rem;
+  background-color: $primary-color;
+  color: $secondary-text-color;
+}
 
+.curriculum-image-container {
+        margin-bottom: 0 !important;
+        border-radius: 25px;
+        overflow: hidden;
+        padding: 0 !important;
+    }
 .fa-star {
   color: rgba(255, 208, 0, 0.815);
 }
+
+.download-button{
+  text-decoration: none;
+  background-color: $secondary-color;
+  color: $secondary-text-color;
+  padding: .5rem;
+  border-radius: 5px;
+}
+
 </style>

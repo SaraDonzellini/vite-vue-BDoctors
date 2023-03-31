@@ -46,17 +46,12 @@ main {
   margin-top: 10vh;
 }
 
-/* .my-btn {
-  border-radius: 15px;
-  background-color: $primary-color;
-  text-decoration: none;
-  color: $primary-text-color;
-  padding: .5rem 1rem;
-  font-weight: bold;
-} */
-
 body{
-    font-family: 'Work Sans', sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 
+.secondary-text-color{
+  font-weight: bold;
+  color: $primary-color;
+}
 </style>
