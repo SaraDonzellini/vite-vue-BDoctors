@@ -51,8 +51,8 @@ export default {
           name: 'Giada',
           surname: 'Gallitto',
           photo: 'giada-photo.jpg',
-          place: 'Cordignano | Veneto',
-          text: ''
+          place: 'Treviso | Veneto',
+          text: 'Sono un Junior Full-stack web developer, da sempre motivata nell\'imparare il più possibile, per ampliare e accrescere le mie capacità. Sono una nerd appassionata di film, anime e videogiochi che ama dare sfogo alla sua creatività in ogni occasione.'
         },
         {
           name: 'Sara',
