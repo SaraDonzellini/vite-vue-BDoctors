@@ -104,7 +104,7 @@ export default {
         max-width: 400px;
         //height: 300px;
         margin-bottom: 0 !important;
-        border-radius: 30px;
+        border-radius: 25px;
         overflow: hidden;
         padding: 0 !important;
     }
