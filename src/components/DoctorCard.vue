@@ -118,6 +118,10 @@ a {
     text-decoration: none;
 }
 
+.fa-star {
+    color: rgba(255, 208, 0, 0.815);
+}
+
 .my-card {
     border-radius: 25px;
     border-width: 0 !important;
