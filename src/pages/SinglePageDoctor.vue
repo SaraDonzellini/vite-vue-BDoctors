@@ -48,8 +48,8 @@ export default {
 </script>
 
 <template>
-  <div class="wallpaper w-100 h-100 p-2">
-    <div class="container card-doctor">
+  <div class="wallpaper w-100 h-100 pt-4">
+    <div class="container card col-12 shadow-lg my-card">
       <SinglePageInfo :doctor="doctor" :review="review" :reviewsCount="reviewsCount" />
       <SinglePageDash :doctor="doctor" :review="review" :userId="userId" />
       <SinglePageMessage :doctor="doctor" :review="review" :userId="userId" />
@@ -65,13 +65,17 @@ export default {
   background-image: url('/imgs/Bg-image.jpg');
   background-size: cover;
   background-position: center;
-
-  .card-doctor {
-    border-radius: 20px;
-    background-color: $primary-color;
-    width: 100%;
-  }
 }
+
+.my-card {
+  border-radius: 25px !important;
+  border-width: 0 !important;
+  background-color: $background-color !important;
+  padding: 0;
+  backdrop-filter: blur(50px);
+  overflow: hidden;
+}
+
 </style>
 
 
