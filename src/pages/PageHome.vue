@@ -58,7 +58,7 @@ export default {
           surname: 'Donzellini',
           photo: 'sara-photo.png',
           place: 'Savona | Liguria',
-          text: ''
+          text: 'Sono una Junior Full Stack Web Developer appena uscita dal corso Boolean pronta a crescere in ambito lavorativo! Mi piace la musica e perdo la vita dietro ai videogames'
         },
         {
           name: 'Manuel',
