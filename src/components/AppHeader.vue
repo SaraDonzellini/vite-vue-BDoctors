@@ -32,18 +32,18 @@ export default {
           <li class="nav-link d-flex flex-column text-center align-self-center">
             <router-link :to="{ name: 'doctors' }" :class="this.$route.name == 'doctors' ? 'active' : ''">
               Dottori
-            </router-link>
-          </li>
-          <li class="nav-link flex-column text-center me-3">
-            <a class="login btn" href="http://127.0.0.1:8000/register">
+          </router-link>
+        </li>
+        <li class="nav-link flex-column text-center me-3">
+          <a class="login btn" href="http://127.0.0.1:8000/register">
               Sei un dottore? Registrati!
             </a>
           </li>
           <!-- <li class="nav-link flex-column text-center me-3">
-            <a class="login btn mt-1" href="http://127.0.0.1:8000/register">
-              Sei un dottore? Registrati!
-            </a>
-          </li> -->
+              <a class="login btn mt-1" href="http://127.0.0.1:8000/register">
+                Sei un dottore? Registrati!
+              </a>
+            </li> -->
         </ul>
       </div>
 
@@ -68,8 +68,7 @@ li {
 .active {
   color: $secondary-color;
   text-decoration: none;
-  border-bottom: 1px solid $secondary-color;
-  padding-left: 10px;
+  border-bottom: 2px solid $secondary-color;
   transition: color 1.2s ease-in-out, border-bottom-color 1s ease-in-out;
 }
 
@@ -98,13 +97,13 @@ select {
   padding: 0.5rem 1rem;
 
   &:hover {
-    color:  rgb(187, 184, 184);
+    color: rgb(187, 184, 184);
     background-color: $secondary-variant-color;
     color: $secondary-color;
   }
 }
 
-.text-logo{
-  color:$secondary-color;
+.text-logo {
+  color: $secondary-color;
 }
 </style>
