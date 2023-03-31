@@ -145,7 +145,7 @@ export default {
       </div>
 
       <div class="row">
-        <div class="col-3">
+        <div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
           <div class="search-doctors my-3">
             <label class="mb-2 text-light" for="specialization-select">Seleziona specializzazione:</label>
             <select class="form-select" id="specialization-select" v-model="store.selectedSpecialization">
