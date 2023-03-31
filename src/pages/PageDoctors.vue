@@ -188,14 +188,16 @@ export default {
         </div>
       </div>
 
-      <div class="page-container">
-        <div v-if="(filteredDoctors == (this.specDoctors == 0))">
+      <section v-if="(filteredDoctors == (this.specDoctors == 0))" class="no-doctor">
+        <div>
           <p>No doctors found.</p>
         </div>
-        <div v-else id="doctors-show" class="row gap-5 justify-content-around">
-          <DoctorCard v-for="doctor in filteredDoctors" :doctor="doctor" :key="doctor.id" :review="doctor.user.reviews" />
-        </div>
-      </div>
+      </section>
+
+      <section v-else class="doctor row gap-5 justify-content-around">
+        <DoctorCard v-for="doctor in filteredDoctors" :doctor="doctor" :key="doctor.id" :review="doctor.user.reviews" />
+      </section>
+
     </div>
   </div>
 </template>
@@ -221,5 +223,10 @@ export default {
     background-color: $secondary-variant-color;
     color: white;
   }
+}
+
+
+.no-doctor {
+  height: 60vh;
 }
 </style>
