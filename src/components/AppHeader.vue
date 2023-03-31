@@ -25,25 +25,20 @@ export default {
       <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto align-middle">
           <li class="nav-link d-flex flex-column text-center align-self-center">
-            <router-link :to="{ name: 'home' }" :class="this.$route.name == 'home' ? 'active' : ''">
+            <router-link :to="{ name: 'home' }" :class="this.$route.name == 'home' ? 'active' : ''" class="router">
               Home
             </router-link>
           </li>
           <li class="nav-link d-flex flex-column text-center align-self-center">
-            <router-link :to="{ name: 'doctors' }" :class="this.$route.name == 'doctors' ? 'active' : ''">
+            <router-link :to="{ name: 'doctors' }" :class="this.$route.name == 'doctors' ? 'active' : ''" class="router">
               Dottori
             </router-link>
           </li>
           <li class="nav-link flex-column text-center me-3">
-            <a class="login btn" href="http://127.0.0.1:8000/register">
+            <a class="my-btn btn" href="http://127.0.0.1:8000/register">
               Sei un dottore? Registrati!
             </a>
           </li>
-          <!-- <li class="nav-link flex-column text-center me-3">
-            <a class="login btn mt-1" href="http://127.0.0.1:8000/register">
-              Sei un dottore? Registrati!
-            </a>
-          </li> -->
         </ul>
       </div>
 
@@ -58,7 +53,7 @@ export default {
 li {
   list-style-type: none;
 
-  a {
+  a.router {
     text-decoration: none;
     color: white;
     transition: border-bottom-color 1s ease-in-out;
@@ -92,19 +87,7 @@ select {
   min-height: 10vh;
 }
 
-.login {
-  background-color: $secondary-color;
-  // color: $primary-text-color;
-  padding: 0.5rem 1rem;
-
-  &:hover {
-    color:  rgb(187, 184, 184);
-    background-color: $secondary-variant-color;
-    color: $secondary-color;
-  }
-}
-
-.text-logo{
-  color:$secondary-color;
+.text-logo {
+  color: $secondary-color;
 }
 </style>

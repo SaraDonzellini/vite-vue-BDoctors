@@ -166,7 +166,8 @@ export default {
               </select>
             </div>
             <div class="col-3 d-flex justify-content-end">
-              <button @click="(this.selectedVote = '') && (this.selectedSpecialization = '')" class="btn filter-btn">
+              <button @click="(this.selectedVote = '') && (this.selectedSpecialization = '')" class="btn btn-danger"
+                style="border-radius: 25px;">
                 Rimuovi filtri
               </button>
             </div>
@@ -174,7 +175,7 @@ export default {
         </div>
       </div>
 
-      <div class="row gap-5 justify-content-around">
+      <div class=" row gap-5 justify-content-around">
         <DoctorCard v-for="doctor in filteredDoctors" :doctor="doctor" :key="doctor.id" :review="doctor.user.reviews" />
       </div>
     </div>
@@ -189,10 +190,5 @@ export default {
   background-image: url('/imgs/Bg-image.jpg');
   background-size: cover;
   background-position: center;
-
-  .filter-btn {
-    background-color: $secondary-variant-color;
-    color: white;
-  }
 }
 </style>

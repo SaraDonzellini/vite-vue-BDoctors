@@ -58,77 +58,83 @@ export default {
 </script>
 
 <template>
-    <div class="row w-100 p-3">
-        <div class="col-12 ">
-            <form class="row w-100 justify-content-between" @submit.prevent="onSubmit">
-                <div class="name col-12 col-md-3 px-2">
-                    <label for="name">
-                        <h6>Nome(*):</h6>
-                    </label>
-                    <input v-model="name" required class="d-block form-control" name="name" type="text" id="name">
-                </div>
-                <div class="surname col-12 col-md-3  px-2">
-                    <label for="surname">
-                        <h6>Cognome(*):</h6>
-                    </label>
-                    <input v-model="surname" required class="d-block form-control" name="surname" type="text" id="surname">
-                </div>
-                <div class="vote col-12 col-md-3  px-2">
-                    <label for="vote">
-                        <h6>Voto(*):</h6>
-                    </label>
-                    <select v-model="vote" required name="vote" id="vote" class="d-block form-control form-select">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-
-                </div>
-                <div class="rev-text mt-4 col-12 px-2">
-                    <label for="rev-text">
-                        <h6>Testo(*):</h6>
-                    </label>
-                    <textarea v-model="content" required name="rev-text" id="rev-text" class="form-control"></textarea>
-                </div>
-                <div class="">
-                    (*) I campi sono obbligatori
-                </div>
-                <div class="button-sub d-flex justify-content-start">
-                    <button class="btn btn-primary mt-4 py-2 px-4" type="submit">Invia</button>
-                </div>
-            </form>
-            <div class="alert alert-success" v-if="showMessage">
-                Recensione inviato con successo!
-            </div>
+    <form class="row justify-content-between" @submit.prevent="onSubmit">
+        <div class="name col-12 col-md-3 px-2">
+            <label for="name">
+                <h6>Nome(*):</h6>
+            </label>
+            <input v-model="name" required class="d-block form-control" name="name" type="text" id="name">
         </div>
+        <div class="surname col-12 col-md-3">
+            <label for="surname">
+                <h6>Cognome(*):</h6>
+            </label>
+            <input v-model="surname" required class="d-block form-control" name="surname" type="text" id="surname">
+        </div>
+        <div class="vote col-12 col-md-3">
+
+            <label for="vote">
+                <h6>Voto(*):</h6>
+            </label>
+
+            <select v-model="vote" required name="vote" id="vote" class="d-block form-control form-select">
+                <option value="1">1 stella</option>
+                <option value="2">2 stelle</option>
+                <option value="3">3 stelle</option>
+                <!-- stelle dorate al posto dei numeri <i v-for="starEL in fullStars" class="fa-solid fa-star"></i> -->
+                <option value="4">4 stelle</option>
+                <option value="5">5 stelle</option>
+            </select>
+        </div>
+
+        <div class="rev-text mt-4 col-12">
+            <label for="rev-text">
+                <h6>Testo(*):</h6>
+            </label>
+            <textarea v-model="content" required name="rev-text" id="rev-text" class="form-control"></textarea>
+        </div>
+
+        <div class="mb-3">
+            (*) I campi sono obbligatori
+        </div>
+        <div class="button-sub d-flex justify-content-start">
+            <button class="my-btn" type="submit">Invia</button>
+        </div>
+    </form>
+    <div class="alert alert-success" v-if="showMessage">
+        Recensione inviato con successo!
     </div>
 </template>
 
 <style lang="scss" scoped>
-input:invalid {
-    border: 1px dashed rgb(0, 0, 0);
+input {
+    :valid {
+        border: 2px solid black;
+    }
+
+    :invalid {
+        border: 1px solid lightgrey;
+    }
 }
 
-input:valid {
-    border: 2px solid black;
+select select {
+    :valid {
+        border: 2px solid black;
+    }
+
+    :invalid {
+        border: 1px solid lightgrey;
+    }
 }
 
-select:invalid {
-    border: 1px dashed rgb(0, 0, 0);
-}
+textarea {
+    :valid {
+        border: 2px solid black;
+    }
 
-select:valid {
-    border: 2px solid black;
-}
-
-textarea:invalid {
-    border: 1px dashed rgb(0, 0, 0);
-}
-
-textarea:valid {
-    border: 2px solid black;
+    :invalid {
+        border: 1px solid lightgrey;
+    }
 }
 </style>
 

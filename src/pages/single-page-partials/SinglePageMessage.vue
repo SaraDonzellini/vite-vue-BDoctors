@@ -70,64 +70,54 @@ export default {
 </script>
 
 <template>
-  <section id="messaggi">
-    <nav class="navbar navbar-expand-lg my_navbar">
+  <section id="messagges" class="my-card shadow-lg mb-4">
+    <div class="info-title d-flex justify-content-center">
+      <h5 class="m-0">Invia un messaggio</h5>
+    </div>
+
+    <div class="p-4">
       <div class="container-fluid">
-        <div class="" id="navbarNav">
-          <ul class="navbar-nav d-flex justify-content-between">
-            <li class="nav-item">
-              <span class="nav-link my_navbar text-light" href="#messaggi" id="bg-toggle">Invia un messaggio</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="container card shadow-lg">
-      <div class="row w-100">
-        <div class="col-12 ">
-
-          <form class="row w-100 justify-content-between  p-3" action="/messages" method="POST" @submit.prevent="onSubmit">
-            <div class="name col-12 col-md-3 ">
-              <label for="name">
-                <h6>Nome(*):</h6>
-              </label>
-              <input class="d-block form-control" required v-model="formData.name" name="name" type="text" id="name">
-            </div>
-
-            <div class="surname col-12 col-md-3 ">
-              <label for="surname">
-                <h6>Cognome(*):</h6>
-              </label>
-              <input class="d-block form-control" required v-model="formData.surname" name="surname" type="text"
-                id="surname">
-            </div>
-
-            <div class="email col-12 col-md-3">
-              <label for="email">
-                <h6>Email(*):</h6>
-              </label>
-              <input class="d-block form-control" required v-model="formData.email" name="email" type="email" id="email">
-            </div>
-
-            <div class="mex-text mt-4 col-12 ">
-              <label for="mex-text">
-                <h6>Testo(*):</h6>
-              </label>
-              <textarea name="text" required v-model="formData.text" id="mex-text" class="form-control"></textarea>
-            </div>
-
-            <div>
-              (*) I campi sono obbligatori
-            </div>
-            <div class="button-sub d-flex justify-content-start">
-              <button class="btn btn-primary mt-4 py-2 " type="submit">Invia</button>
-            </div>
-
-          </form>
-
-          <div class="alert alert-success" v-if="showMessage">
-            Messaggio inviato con successo!
+        <form class="row justify-content-between" action="/messages" method="POST" @submit.prevent="onSubmit">
+          <div class="name col-12 col-md-3 ">
+            <label for="name">
+              <h6>Nome(*):</h6>
+            </label>
+            <input class="d-block form-control" required v-model="formData.name" name="name" type="text" id="name">
           </div>
+
+          <div class="surname col-12 col-md-3 ">
+            <label for="surname">
+              <h6>Cognome(*):</h6>
+            </label>
+            <input class="d-block form-control" required v-model="formData.surname" name="surname" type="text"
+              id="surname">
+          </div>
+
+          <div class="email col-12 col-md-3">
+            <label for="email">
+              <h6>Email(*):</h6>
+            </label>
+            <input class="d-block form-control" required v-model="formData.email" name="email" type="email" id="email">
+          </div>
+
+          <div class="mex-text mt-4 col-12 ">
+            <label for="mex-text">
+              <h6>Testo(*):</h6>
+            </label>
+            <textarea name="text" required v-model="formData.text" id="mex-text" class="form-control"></textarea>
+          </div>
+
+          <div class="mb-3">
+            (*) I campi sono obbligatori
+          </div>
+          <div class="button-sub d-flex justify-content-start">
+            <button class="my-btn" type="submit">Invia</button>
+          </div>
+
+        </form>
+
+        <div class="alert alert-success" v-if="showMessage">
+          Messaggio inviato con successo!
         </div>
       </div>
     </div>
@@ -139,37 +129,39 @@ export default {
 @use '../../styles/partials/variables' as *;
 
 
-.my_navbar {
+.info-title {
+  padding: 1rem;
   background-color: $primary-color;
-  color: $primary-text-color;
+  color: $secondary-text-color;
+}
 
-  :hover {
-    color: $secondary-variant-color;
+input {
+  :valid {
+    border: 2px solid black;
   }
 
+  :invalid {
+    border: 1px solid lightgrey;
+  }
 }
 
-input:invalid {
-  border: 1px dashed rgb(0, 0, 0);
+select select {
+  :valid {
+    border: 2px solid black;
+  }
+
+  :invalid {
+    border: 1px solid lightgrey;
+  }
 }
 
-input:valid {
-  border: 2px solid black;
-}
+textarea {
+  :valid {
+    border: 2px solid black;
+  }
 
-select:invalid {
-  border: 1px dashed rgb(0, 0, 0);
-}
-
-select:valid {
-  border: 2px solid black;
-}
-
-textarea:invalid {
-  border: 1px dashed rgb(0, 0, 0);
-}
-
-textarea:valid {
-  border: 2px solid black;
+  :invalid {
+    border: 1px solid lightgrey;
+  }
 }
 </style>

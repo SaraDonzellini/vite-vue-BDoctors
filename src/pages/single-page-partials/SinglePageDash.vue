@@ -38,14 +38,15 @@ export default {
 </script>
 
 <template>
-  <section id="doctor-infos" class="my-card shadow-lg">
+  <!-- Doctor's info -->
+  <section id="doctor-infos" class="my-card shadow-lg mb-4">
     <div class="info-title d-flex justify-content-center">
       <h5 class="m-0">Informazioni</h5>
     </div>
-    
+
     <div class="container-fluid">
       <div class="row justify-content-between p-4">
-        
+
         <div class="col-12 col-md-5">
           <div class="d-flex justify-content-between mb-3">
             <div>
@@ -55,7 +56,7 @@ export default {
 
             <div>
               <h5 class="secondary-text-color">Telefono</h5>
-              <p>{{ doctor.phone }}</p>              
+              <p>{{ doctor.phone }}</p>
             </div>
           </div>
 
@@ -64,55 +65,33 @@ export default {
             <p>{{ doctor.bio }}</p>
           </div>
         </div>
-          
+
         <div class="col-12 col-md-5 d-flex flex-column align-items-center">
           <h5 class="text-center secondary-text-color">Curriculum</h5>
-          
-          <a href="/imgs/Curriculum_1.png" download class="download-button mb-3"><i class="fa-solid fa-download"></i> Scarica</a>
 
-          <div class="curriculum-image-container shadow-lg">
+          <div class="curriculum-image-container shadow-lg mb-3">
             <img class="image-cv img-fluid" src="/imgs/Curriculum_1.png" :alt="doctor.user.name">
           </div>
+
+          <a href="/imgs/Curriculum_1.png" download class="my-btn mt-3 mb-3"><i class="fa-solid fa-download"></i>
+            Scarica
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="reviews">
-    <nav class="navbar navbar-expand-lg my_navbar">
+  <!-- Reviews -->
+  <section id="reviews" class="my-card shadow-lg mb-4">
+    <div class="info-title d-flex justify-content-center">
+      <h5 class="m-0">Recensioni</h5>
+    </div>
+
+    <div class="p-4">
       <div class="container-fluid">
-        <div class="" id="navbarNav">
-          <ul class="navbar-nav d-flex justify-content-between">
-            <li class="nav-item">
-              <span class="nav-link my_navbar text-light" href="#recensioni" id="bg-toggle">Scrivi una recensione</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+        <h5 class="secondary-text-color mb-3">Recensioni dei clienti</h5>
 
-    <!--Form per l'inserimento di una nuova recensione-->
-    <div class="container card shadow-lg">
-      <SendReview :userId="userId" />
-    </div>
-  </section>
-  <nav class="navbar navbar-expand-lg my_navbar">
-    <div class="container-fluid">
-      <div class="" id="navbarNav">
-        <ul class="navbar-nav d-flex justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link my_navbar text-light" href="#recensioni">Recensioni</a>
-          </li>
-
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container-fluid card shadow-lg">
-    <div class="row">
-      <div class="col-12 m-2">
-        <ul>
+        <ul class="mb-5">
           <li v-for="(reviewEl, index) in review" :key="index">
             <h5>Voto:
               <i class="fa-solid fa-star" v-for="n in Math.ceil(reviewEl.vote)"></i>
@@ -122,11 +101,14 @@ export default {
             <p>{{ reviewEl.text }}</p>
           </li>
         </ul>
-        <!-- <h4 v-else class="py-3">Non sono ancora presenti delle recensioni</h4> -->
       </div>
 
+      <div class="container-fluid">
+        <h5 class="secondary-text-color mb-3">Scrivi una recensione</h5>
+        <SendReview :userId="userId" />
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
@@ -149,21 +131,13 @@ export default {
 }
 
 .curriculum-image-container {
-        margin-bottom: 0 !important;
-        border-radius: 25px;
-        overflow: hidden;
-        padding: 0 !important;
-    }
+  margin-bottom: 0 !important;
+  border-radius: 25px;
+  overflow: hidden;
+  padding: 0 !important;
+}
+
 .fa-star {
   color: rgba(255, 208, 0, 0.815);
 }
-
-.download-button{
-  text-decoration: none;
-  background-color: $secondary-color;
-  color: $secondary-text-color;
-  padding: .5rem;
-  border-radius: 5px;
-}
-
 </style>

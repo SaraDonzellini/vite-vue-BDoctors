@@ -48,12 +48,12 @@ export default {
 </script>
 
 <template>
-  <div class="wallpaper w-100 h-100 pt-4">
-    <div class="container card col-12 shadow-lg my-card">
-      <SinglePageInfo :doctor="doctor" :review="review" :reviewsCount="reviewsCount" />
-      <SinglePageDash :doctor="doctor" :review="review" :userId="userId" />
-      <SinglePageMessage :doctor="doctor" :review="review" :userId="userId" />
-    </div>
+  <div class="wallpaper w-100 h-100 py-5">
+  <div class="container card col-12 shadow-lg my-card">
+    <SinglePageInfo :doctor="doctor" :review="review" :reviewsCount="reviewsCount" />
+    <SinglePageDash :doctor="doctor" :review="review" :userId="userId" />
+    <SinglePageMessage :doctor="doctor" :review="review" :userId="userId" />
+  </div>
   </div>
 </template>
 
