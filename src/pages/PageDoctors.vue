@@ -47,6 +47,7 @@ export default {
       selectedReview: null,
       averageVote: null,
       doctorsWithAverageVote: null,
+      messageElement: false,
     }
   },
 
@@ -118,6 +119,14 @@ export default {
   mounted() {
     this.getDoctors();
     this.selectedReview = '';
+    // const doctorsShowDiv = document.querySelector("#doctors-show");
+    // const messageElement = document.querySelector("#message");
+
+    // if (doctorsShowDiv.querySelectorAll(".card").length === 0) {
+    //   messageElement.classList.remove("hidden");
+    // } else {
+    //   messageElement.classList.add("hidden");
+    // }
   },
 
   created() {
@@ -148,6 +157,7 @@ export default {
         </div>
         <div class="col-6 col-md-6 my-2">
           <div class="filters row justify-content-end">
+            <label class="w-50 text-center">Seleziona i filtri:</label>
             <div class="col-4">
               <select v-if="selectedVote" class="form-select" aria-label="Default select example"
                 v-model="selectedReview">
@@ -166,7 +176,9 @@ export default {
               </select>
             </div>
             <div class="col-3 d-flex justify-content-end">
-              <button @click="(this.selectedVote = '') && (this.selectedSpecialization = '')" class="btn filter-btn">
+              <button
+                @click="(this.selectedVote = '') && (this.selectedSpecialization = '') && (this.selectedReview = '')"
+                class="btn filter-btn">
                 Rimuovi filtri
               </button>
             </div>
@@ -174,8 +186,13 @@ export default {
         </div>
       </div>
 
-      <div class="row gap-5 justify-content-around">
-        <DoctorCard v-for="doctor in filteredDoctors" :doctor="doctor" :key="doctor.id" :review="doctor.user.reviews" />
+      <div class="page-container">
+        <div v-if="(filteredDoctors == (this.specDoctors == 0))">
+          <p>No doctors found.</p>
+        </div>
+        <div v-else id="doctors-show" class="row gap-5 justify-content-around">
+          <DoctorCard v-for="doctor in filteredDoctors" :doctor="doctor" :key="doctor.id" :review="doctor.user.reviews" />
+        </div>
       </div>
     </div>
   </div>
@@ -184,6 +201,14 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
 @use '../styles/partials/variables' as *;
+
+.page-container {
+  height: 1000px;
+  /* altezza fissa */
+  overflow-y: auto;
+  /* aggiunge la scrollbar verticale */
+  overflow-x: hidden;
+}
 
 .bg-doctors {
   background-image: url('/imgs/Bg-image.jpg');
