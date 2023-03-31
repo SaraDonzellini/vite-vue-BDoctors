@@ -13,7 +13,28 @@ export default {
 
   data() {
     return {
-      votes: [1, 2, 3, 4, 5],
+      votes: [
+        {
+          num: 1,
+          text: 'stella',
+        },
+        {
+          num: 2,
+          text: 'stelle',
+        },
+        {
+          num: 3,
+          text: 'stelle',
+        },
+        {
+          num: 4,
+          text: 'stelle',
+        },
+        {
+          num: 5,
+          text: 'stelle',
+        }
+      ],
       reviews: [1, 2, 5, 10],
       store,
       doctors: [],
@@ -92,14 +113,11 @@ export default {
         }
       }
     },
-    clearFilters(){
-      this.selectedVote = '',
-      this.selectedSpecialization = ''
-    }
   },
 
   mounted() {
     this.getDoctors();
+    this.selectedReview = '';
   },
 
   created() {
@@ -129,9 +147,10 @@ export default {
           </div>
         </div>
         <div class="col-6 col-md-6 my-2">
-          <div class="filters row">
+          <div class="filters row justify-content-end">
             <div class="col-4">
-              <select v-if="this.selectedVote" class="form-select" aria-label="Default select example" v-model="selectedReview">
+              <select v-if="selectedVote" class="form-select" aria-label="Default select example"
+                v-model="selectedReview">
                 <option selected value="">N° min Recensioni</option>
                 <option v-for="review in reviews" :key="review" :value="review">
                   {{ review }}
@@ -140,14 +159,14 @@ export default {
             </div>
             <div class="col-4">
               <select class="form-select" aria-label="Default select example" v-model="selectedVote">
-                <option selected value="">Vote</option>
-                <option v-for="vote in votes" :key="vote" :value="vote">
-                  {{ vote }}
+                <option selected value="">Voto</option>
+                <option v-for="vote in votes" :key="vote" :value="vote.num">
+                  {{ vote.num }} {{ vote.text }}
                 </option>
               </select>
             </div>
-            <div class="col-3">
-              <button @click="clearFilters" class="btn btn-info">
+            <div class="col-3 d-flex justify-content-end">
+              <button @click="(this.selectedVote = '') && (this.selectedSpecialization = '')" class="btn filter-btn">
                 Rimuovi filtri
               </button>
             </div>
@@ -170,5 +189,10 @@ export default {
   background-image: url('/imgs/Bg-image.jpg');
   background-size: cover;
   background-position: center;
+
+  .filter-btn {
+    background-color: $secondary-variant-color;
+    color: white;
+  }
 }
 </style>
