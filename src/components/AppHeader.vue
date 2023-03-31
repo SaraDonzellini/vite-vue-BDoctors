@@ -8,13 +8,13 @@ export default {
 
 <template>
   <nav class="navbar navbar-expand-md navbar-bg navbar-dark fixed-top shadow-lg bg-nav">
-    <div class="container d-flex align-items-center">
+    <div class="container">
 
       <div class="d-flex align-items-center">
         <a class="navbar-brand">
           <img src="../assets/Doctor-logo.png" class="img-fluid" alt="" width="40">
         </a>
-        <h2 class="ms-3 text-logo mt-1">Bdoctors</h2>
+        <h2 class="text-logo mb-0">Bdoctors</h2>
       </div>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -23,22 +23,27 @@ export default {
       </button>
 
       <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item d-flex flex-column text-center me-3 mt-3">
+        <ul class="navbar-nav me-auto align-middle">
+          <li class="nav-link d-flex flex-column text-center align-self-center">
             <router-link :to="{ name: 'home' }" :class="this.$route.name == 'home' ? 'active' : ''">
               Home
             </router-link>
           </li>
-          <li class="nav-item d-flex flex-column text-center me-3 mt-3">
+          <li class="nav-link d-flex flex-column text-center align-self-center">
             <router-link :to="{ name: 'doctors' }" :class="this.$route.name == 'doctors' ? 'active' : ''">
               Dottori
             </router-link>
           </li>
-          <li class="nav-item d-flex flex-column text-center me-3">
-            <a class="login btn mt-1" href="http://127.0.0.1:8000/register">
+          <li class="nav-link flex-column text-center me-3">
+            <a class="login btn" href="http://127.0.0.1:8000/register">
               Sei un dottore? Registrati!
             </a>
           </li>
+          <!-- <li class="nav-link flex-column text-center me-3">
+            <a class="login btn mt-1" href="http://127.0.0.1:8000/register">
+              Sei un dottore? Registrati!
+            </a>
+          </li> -->
         </ul>
       </div>
 
@@ -52,7 +57,6 @@ export default {
 
 li {
   list-style-type: none;
-  margin-left: 1rem;
 
   a {
     text-decoration: none;
