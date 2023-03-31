@@ -173,7 +173,7 @@ export default {
             <div class="col-3 d-flex justify-content-end">
               <button
                 @click="(this.selectedVote = '') && (this.selectedSpecialization = '') && (this.selectedReview = '')"
-                class="btn filter-btn">
+                class="btn btn-danger" style="border-radius: 25px;">
                 Rimuovi filtri
               </button>
             </div>
@@ -219,11 +219,136 @@ export default {
   background-image: url('/imgs/Bg-image.jpg');
   background-size: cover;
   background-position: center;
+}
 
-  .filter-btn {
-    background-color: $secondary-variant-color;
-    color: white;
+
+.no-doctor,
+.wait-api {
+  height: 60vh;
+}
+
+
+.loader {
+  @mixin translate($x, $y) {
+    -webkit-transform: translate($x, $y);
+    -ms-transform: translate($x, $y);
+    -o-transform: translate($x, $y);
+    transform: translate($x, $y);
   }
+
+  @mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+      @content;
+    }
+
+    @-moz-keyframes #{$animationName} {
+      @content;
+    }
+
+    @-o-keyframes #{$animationName} {
+      @content;
+    }
+
+    @keyframes #{$animationName} {
+      @content;
+    }
+  }
+
+  @mixin animate($name, $duration, $iteration, $direction) {
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    -o-animation-duration: $duration;
+    animation-duration: $duration;
+
+    -webkit-animation-iteration-count: $iteration;
+    -moz-animation-iteration-count: $iteration;
+    -o-animation-iteration-count: $iteration;
+    animation-iteration-count: $iteration;
+
+    -webkit-animation-name: $name;
+    -moz-animation-name: $name;
+    -o-animation-name: $name;
+    animation-name: $name;
+
+    -webkit-animation-direction: $direction;
+    -moz-animation-direction: $direction;
+    -o-animation-direction: $direction;
+    animation-direction: $direction;
+  }
+
+  @include keyframes(pulsate) {
+    0% {
+      background-color: #f44336;
+    }
+
+    25% {
+      background-color: #E91E63;
+    }
+
+    50% {
+      background-color: #2196F3;
+    }
+
+    75% {
+      background-color: #FFC107;
+    }
+
+    100% {
+      background-color: #FF5722;
+    }
+  }
+
+  @include keyframes(move) {
+    to {
+      stroke-dashoffset: -1200;
+    }
+  }
+
+  @include keyframes(fade) {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @mixin pulsate {
+    @include animate(pulsate, 80s, infinite, normal);
+  }
+
+
+  .loader {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999999;
+    @include pulsate;
+
+    svg {
+      left: 0;
+      position: absolute;
+      top: 50%;
+      @include translate(0, -50%);
+
+    }
+  }
+
+  .animation {
+    fill: none;
+    stroke: $secondary-variant-color;
+    stroke-linecap: square;
+    stroke-miterlimit: 10;
+    stroke-width: 0.5px;
+    opacity: 1;
+    stroke-dasharray: 600;
+    -webkit-animation: move 5s linear forwards infinite, fade 5s linear infinite;
+    animation: move 5s linear forwards infinite, fade 5s linear infinite;
+  }
+
 }
 
 

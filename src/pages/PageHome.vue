@@ -157,16 +157,16 @@ export default {
 
         </div>
         <div class="d-flex">
-          <router-link v-if="!store.selectedSpecialization" class="btn btn-doctors" :to="{ name: 'doctors' }">
+          <router-link v-if="!store.selectedSpecialization" class="my-btn" :to="{ name: 'doctors' }">
             Tutti i nostri dottori
           </router-link>
 
           <div v-else class="d-flex">
-            <router-link class="btn btn-primary me-3" :to="{ name: 'doctors' }">
+            <router-link class="my-btn me-3" :to="{ name: 'doctors' }">
               Cerca per specializzazione
             </router-link>
 
-            <button class="btn btn-danger" @click="store.selectedSpecialization = ''">
+            <button class="btn btn-danger" style="border-radius: 25px;" @click="store.selectedSpecialization = ''">
               Rimuovi filtro
             </button>
           </div>
@@ -243,7 +243,7 @@ export default {
                   </div>
                 </div>
 
-                <div class="card-info card">                  
+                <div class="card-info card">
                   <!-- Blog's info -->
                   <div class="blog-info">
                     <div class="title">
@@ -253,7 +253,9 @@ export default {
                     </div>
                     <span class="text-place mb-3 d-inline-block">{{ blog.place }}</span>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus velit a nostrum accusamus. Repellendus incidunt blanditiis fuga aliquam illum autem aperiam quis nemo non dignissimos accusantium, cum quos! Delectus, odio.
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus velit a nostrum accusamus.
+                      Repellendus incidunt blanditiis fuga aliquam illum autem aperiam quis nemo non dignissimos
+                      accusantium, cum quos! Delectus, odio.
                     </p>
                   </div>
                 </div>
@@ -276,32 +278,23 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: 25%;
-  
+
   .text-home {
-      color: rgb(202, 214, 231);
-      font-weight: bold;
-      transition: color 4s ease-in-out;
-      cursor:default;
-      transition: color 3s ease-in-out, text-shadow 2s ease-in-out;
+    color: rgb(202, 214, 231);
+    font-weight: bold;
+    transition: color 4s ease-in-out;
+    cursor: default;
+    transition: color 3s ease-in-out, text-shadow 2s ease-in-out;
 
-      &:hover {
-        text-shadow:0 0 10px rgba(0, 190, 161, 0.7),
-          0 0 20px rgba(0, 190, 161, 0.5),
-          0 0 30px rgba(0, 190, 161, 0.3),
-          0 0 40px rgba(0, 190, 161, 0.1); 
-      }
+    &:hover {
+      text-shadow: 0 0 10px rgba(0, 190, 161, 0.7),
+        0 0 20px rgba(0, 190, 161, 0.5),
+        0 0 30px rgba(0, 190, 161, 0.3),
+        0 0 40px rgba(0, 190, 161, 0.1);
     }
-}
-.btn-doctors{
-  background-color: $secondary-color;
-  color: white;
-
-  &:hover {
-    color:  rgb(187, 184, 184);
-    background-color: $secondary-variant-color;
-    color: $secondary-color;
   }
 }
+
 .functions {
   background-color: $primary-color;
 
@@ -317,12 +310,14 @@ export default {
   background-size: cover;
   background-position: center;
   backdrop-filter: blur(50px);
+
   .blog-card {
     position: relative;
     padding-top: 3.5rem;
 
-    .blog-image-container{
+    .blog-image-container {
       padding-left: 2rem;
+
       .blog-photo {
         height: 150px;
         width: 150px;
@@ -331,31 +326,32 @@ export default {
         position: absolute;
         top: 0;
         z-index: 5;
-        
+
         img {
           height: 100%;
           width: 100%;
         }
       }
     }
-    
-    .card-info{
+
+    .card-info {
       border-radius: 25px;
       padding: 1rem;
       height: 80%;
+
       .blog-info {
         padding: 4.5rem 1rem 3rem 1rem;
-          width: 100%;
-          color: $primary-variant-color;
-  
-          h4{
-            font-weight: bold;
-          }
+        width: 100%;
+        color: $primary-variant-color;
 
-          .text-place{
-            font-weight: 600;
-            font-size: 0.8rem;
-          }
+        h4 {
+          font-weight: bold;
+        }
+
+        .text-place {
+          font-weight: 600;
+          font-size: 0.8rem;
+        }
       }
     }
   }
@@ -364,8 +360,4 @@ export default {
 // .functions .container{
 //   background-color: $background-color;
 // }
-
-
-
-
 </style>
