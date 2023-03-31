@@ -73,7 +73,7 @@ export default {
           surname: 'Belardo',
           photo: 'vincenzo-photo.jpg',
           place: 'Caserta | Campania',
-          text: ''
+          text: 'Sono Vincenzo ho 25 anni e sono un ragazzo appassionato di programmazione con un master in sviluppatore web full-stack. Ho un\'ottima conoscenza di diversi linguaggi di programmazione front-end e back-end. Sono curioso, creativo e interessato all\'innovazione tecnologica.'
         },
       ],
     }
