@@ -157,7 +157,9 @@ export default {
         </div>
         <div class="col-6 col-md-6 my-2">
           <div class="filters row justify-content-end">
-            <label class="w-50 text-center">Seleziona i filtri:</label>
+            <div class="label-place d-flex justify-content-end w-75">
+              <label class="w-75">Seleziona i filtri:</label>
+            </div>
             <div class="col-4">
               <select v-if="selectedVote" class="form-select" aria-label="Default select example"
                 v-model="selectedReview">
