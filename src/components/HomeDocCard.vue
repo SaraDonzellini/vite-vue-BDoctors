@@ -30,7 +30,7 @@ export default {
             const sum = array.reduce((acc, obj) => {
                 return acc + obj[key];
             }, 0);
-            this.averageVote = Math.ceil(sum / array.length);
+            this.averageVote = Math.floor(sum / array.length);
             //console.log(this.averageVote)
             return this.averageVote
         },

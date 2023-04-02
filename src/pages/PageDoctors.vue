@@ -66,7 +66,7 @@ export default {
             const reviews = doctor.user.reviews;
             // const numReview = reviews.length;
             const totalVotes = reviews.reduce((sum, review) => sum + review.vote, 0);
-            const averageVote = totalVotes / reviews.length;
+            const averageVote = Math.floor(totalVotes / reviews.length);
             // console.log(this.numReview);
             return {
               ...doctor,
