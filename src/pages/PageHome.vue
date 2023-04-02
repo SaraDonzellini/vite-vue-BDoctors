@@ -45,7 +45,7 @@ export default {
           surname: 'Napoletano',
           photo: 'alessio-photo.jpg',
           place: 'Milano | Lombardia',
-          text: ''
+          text: 'Mi presento, sono Alessio, sono diventato un Junior Full-Stack web Developer grazie al corso di Boolean, il quale mi ha dato la possibilità di maturare le skills più richieste dal mercato e il giusto mindset per accrescere le mie competenze in tempi brevi.'
         },
         {
           name: 'Giada',
@@ -106,7 +106,7 @@ export default {
             });
             // console.log(doctor);
             this.sliderDoctors = doctorsWithAverageVote.filter(doctor => doctor.averageVote >= 4);
-            this.sponsorSliderDoctors = doctorsWithAverageVote.filter(doctor => doctor.user.sponsorships.length > 0 )
+            this.sponsorSliderDoctors = doctorsWithAverageVote.filter(doctor => doctor.user.sponsorships.length > 0)
             // console.log(doctorsWithAverageVote)
           }
         });
@@ -275,9 +275,7 @@ export default {
                     </div>
                     <span class="text-place mb-3 d-inline-block">{{ blog.place }}</span>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus velit a nostrum accusamus.
-                      Repellendus incidunt blanditiis fuga aliquam illum autem aperiam quis nemo non dignissimos
-                      accusantium, cum quos! Delectus, odio.
+                      {{ blog.text }}
                     </p>
                   </div>
                 </div>
@@ -333,7 +331,7 @@ export default {
   background-position: center;
   backdrop-filter: blur(50px);
 
-  .title-section{
+  .title-section {
     margin: auto;
     background-color: $primary-color;
     border-radius: 35px;
