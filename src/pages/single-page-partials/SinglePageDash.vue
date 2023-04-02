@@ -70,7 +70,7 @@ export default {
           <h5 class="text-center secondary-text-color">Curriculum</h5>
 
           <div class="curriculum-image-container shadow-lg mb-3">
-            <img class="image-cv img-fluid" src="/imgs/Curriculum_1.png" :alt="doctor.user.name">
+            <img class="image-cv img-fluid" src="/imgs/Curriculum_2.png" :alt="doctor.user.name">
           </div>
 
           <a href="/imgs/Curriculum_1.png" download class="my-btn mt-3 mb-3"><i class="fa-solid fa-download"></i>
