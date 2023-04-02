@@ -35,7 +35,7 @@ export default {
           text: 'stelle',
         }
       ],
-      reviews: [1, 2, 5, 10],
+      reviews: [3, 5, 7, 10],
       store,
       doctors: [],
       specializations: [],
