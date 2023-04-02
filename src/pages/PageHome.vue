@@ -66,7 +66,7 @@ export default {
           surname: 'Bravaccini',
           photo: 'manuel-photo.jpg',
           place: 'Firenze | Toscana',
-          text: ''
+          text: 'A seguito della mia passione per la tecnologia, e degli studi effettuati da autodidatta, ho intrapreso il corso da sviluppatore full-stack, che ha ampliato le mie competenze sia tecniche che relazionali.'
         },
         {
           name: 'Vincenzo',
