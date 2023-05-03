@@ -122,8 +122,8 @@ export default {
     this.selectedSpecialization = store.selectedSpecialization;
   },
 
-  created() {
-  },
+  // created() {
+  // },
 }
 
 

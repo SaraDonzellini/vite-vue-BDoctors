@@ -11,7 +11,6 @@ export default {
         surname: '',
         email: '',
         text: '',
-
         showMessage: false,
       }
     }
@@ -41,16 +40,6 @@ export default {
           // Gestisci gli errori di invio
         });
     },
-
-    /* async handleSubmit() {
-      try {
-        const response = await axios.post('http://127.0.0.1:8000/api/messages', this.formData)
-        //console.log(response.data)
-      } catch (error) {
-        console.log(error.response.data)
-      };
-      this.clearInput()
-    }, */
 
     clearInput() {
       this.formData.name = '';
